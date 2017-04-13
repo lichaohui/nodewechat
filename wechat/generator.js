@@ -42,7 +42,7 @@ module.exports=function(config){
       this.body=echostr+'';
     }else{
       //否则请求就不合法，返回无效请求
-      this.body='非法请求，请确认';
+      this.body='非法请求,请确认';
     }
   }
 }
