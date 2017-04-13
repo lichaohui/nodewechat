@@ -1,0 +1,24 @@
+{
+  "name": "nodewechat",
+  "version": "1.0.0",
+  "description": "nodejs 开发的公众号\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[C\u001b[C\u001b[C\u001b[公众号",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "koa",
+    "wechat"
+  ],
+  "author": "lichaohui",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "sha1": "^1.1.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1"
+  }
+}
