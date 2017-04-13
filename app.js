@@ -23,5 +23,5 @@ const app=new koa();
 app.use(generator(config));
 
 //监听80端口
-app.listen(3100);
-console.log('server is running in port:3100');
+app.listen(80);
+console.log('server is running in port:80');
