@@ -103,10 +103,10 @@ module.exports=function(option){
         data=JSON.parse(data);
       }catch(e){
         //如果有异常则使用updateAccessToken()方法更新accesstoken
-        return this.updateAccessToken();
+        return acc.updateAccessToken();
       }
       //如果拿到了token则验证是否是有效的
-      if(this.isValidAccessToken(data)){
+      if(acc.isValidAccessToken(data)){
         /*
          * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
          * 就是已完成的状态
@@ -116,13 +116,13 @@ module.exports=function(option){
         /*
          * 如果token已经过期则还是更新token
          */
-        return this.updateAccessToken();
+        return acc.updateAccessToken();
       }
     }).then(function(data){
       //最后调用then方法保存accesstoken到本地
-      this.access_token=data.access_token;
-      this.expires_in=data.expires_in;
-      this.setAccessToken(data);
+      acc.access_token=data.access_token;
+      acc.expires_in=data.expires_in;
+      acc.setAccessToken(data);
     })
   }
 }
