@@ -13,7 +13,7 @@ let apiurl='https://api.weixin.qq.com/cgi-bin/';
 
 /*--声明一个acctoken类--*/
 class acctoken{
-  let that=this;
+  //let this=this;
   //构造函数中初始化appId和appSecret属性
   constructor(option){
     this.appId=option.appId;
@@ -94,10 +94,10 @@ class acctoken{
       data=JSON.parse(data);
     }catch(e){
       //如果有异常则使用updateAccessToken()方法更新accesstoken
-      return that.updateAccessToken();
+      return this.updateAccessToken();
     }
     //如果拿到了token则验证是否是有效的
-    if(that.isValidAccessToken(data)){
+    if(this.isValidAccessToken(data)){
       /*
        * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
        * 就是已完成的状态
@@ -107,13 +107,13 @@ class acctoken{
       /*
        * 如果token已经过期则还是更新token
        */
-      return that.updateAccessToken();
+      return this.updateAccessToken();
     }
   }).then(function(data){
     //最后调用then方法保存accesstoken到本地
-    that.access_token=data.access_token;
-    that.expires_in=data.expires_in;
-    that.setAccessToken(data);
+    this.access_token=data.access_token;
+    this.expires_in=data.expires_in;
+    this.setAccessToken(data);
   })
 }
 
