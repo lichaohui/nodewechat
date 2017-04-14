@@ -14,7 +14,7 @@ const reqverify=require('./wechat/reqverify');
 //引入acctoken中间件
 const acctoken=require('./wechat/acctoken');
 //设置微信配置文件
-const wechat_file=path.join(__dirname,'./config/wechat.txt');
+const wechat_file=path.join(__dirname,'./config/wechat_file.txt');
 
 //设置一个对象用来存储一些配置信息
 const config={
