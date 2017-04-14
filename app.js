@@ -5,21 +5,38 @@
 
 //引入koa模块
 const koa=require('koa');
-//引入signature中间件
+//引入path模块
+const path=require('path');
+//引入util模块
+const util=require('./libs/util');
+//引入reqverify中间件
 const reqverify=require('./wechat/reqverify');
+//引入acctoken中间件
+const acctoken=require('./wechat/acctoken');
+//设置微信配置文件
+const wechat_file=path.join(_dirname,'./config/wechat.txt');
 
 //设置一个对象用来存储一些配置信息
 const config={
   wechat:{
     appId:'wxbf37d744e196cf9b',
     appSecret:'fcc5ec54936416d17fb06aba1e3d0d00',
-    token:'lichaohui'
+    token:'lichaohui',
+    getAccessToken:function(){
+      return util.readFileAsync(wechat_file);
+    },
+    setAccessToken:function(data){
+      data=JSON.stringify(data);
+      return util.writeFileAsync(wechat_file,data);
+    }
   }
 }
 
 //实例化一个koa对象
 const app=new koa();
-//使用generator中间件
+//使用acctoken中检验验证access_token
+app.use()
+//使用reqverify中间件验证请求合法性
 app.use(reqverify(config.wechat));
 
 //监听80端口
