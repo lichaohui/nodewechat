@@ -4,7 +4,7 @@
 'use strict'
 
 //引入promise的bluebird库
-let promise=request('bluebird');
+let promise=require('bluebird');
 //将request模块promisify,然后request就拥有的then方法
 let request=promise.promisify(require('request'));
 
