@@ -53,7 +53,8 @@ class acctoken{
      * 这两个参数在获取accesstoken的时候需要用到
      * url则是微信提供给我们的获取accesstoken的请求地址
      */
-    let ['appId','appSecret','url']=[this.appId,this.appSecret,`${url}?grant_type=client_credential&appid=${appId}&secret=${appSecret}`];
+    let [appId,appSecret]=[this.appId,this.appSecret];
+    let url=`${url}?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
     
     /*
      * 因为我们希望updateAccessToken方法返回一个promise对象
