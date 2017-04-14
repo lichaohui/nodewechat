@@ -12,7 +12,7 @@ const util=require('./libs/util');
 //引入reqverify中间件
 const reqverify=require('./wechat/reqverify');
 //引入acctoken中间件
-//const acctoken=require('./wechat/acctoken');
+const acctoken=require('./wechat/acctoken');
 //设置微信配置文件
 const wechat_file=path.join(__dirname,'./config/wechat.txt');
 
@@ -35,7 +35,7 @@ const config={
 //实例化一个koa对象
 const app=new koa();
 //使用acctoken中检验验证access_token
-//app.use(acctoken(config.wechat));
+app.use(acctoken(config.wechat));
 //使用reqverify中间件验证请求合法性
 app.use(reqverify(config.wechat));
 
