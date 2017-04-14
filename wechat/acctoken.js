@@ -3,8 +3,6 @@
 //使用严格模式
 'use strict'
 
-//引入request模块
-let request=require('request');
 //引入promise的bluebird库
 let promise=request('bluebird');
 //将request模块promisify,然后request就拥有的then方法
