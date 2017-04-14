@@ -1,4 +1,4 @@
-/*--将该文件定义为一个koa的中间件--*/
+/*--该文件是用来验证请求合法性的koa中间件--*/
 
 //使用严格模式
 'use strict'
@@ -11,13 +11,13 @@ var sha1=require('sha1');
  * 由于koa框架要求中间件必须返回一个generator函数
  * 所以要在exports暴露的方法中return 一个generator函数
  */
-module.exports=function(config){
+module.exports=function(option){
   return function *(next){
     /*
      * 先拿到配置中的token，
      * 该token是用来进行加密的一个元件
      */
-    var token=config.wechat.token;
+    var token=option.token;
     /*
      * 获取请求参数中的signature参数（签名）用来进行
      * 该参数也是用来紧密的一个元件

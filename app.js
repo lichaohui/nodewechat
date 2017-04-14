@@ -5,8 +5,8 @@
 
 //引入koa模块
 const koa=require('koa');
-//引入generator中间件
-const generator=require('./wechat/generator');
+//引入signature中间件
+const reqverify=require('./wechat/reqverify');
 
 //设置一个对象用来存储一些配置信息
 const config={
@@ -20,7 +20,7 @@ const config={
 //实例化一个koa对象
 const app=new koa();
 //使用generator中间件
-app.use(generator(config));
+app.use(reqverify(config.wechat));
 
 //监听80端口
 app.listen(80);
