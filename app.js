@@ -12,7 +12,7 @@ const util=require('./libs/util');
 //引入reqverify中间件
 const reqverify=require('./wechat/reqverify');
 //引入acctoken中间件
-const acctoken=require('./wechat/acctoken');
+//const acctoken=require('./wechat/acctoken');
 //设置微信配置文件
 const wechat_file=path.join(_dirname,'./config/wechat.txt');
 
