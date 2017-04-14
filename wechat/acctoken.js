@@ -90,7 +90,12 @@ class acctoken{
    * 回调函数的data参数是上一步中的返回值
    */
   
-  this.getAccessToken()
+  
+}
+
+module.exports=function(option){
+  let acc=new acctoken(option);
+  acc.getAccessToken()
     .then(function(data){
     try{
       //尝试将data进行JSON.parst
@@ -118,8 +123,4 @@ class acctoken{
     this.expires_in=data.expires_in;
     this.setAccessToken(data);
   })
-}
-
-module.exports=function(option){
-  let acc=new acctoken(option);
 }
