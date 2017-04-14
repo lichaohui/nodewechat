@@ -89,7 +89,9 @@ class acctoken{
    * then方法中包含一个回调函数
    * 回调函数的data参数是上一步中的返回值
    */
-  getAccessToken().then(function(data){
+  
+  this.getAccessToken()
+    .then(function(data){
     try{
       //尝试将data进行JSON.parst
       data=JSON.parse(data);
