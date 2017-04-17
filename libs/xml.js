@@ -45,9 +45,7 @@ exports.parseXMLAsync=function(xml){
  * 
  */
 var result={};
-
-exports.format=function(obj){
-  result={};
+function formatMsg(obj){
   //通过Object.keys(obj)获取某个对象的所有键名
   let keys=Object.keys(obj);
   //通过一个循环遍历将obj的键名和对应的键值放到result对象中
@@ -67,3 +65,5 @@ exports.format=function(obj){
   }
   return result;
 }
+
+exports.format=formatMsg;
