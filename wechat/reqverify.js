@@ -66,8 +66,31 @@ module.exports=function(option){
           limit:'1mb',
           encoding:this.charset
         })
-        
+        /*
+         * 通过xml模块的parseXMLAsync方法(该模块和方法都是自己定义的)
+         * 将接收到的xml格式的消息解析为js对象
+         */
         let content=yield xml.parseXMLAsync(data);
+        /*
+         * 将解析完后获取到的js对象通过xml模块的format方法格式化一下
+         * 将其格式化为可用的js对象
+         * 这个地方可能解释不清楚
+         * 比如：parseXMLAsync()方法解析完成后的数据为：
+         * { 
+             xml: 
+              { 
+                ToUserName: [ 'gh_3ce3a0e92da9' ],
+                FromUserName: [ 'orNfTwvWWqwM04jnZRfgbURBdGxY' ],
+                CreateTime: [ '1492407655' ],
+                MsgType: [ 'event' ],
+                Event: [ 'subscribe' ],
+                EventKey: [ '' ] 
+              } 
+            }
+         * 那么格式化(format)完之后就会是这个样子：
+         * 
+         */
+        content=xml.format(content);
         console.log(content);
       }else{
         //否则请求就不合法，返回无效请求
