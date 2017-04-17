@@ -54,8 +54,9 @@ class acctoken{
      * url则是微信提供给我们的获取accesstoken的请求地址
      */
     let [appId,appSecret]=[this.appId,this.appSecret];
-    let url=`${apiurl}?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
-    console.log(url);
+    //let url=`${apiurl}?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
+    //console.log(url);
+    let url=`https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
     
     /*
      * 因为我们希望updateAccessToken方法返回一个promise对象
