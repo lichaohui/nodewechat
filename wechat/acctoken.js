@@ -55,6 +55,7 @@ class acctoken{
      */
     let [appId,appSecret]=[this.appId,this.appSecret];
     let url=`${apiurl}?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
+    console.log(url);
     
     /*
      * 因为我们希望updateAccessToken方法返回一个promise对象
