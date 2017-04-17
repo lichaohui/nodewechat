@@ -4,7 +4,7 @@
 'use strict'
 
 //引入sha1加密模块和raw-body模块和自定义的用来解析xml数据的xml模块
-const [sha1,rowBody,xml]=[require('sha1'),require('raw-body'),require('../libs/xml')];
+const [sha1,rawBody,xml]=[require('sha1'),require('raw-body'),require('../libs/xml')];
 
 /*
  * 通过module.exports向外界暴露一个方法
