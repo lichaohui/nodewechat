@@ -36,7 +36,7 @@ const config={
 const app=new koa();
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
-//使用reqverify中间件验证请求合法性
+//使用reqverify中间件验证请求
 app.use(reqverify(config.wechat));
 
 //监听80端口

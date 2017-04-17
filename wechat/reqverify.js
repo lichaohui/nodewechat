@@ -13,6 +13,7 @@ var rawBody=require('raw-body');
  * 由于koa框架要求中间件必须返回一个generator函数
  * 所以要在exports暴露的方法中return 一个generator函数
  */
+console.log('马上开始了');
 module.exports=function(option){
   console.log('开始了');
   return function *(next){
