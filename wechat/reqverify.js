@@ -15,6 +15,7 @@ var rawBody=require('raw-body');
  */
 module.exports=function(option){
   return function *(next){
+    console.log('开始了');
     /*
      * 先拿到配置中的token，
      * 该token是用来进行加密的一个元件
@@ -33,7 +34,7 @@ module.exports=function(option){
     let str=[token,timestamp,nonce].sort().join('');
     let sha=sha1(str);
     
-    console.log(this.method);
+    console.log(str);
 
     /*
      * 如果请求方式是GET则说明是验证签名
@@ -73,7 +74,7 @@ module.exports=function(option){
           limit:'1mb',
           encoding:this.charset
         })
-        console.log(data.toString);
+        console.log(data.toString());
       }else{
         //否则请求就不合法，返回无效请求
         this.body='非法请求!';
