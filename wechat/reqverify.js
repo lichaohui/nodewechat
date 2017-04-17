@@ -37,6 +37,7 @@ module.exports=function(option){
      * 如果请求方式是GET则说明是验证签名
      */
     if(this.method==='GET'){
+      console.log('this ia a get');
       if(sha===signature){
         /*
          * 如果加密后获取的字符串等于signatrue签名
