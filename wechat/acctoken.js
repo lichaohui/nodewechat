@@ -75,6 +75,7 @@ class acctoken{
          * 重新设置accesstoken的过期时间
          * 将过期时间设置为当前时间加上服务器返回的expires_in（毫秒，然后*1000）
          */
+        console.log(data);
         data.expires_in=new Date().getTime()+(data.expires_in-20)*1000;
         //然后将promise对象的状态设置为已完成
         resolve(data);
