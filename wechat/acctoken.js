@@ -9,7 +9,7 @@ let promise=require('bluebird');
 let request=promise.promisify(require('request'));
 
 //设置一些配置信息
-let apiurl='https://api.weixin.qq.com/cgi-bin/';
+var apiurl='https://api.weixin.qq.com/cgi-bin/';
 
 /*--声明一个acctoken类--*/
 class acctoken{
@@ -54,9 +54,7 @@ class acctoken{
      * url则是微信提供给我们的获取accesstoken的请求地址
      */
     let [appId,appSecret]=[this.appId,this.appSecret];
-    //let url=`${apiurl}?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
-    //console.log(url);
-    let url=`https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
+    let url=`${apiurl}token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
     
     /*
      * 因为我们希望updateAccessToken方法返回一个promise对象
@@ -71,35 +69,30 @@ class acctoken{
        * url是请求地址，json:true是设置返回格式为json
        */
       request({url:url,json:true}).then(function(response){
-        console.log(response.body);
-        //响应的数据在response[1]中
-        let data=response[1];
+        //响应的数据在response.body中
+        let data=response.body;
         /*
          * 重新设置accesstoken的过期时间
          * 将过期时间设置为当前时间加上服务器返回的expires_in（毫秒，然后*1000）
          */
-        console.log(typeof(response));
         data.expires_in=new Date().getTime()+(data.expires_in-20)*1000;
         //然后将promise对象的状态设置为已完成
         resolve(data);
       })
     }) 
   }
-
-  /*
-   * getAccessToken()方法返回的是一个promise对象
-   * 所以可以调用该对象的then方法进行下一步操作
-   * promise对象是es6新标准中定义的用来改善异步回调写法的js对象
-   * then方法中包含一个回调函数
-   * 回调函数的data参数是上一步中的返回值
-   */
-  
-  
 }
 
 module.exports=function(option){
   return function* (next){
     let acc=new acctoken(option);
+    /*
+     * getAccessToken()方法返回的是一个promise对象
+     * 所以可以调用该对象的then方法进行下一步操作
+     * promise对象是es6新标准中定义的用来改善异步回调写法的js对象
+     * then方法中包含一个回调函数
+     * 回调函数的data参数是上一步中的返回值
+     */
     acc.getAccessToken()
     .then(function(data){
       try{
