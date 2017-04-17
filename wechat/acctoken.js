@@ -121,5 +121,6 @@ module.exports=function(option){
       acc.expires_in=data.expires_in;
       acc.setAccessToken(data);
     })
+    next;
   }
 }
