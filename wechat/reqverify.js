@@ -88,10 +88,31 @@ module.exports=function(option){
               } 
             }
          * 那么格式化(format)完之后就会是这个样子：
-         * 
+         * { 
+             ToUserName: 'gh_3ce3a0e92da9',
+             FromUserName: 'orNfTwvWWqwM04jnZRfgbURBdGxY',
+             CreateTime: '1492407655',
+             MsgType: 'event',
+             Event: 'subscribe',
+             EventKey: '' 
+         * }
          */
         content=xml.format(content);
-        console.log(content);
+        if(content.MsgType=='event'){
+          /*
+           * 如果消息类型是一个事件
+           * 则通过event字段获取事件类型
+           * 根据不同的事件类型做出不同的响应
+           */
+          let now=new Date().getTime();
+          switch(content.Event){
+            case 'subscribe':
+              this.status=200;
+              this.type='application/xml';
+              this.body=`<xml><ToUserName><![CDATA[${content.FromUserName}]]></ToUserName><FromUserName><![CDATA[${content.ToUserName}]]></FromUserName><CreateTime>${now}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好，欢迎关注李朝辉！]]></Content></xml>`;
+              break;
+          }
+        }
       }else{
         //否则请求就不合法，返回无效请求
         this.body='非法请求!';

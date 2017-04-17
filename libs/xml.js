@@ -42,7 +42,14 @@ exports.parseXMLAsync=function(xml){
        } 
      }
  * 那么格式化(format)完之后就会是这个样子：
- * 
+ * { 
+     ToUserName: 'gh_3ce3a0e92da9',
+     FromUserName: 'orNfTwvWWqwM04jnZRfgbURBdGxY',
+     CreateTime: '1492407655',
+     MsgType: 'event',
+     Event: 'subscribe',
+     EventKey: '' 
+   }
  */
 var result={};
 function formatMsg(obj){
