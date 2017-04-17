@@ -13,8 +13,8 @@ const util=require('./libs/util');
 const reqverify=require('./wechat/reqverify');
 //引入acctoken中间件
 const acctoken=require('./wechat/acctoken');
-//设置微信配置文件
-const wechat_file=path.join(__dirname,'./config/wechat_file.txt');
+//设置存储凭据的配置文件
+const access_token_file=path.join(__dirname,'./config/access_token.json');
 
 //设置一个对象用来存储一些配置信息
 const config={
@@ -23,11 +23,11 @@ const config={
     appSecret:'fcc5ec54936416d17fb06aba1e3d0d00',
     token:'lichaohui',
     getAccessToken:function(){
-      return util.readFileAsync(wechat_file);
+      return util.readFileAsync(access_token_file);
     },
     setAccessToken:function(data){
       data=JSON.stringify(data);
-      return util.writeFileAsync(wechat_file,data);
+      return util.writeFileAsync(access_token_file,data);
     }
   }
 }
