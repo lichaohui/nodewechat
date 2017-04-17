@@ -17,6 +17,7 @@ console.log('马上开始了');
 module.exports=function(option){
   console.log('开始了');
   return function *(next){
+    console.log('已经开始了');
     /*
      * 先拿到配置中的token，
      * 该token是用来进行加密的一个元件
