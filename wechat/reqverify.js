@@ -32,6 +32,8 @@ module.exports=function(option){
     //对token,timestamp和nonce参数进行字典排序后再进行sha1加密
     let str=[token,timestamp,nonce].sort().join('');
     let sha=sha1(str);
+    
+    console.log(this.method);
 
     /*
      * 如果请求方式是GET则说明是验证签名
