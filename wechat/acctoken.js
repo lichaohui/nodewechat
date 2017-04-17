@@ -71,7 +71,7 @@ class acctoken{
        * url是请求地址，json:true是设置返回格式为json
        */
       request({url:url,json:true}).then(function(response){
-        console.log(response);
+        console.log(response.body);
         //响应的数据在response[1]中
         let data=response[1];
         /*
