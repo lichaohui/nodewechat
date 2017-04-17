@@ -49,6 +49,7 @@ module.exports=function(option){
         this.body='非法请求!';
       }
     }else if(this.method==='POST'){
+      console.log('this is a post');
       /*
        * 如果请求方式是post则证明是微信服务器在向我们推送消息
        * 我们这边就需要处理这些消息
