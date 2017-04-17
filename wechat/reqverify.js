@@ -13,11 +13,8 @@ var rawBody=require('raw-body');
  * 由于koa框架要求中间件必须返回一个generator函数
  * 所以要在exports暴露的方法中return 一个generator函数
  */
-console.log('马上开始了');
 module.exports=function(option){
-  console.log('开始了');
   return function *(next){
-    console.log('已经开始了');
     /*
      * 先拿到配置中的token，
      * 该token是用来进行加密的一个元件
@@ -35,14 +32,10 @@ module.exports=function(option){
     //对token,timestamp和nonce参数进行字典排序后再进行sha1加密
     let str=[token,timestamp,nonce].sort().join('');
     let sha=sha1(str);
-    
-    console.log(str);
-
     /*
      * 如果请求方式是GET则说明是验证签名
      */
     if(this.method==='GET'){
-      console.log('this ia a get');
       if(sha===signature){
         /*
          * 如果加密后获取的字符串等于signatrue签名
@@ -55,7 +48,6 @@ module.exports=function(option){
         this.body='非法请求!';
       }
     }else if(this.method==='POST'){
-      console.log('this is a post');
       /*
        * 如果请求方式是post则证明是微信服务器在向我们推送消息
        * 我们这边就需要处理这些消息

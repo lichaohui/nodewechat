@@ -35,7 +35,7 @@ const config={
 //实例化一个koa对象
 const app=new koa();
 //使用acctoken中检验验证access_token
-//app.use(acctoken(config.wechat));
+app.use(acctoken(config.wechat));
 //使用reqverify中间件验证请求
 app.use(reqverify(config.wechat));
 
