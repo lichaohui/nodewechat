@@ -3,10 +3,8 @@
 //使用严格模式
 'use strict'
 
-//引入sha1加密模块
-var sha1=require('sha1');
-//引入row-body模块
-var rawBody=require('raw-body');
+//引入sha1加密模块和raw-body模块和自定义的用来解析xml数据的xml模块
+const [sha1,rowBody,xml]=[require('sha1'),require('raw-body'),require('./libs/xml')];
 
 /*
  * 通过module.exports向外界暴露一个方法
@@ -68,7 +66,9 @@ module.exports=function(option){
           limit:'1mb',
           encoding:this.charset
         })
-        console.log(data.toString());
+        
+        let content=yeild xml.parseXMLAsync(data);
+        console.log(content);
       }else{
         //否则请求就不合法，返回无效请求
         this.body='非法请求!';

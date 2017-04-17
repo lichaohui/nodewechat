@@ -7,8 +7,8 @@
 const koa=require('koa');
 //引入path模块
 const path=require('path');
-//引入util模块
-const util=require('./libs/util');
+//引入files模块(自定义的模块)
+const files=require('./libs/files');
 //引入reqverify中间件
 const reqverify=require('./wechat/reqverify');
 //引入acctoken中间件
@@ -23,11 +23,11 @@ const config={
     appSecret:'fcc5ec54936416d17fb06aba1e3d0d00',
     token:'lichaohui',
     getAccessToken:function(){
-      return util.readFileAsync(access_token_file);
+      return files.readFileAsync(access_token_file);
     },
     setAccessToken:function(data){
       data=JSON.stringify(data);
-      return util.writeFileAsync(access_token_file,data);
+      return files.writeFileAsync(access_token_file,data);
     }
   }
 }
