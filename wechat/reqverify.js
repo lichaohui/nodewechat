@@ -67,7 +67,7 @@ module.exports=function(option){
           encoding:this.charset
         })
         
-        let content=yeild xml.parseXMLAsync(data);
+        let content=yield xml.parseXMLAsync(data);
         console.log(content);
       }else{
         //否则请求就不合法，返回无效请求
