@@ -3,8 +3,13 @@
 //使用严格模式
 'use strict'
 
-//引入sha1加密模块和raw-body模块和自定义的用来解析xml数据的xml模块
-const [sha1,rawBody,xml]=[require('sha1'),require('raw-body'),require('../libs/xml')];
+/*
+ * 引入sha1加密模
+ * 引入raw-body模块
+ * 引入自定义的用来解析xml数据的xml模块
+ * 引入用来执行回复操作的自定义的reply模块
+ */
+const [sha1,rawBody,xml,reply]=[require('sha1'),require('raw-body'),require('../libs/xml'),require('./reply')];
 
 /*
  * 通过module.exports向外界暴露一个方法
@@ -98,21 +103,22 @@ module.exports=function(option){
          * }
          */
         content=xml.format(content);
-        if(content.MsgType=='event'){
-          /*
-           * 如果消息类型是一个事件
-           * 则通过event字段获取事件类型
-           * 根据不同的事件类型做出不同的响应
-           */
-          let now=new Date().getTime();
-          switch(content.Event){
-            case 'subscribe':
-              this.status=200;
-              this.type='application/xml';
-              this.body=`<xml><ToUserName><![CDATA[${content.FromUserName}]]></ToUserName><FromUserName><![CDATA[${content.ToUserName}]]></FromUserName><CreateTime>${now}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好，欢迎关注李朝辉！]]></Content></xml>`;
-              break;
-          }
-        }
+        this.con=content;
+        /*
+         * 当我们解析好接收到的消息以后
+         * 就通过yiled先可以中断当前执行
+         * 将执行权交给外部的比如说handler对象来处理这些消息并生成回复内容
+         * call方法可以将this的上下文环境传给handler
+         */
+        yield handler.call(this,next);
+        
+        /*
+         * 这一步是执行回复动作
+         * 我们将执行回复动作的方法封装到外部的reply模块中
+         * 调用reply模块的reply方法
+         * 并通过call方法将当前环境的上下文对象传递给reply对象
+         */
+        reply.reply.call(this)
       }else{
         //否则请求就不合法，返回无效请求
         this.body='非法请求!';

@@ -13,7 +13,6 @@ var apiurl='https://api.weixin.qq.com/cgi-bin/';
 
 /*--声明一个acctoken类--*/
 class acctoken{
-  //let this=this;
   //构造函数中初始化appId和appSecret属性
   constructor(option){
     this.appId=option.appId;
