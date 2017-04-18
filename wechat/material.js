@@ -5,8 +5,9 @@
 /*
  * 引入fs模块
  * 引入promise库bluebird
+ * 引入config
  */
-const[fs,promise]=[require('fs'),require('bluebird')];
+const[fs,promise,config]=[require('fs'),require('bluebird'),require('../config')];
 
 class material{
   //构造函数中初始化appId和appSecret属性
@@ -52,9 +53,5 @@ class material{
   }
 }
 
-module.exports=function(option){
-  return function* (next){
-    let mater=new material(option);
-    yield next;
-  }
-}
+let mater=new material(config.wechat);
+module.exports=mater;
