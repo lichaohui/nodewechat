@@ -41,9 +41,8 @@ class material{
       
       getAcc().then(function(data){
         data=JSON.parse(data);
-        console.log(data);
         //表单提交的地址
-        let url=`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${data}&type=${type}`;
+        let url=`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${data.access_token}&type=${type}`;
         request({url:url,method:'post',formData:form,json:true}).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
