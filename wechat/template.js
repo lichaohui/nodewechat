@@ -3,9 +3,6 @@
 //引入ejs模板模块和heredoc模块
 const [ejs,heredoc]=[require('ejs'),require('heredoc')];
 
-/*let tpl=heredoc(function(){/*
-  <xml><ToUserName><![CDATA[${content.FromUserName}]]></ToUserName><FromUserName><![CDATA[${content.ToUserName}]]></FromUserName><CreateTime>${now}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好，欢迎关注李朝辉！]]></Content></xml>
-})*/
 let tpl=`<xml>
            <ToUserName><![CDATA[${toUserName}]]></ToUserName><FromUserName><![CDATA[${fromUserName}]]></FromUserName><CreateTime>${createTime}</CreateTime><MsgType>
            <![CDATA[${msgType}]]></MsgType>

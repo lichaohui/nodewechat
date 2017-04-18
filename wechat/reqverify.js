@@ -111,7 +111,7 @@ module.exports=function(option){
          * call方法可以将this的上下文环境传给handler
          */
         yield handler.call(this,next);
-        
+        console.log('走到这里了');
         /*
          * 这一步是执行回复动作
          * 我们将执行回复动作的方法封装到外部的reply模块中
