@@ -28,6 +28,7 @@ class material{
        */
       media:fs.createReadStream(filepath),
     }
+    console.log(this);
     return new promise(function(resolve,reject){
       /*
        * 由于上传素材需要access_token（调用凭据）
@@ -36,6 +37,7 @@ class material{
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
+      console.log(111);
       console.log(this);
       this.getAccessToken().then(function(data){
         //表单提交的地址
