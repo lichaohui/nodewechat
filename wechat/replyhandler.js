@@ -1,6 +1,14 @@
 'use strict'
 
 exports.reply=function* (next){
+  /*
+   * 在上一步的中间件中也就是reqverify.js中调用replyhandler的时候使用了call方法将当前的上下文对象引用给了replyhandler对象，
+   * 所以下面虽然我们没有定义当前对象的con属性
+   * 但是仍然可以使用this.con
+   * 这是因为当前的上下文对象被改变成为了reqverify中的上下文对象
+   * 这里的this就是指的reqverify中的上下文对象而不是指的当前对象了
+   * this.con自然也就是指的reqverify上下文对象的con属性了
+   */
   let con=this.con;
   /*
    * 通过switch来遍历msgType(消息类型)

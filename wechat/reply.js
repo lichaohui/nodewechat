@@ -14,7 +14,14 @@ class reply{
   
   //reply方法执行回复消息的动作
   reply(){
-    //通过tpl的create方法来生成我们的回复消息
+    /*
+     * 通过tpl的create方法来生成我们的回复消息
+     * 因为在reqverify中使用reply的时候call了当前对象，
+     * 改变了上下文环境
+     * 所有下面参数中的this.body,this.con和this.msgType并不是reply对象的属性
+     * 而是reqverify模块中上下文环境的属性
+     * 可以直接拿来使用
+     */
     let xml=tpl.create(this.body,this.con,this.msgType);
     //执行回复
     this.status=200;
