@@ -15,7 +15,7 @@ class reply{
   //reply方法执行回复消息的动作
   reply(){
     //通过tpl的create方法来生成我们的回复消息
-    let xml=tpl.create(this.body,this.con);
+    let xml=tpl.create(this.body,this.con,this.msgType);
     //执行回复
     this.status=200;
     this.type='application/xml';
