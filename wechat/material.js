@@ -52,7 +52,7 @@ class material{
   }
 }
 
-exports.module=function(option){
+module.exports=function(option){
   return function* (next){
     let mater=new material(option);
     yield next;
