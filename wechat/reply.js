@@ -28,13 +28,3 @@ class reply{
 let replyobj=new reply();
 
 module.exports=replyobj;
-
-/*module.exports=function(){
-  console.log('第三部');
-  return function* (next){
-    console.log('hello');
-    let reply=new reply();
-    reply.reply();
-    yield next;
-  }
-}*/
