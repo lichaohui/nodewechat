@@ -12,12 +12,12 @@ exports.create=function(bodier,con){
   //声明一个空对象变量info用来承载回复的消息
   let info={};
   //封装回复内容
-  info.bodier=bodier;
+  info.content=bodier;
   info.createTime=new Date().getTime();
   info.msgType=con.MsgType;
   info.toUserName=con.FromUserName;
   info.fromUserName=con.ToUserName;
-  //console.log(info);
+  console.log(info);
   //通过template模块进行编译后返回
   return template.compiled(info);
 }
