@@ -25,7 +25,11 @@ class reply{
   }
 }
 
-module.exports=function(){
+let reply=new reply();
+
+module.exports=reply;
+
+/*module.exports=function(){
   console.log('第三部');
   return function* (next){
     console.log('hello');
@@ -33,4 +37,4 @@ module.exports=function(){
     reply.reply();
     yield next;
   }
-}
+}*/
