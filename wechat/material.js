@@ -36,6 +36,7 @@ class material{
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
+      console.log(this.getAccessToken);
       this.getAccessToken().then(function(data){
         //表单提交的地址
         let url=`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${data}&type=${type}`;
