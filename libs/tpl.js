@@ -14,9 +14,9 @@ exports.create=function(bodier,con){
   //封装回复内容
   info.bodier=bodier;
   info.createTime=new Date().getTime();
-  info.msgType=bodier.type;
-  info.toUserName=con.fromUserName;
-  info.fromUserName=con.toUserName;
+  info.msgType=con.MsgType;
+  info.toUserName=con.FromUserName;
+  info.fromUserName=con.ToUserName;
   console.log(info);
   //通过template模块进行编译后返回
   return template.compiled(info);
