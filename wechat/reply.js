@@ -13,7 +13,7 @@ class reply{
   };
   
   //reply方法执行回复消息的动作
-  reply(){
+  replier(){
     //通过tpl的create方法来生成我们的回复消息
     let xml=tpl.create(this.bodier,this.con);
     
@@ -29,7 +29,7 @@ module.exports=function(){
   return function* (next){
     console.log('hello');
     let reply=new reply();
-    reply.reply();
+    reply.replier();
     yield next;
   }
 }
