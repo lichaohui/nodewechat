@@ -12,8 +12,6 @@ const[fs,promise,config]=[require('fs'),require('bluebird'),require('../config')
 class material{
   //构造函数中初始化appId和appSecret属性
   constructor(option){
-    this.appId=option.appId;
-    this.appSecret=option.appSecret;
     this.getAccessToken=option.getAccessToken;
   };
   
@@ -28,7 +26,7 @@ class material{
        */
       media:fs.createReadStream(filepath),
     }
-    console.log(this);
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于上传素材需要access_token（调用凭据）
@@ -37,9 +35,8 @@ class material{
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      console.log(111);
-      console.log(this);
-      this.getAccessToken().then(function(data){
+      
+      getAcc().then(function(data){
         //表单提交的地址
         let url=`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${data}&type=${type}`;
         request({url:url,method:'post',formData:form,json:true}).then(function(response){
