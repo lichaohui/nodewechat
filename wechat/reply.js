@@ -6,7 +6,7 @@
 //引入扩展包中的tpl模块来生成回复消息（自定义的）
 const tpl=require('../libs/tpl');
 
-class acctoken{
+class reply{
   //构造函数中初始化appId和appSecret属性
   constructor(){
     
@@ -24,5 +24,12 @@ class acctoken{
     this.status=200;
     this.type='application/xml';
     this.body=xml;
+  }
+}
+
+module.exports=function(){
+  return function* (next){
+    let reply=new reply();
+    
   }
 }

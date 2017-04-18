@@ -110,7 +110,6 @@ module.exports=function(option,handler){
          * 将执行权交给外部的比如说handler对象来处理这些消息并生成回复内容
          * call方法可以将this的上下文环境传给handler
          */
-        console.log('走到这里了');
         yield handler.call(this,next);
         
         /*
@@ -119,7 +118,7 @@ module.exports=function(option,handler){
          * 调用reply模块的reply方法
          * 并通过call方法将当前环境的上下文对象传递给reply对象
          */
-        reply.reply.call(this)
+        reply.reply.call(this);
       }else{
         //否则请求就不合法，返回无效请求
         this.body='非法请求!';
