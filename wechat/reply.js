@@ -27,6 +27,7 @@ class reply{
 module.exports=function(){
   return function* (next){
     let reply=new reply();
+    console.log(reply);
     reply.reply();
     yield next;
   }
