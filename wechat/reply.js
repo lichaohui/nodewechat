@@ -8,17 +8,15 @@ const tpl=require('../libs/tpl');
 
 class reply{
   //构造函数中初始化appId和appSecret属性
-  constructor(){
-    
+  constructor(bodier,con){
+    this.bodier=bodier;
+    this.con=con;
   };
   
   //reply方法执行回复消息的动作
   reply(){
-    
-    let bodier=this.body;
-    let con=this.con;
     //通过tpl的create方法来生成我们的回复消息
-    let xml=tpl.create(bodier,con);
+    let xml=tpl.create(this.bodier,this.con);
     
     //执行回复
     this.status=200;
@@ -30,6 +28,7 @@ class reply{
 module.exports=function(){
   return function* (next){
     let reply=new reply();
-    
+    reply.reply();
+    yield next;
   }
 }
