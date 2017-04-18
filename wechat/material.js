@@ -40,6 +40,7 @@ class material{
        */
       
       getAcc().then(function(data){
+        console.log(data);
         //表单提交的地址
         let url=`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${data}&type=${type}`;
         request({url:url,method:'post',formData:form,json:true}).then(function(response){
