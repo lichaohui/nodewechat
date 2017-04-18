@@ -16,7 +16,7 @@ const [sha1,rawBody,xml,reply]=[require('sha1'),require('raw-body'),require('../
  * 由于koa框架要求中间件必须返回一个generator函数
  * 所以要在exports暴露的方法中return 一个generator函数
  */
-module.exports=function(option){
+module.exports=function(option,handler){
   return function *(next){
     /*
      * 先拿到配置中的token，
