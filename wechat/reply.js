@@ -8,9 +8,8 @@ const tpl=require('../libs/tpl');
 
 class reply{
   //构造函数中初始化appId和appSecret属性
-  constructor(bodier,con){
-    this.bodier=bodier;
-    this.con=con;
+  constructor(){
+    
   };
   
   //reply方法执行回复消息的动作
