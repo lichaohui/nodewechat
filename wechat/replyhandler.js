@@ -1,5 +1,8 @@
 'use strict'
 
+//引入material模块
+const material=require('./material');
+
 exports.reply=function* (next){
   /*
    * 在上一步的中间件中也就是reqverify.js中调用replyhandler的时候使用了call方法将当前的上下文对象引用给了replyhandler对象，
@@ -51,9 +54,11 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      this.body=`你怎么能说${con.Content}呢？`;
-      this.msgType='text';
-      break;
+      let data=yield material.create('image',__dirname+'foo.jpg');
+      this.body={
+        type:'image',
+        mediaId:data.media_id
+      }
   }
   yield next;
 }
