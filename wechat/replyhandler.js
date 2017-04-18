@@ -54,11 +54,13 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
+      console.log(material);
       let data=yield material.create('image',__dirname+'foo.jpg');
       this.body={
         type:'image',
         mediaId:data.media_id
       }
+      break;
   }
   yield next;
 }
