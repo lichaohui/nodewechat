@@ -8,16 +8,14 @@ const template=require('../wechat/template');
 
 //暴露出一个create方法用来生成回复消息
 exports.create=function(bodier,con){
-  console.log(con);
   //声明一个空对象变量info用来承载回复的消息
   let info={};
   //封装回复内容
   info.content=bodier;
   info.createTime=new Date().getTime();
-  info.msgType=con.MsgType;
+  info.msgType=bodier.type || 'text';
   info.toUserName=con.FromUserName;
   info.fromUserName=con.ToUserName;
-  console.log(info);
   //通过template模块进行编译后返回
   return template.compiled(info);
 }

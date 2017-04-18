@@ -5,7 +5,8 @@ exports.reply=function* (next){
   if(con.MsgType=='event'){
     //如果是订阅事件
     if(con.Event=='subscribe'){
-      this.body='你好，欢迎关注李朝辉！'
+      this.body='你好，欢迎关注李朝辉！';
+      this.body.type='text';
     }else if(con.Event=='unsubscribe'){
       console.log('取消关注！'); 
       this.body='';
