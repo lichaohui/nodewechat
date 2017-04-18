@@ -24,7 +24,7 @@ class reply{
     this.body=xml;
   }
 }
-
-let replyobj=new reply();
-
+//实例化一个reply对象
+let replyobj=new reply(bodier,con);
+//将实例化后的reply对象暴露出去
 module.exports=replyobj;

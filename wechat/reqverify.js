@@ -120,7 +120,7 @@ module.exports=function(option,handler){
          */
         console.log('第一步');
         //yield reply.call(this,next);
-        reply.reply.call(this);
+        reply.reply.call(this,this.body,this.con);
         console.log('第二步');
       }else{
         //否则请求就不合法，返回无效请求
