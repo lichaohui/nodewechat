@@ -118,9 +118,6 @@ module.exports=function(option,handler){
          * 调用reply模块的reply方法
          * 并通过call方法将当前环境的上下文对象传递给reply对象
          */
-        console.log('第一步');
-        //yield reply.call(this,next);
-        console.log(this.body);
         reply.reply.call(this,this.body,this.con);
         console.log('第二步');
       }else{

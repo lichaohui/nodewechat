@@ -8,6 +8,7 @@ exports.reply=function* (next){
       this.body='你好，欢迎关注李朝辉！'
     }else if(con.Event=='unsubscribe'){
       console.log('取消关注！'); 
+      this.body='';
     }
   }else if(con.MsgType=='text'){
     this.body='你好，你发送了文本';
