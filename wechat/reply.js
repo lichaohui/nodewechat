@@ -25,9 +25,10 @@ class reply{
 }
 
 module.exports=function(){
+  console.log('第三部');
   return function* (next){
+    console.log('hello');
     let reply=new reply();
-    console.log(reply);
     reply.reply();
     yield next;
   }

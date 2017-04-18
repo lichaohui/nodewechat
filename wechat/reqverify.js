@@ -118,7 +118,9 @@ module.exports=function(option,handler){
          * 调用reply模块的reply方法
          * 并通过call方法将当前环境的上下文对象传递给reply对象
          */
+        console.log('第一步');
         reply.call(this);
+        console.log('第二步');
       }else{
         //否则请求就不合法，返回无效请求
         this.body='非法请求!';
