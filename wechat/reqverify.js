@@ -110,8 +110,9 @@ module.exports=function(option){
          * 将执行权交给外部的比如说handler对象来处理这些消息并生成回复内容
          * call方法可以将this的上下文环境传给handler
          */
-        yield handler.call(this,next);
         console.log('走到这里了');
+        yield handler.call(this,next);
+        
         /*
          * 这一步是执行回复动作
          * 我们将执行回复动作的方法封装到外部的reply模块中
