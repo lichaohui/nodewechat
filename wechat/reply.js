@@ -25,9 +25,9 @@ class reply{
   }
 }
 
-let reply=new reply();
+let replyobj=new reply();
 
-module.exports=reply;
+module.exports=replyobj;
 
 /*module.exports=function(){
   console.log('第三部');
