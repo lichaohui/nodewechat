@@ -59,16 +59,19 @@ exports.reply=function* (next){
     case 'text':
       //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
       let data=yield material.update('euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',{
-        "articles": [{
-             "title": 'news1',
-             "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA',
-             "author": 'lichaohui',
-             "digest": '摘要信息',
-             "show_cover_pic": 1,
-             "content": '这里是修改后的内容内容啊',
-             "content_source_url": 'http://www.baolaijinrong.com'
-          },
-       ]
+        {
+          "media_id":'euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',
+          "index":0,
+          "articles": {
+            "title": 'news1',
+            "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA',
+            "author": 'liagnxuefeng',
+            "digest": '摘要',
+            "show_cover_pic": 1,
+            "content": '这里是内容',
+            "content_source_url": 'http://www.baidu.com'
+          }
+        }
       });
       //let data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA');
       this.msgType='text';
