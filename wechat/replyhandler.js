@@ -57,11 +57,11 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
+      let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
       //let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       console.log(data);
       this.msgType='text';
-      this.body=data;
+      this.body='删除成功了吗';
       break;
   }
   yield next;
