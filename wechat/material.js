@@ -121,7 +121,6 @@ class material{
         request(option).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
-          console.log(resdata);
           if(resdata){
             //如果响应正常则将promise对象的状态设置为已完成
             resolve(resdata);
