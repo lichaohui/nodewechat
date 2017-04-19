@@ -59,7 +59,6 @@ exports.reply=function* (next){
     case 'text':
       //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
       let data=yield material.update('euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',{
-        {
           "media_id":'euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',
           "index":0,
           "articles": {
@@ -70,7 +69,6 @@ exports.reply=function* (next){
             "show_cover_pic": 1,
             "content": '这里是内容',
             "content_source_url": 'http://www.baidu.com'
-          }
         }
       });
       //let data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA');
