@@ -109,7 +109,7 @@ class material{
         switch(cate){
           //获取临时素材  
           case 'temporary':
-            url=@`https://api.weixin.qq.com/cgi-bin/media/get?access_token=${data.access_token}&media_id=${media_id}`;
+            url=decodeURI(`https://api.weixin.qq.com/cgi-bin/media/get?access_token=${data.access_token}&media_id=${media_id}`);
             break;
           //获取永久素材  
           case 'permanent':
