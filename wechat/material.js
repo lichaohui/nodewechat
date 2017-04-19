@@ -155,10 +155,12 @@ class material{
         request(option).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
+          
           if(resdata.errcode==0){
             //如果errcode等于0则说明删除成功
             resolve(resdata);
           }else{
+            console.log(resdata.errmsg);
             //否则说明删除失败
             reject(resdata.errmsg);
           }
