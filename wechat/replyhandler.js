@@ -58,7 +58,7 @@ exports.reply=function* (next){
       break;  
     case 'text':
       let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
-      console.log(data.url);
+      console.log(typeof(data));
       this.msgType='text';
       this.body=data;
       break;
