@@ -59,14 +59,13 @@ exports.reply=function* (next){
     case 'text':
       let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
       //let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
-      if(data){
+      if(data.errcode==0){
         this.msgType='text';
-        this.body='删除成功了吗';
+        this.body='删除成功';
       }else{
         this.msgType='text';
         this.body='删除失败';
       }
-      
       break;
   }
   yield next;
