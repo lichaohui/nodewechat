@@ -51,7 +51,6 @@ class material{
              * 参数是要读取的文件的路径
              */
             form.media=fs.createReadStream(material);
-            
             break;
           //新增永久素材  
           case 'permanent':
@@ -59,7 +58,7 @@ class material{
               //新增永久素材之新增图文素材  
               case 'news':
                 url=`https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=${data.access_token}`;
-                form.media=material;
+                //form.media=material;
                 break;
               //新增永久图文素材中的图片
               case 'news_pic':
@@ -74,7 +73,7 @@ class material{
             }
             break;  
         }
-        request({url:url,method:'post',formData:form,json:true,body:form}).then(function(response){
+        request({url:url,method:'post',json:true,body:form}).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
           console.log(resdata);
