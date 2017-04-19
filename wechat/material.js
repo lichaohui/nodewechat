@@ -25,7 +25,6 @@ class material{
    * material是具体的素材
    */
   create(cate,type,material){
-    
     //设置提交的表单
     let form={};
     let getAcc=this.getAccessToken;
@@ -51,6 +50,7 @@ class material{
              * 参数是要读取的文件的路径
              */
             form.media=fs.createReadStream(material);
+            option={url:url,method:'post',json:true,formData:form};
             break;
           //新增永久素材  
           case 'permanent':
@@ -73,6 +73,49 @@ class material{
                 option={url:url,method:'post',json:true,formData:form};
                 break;
             }
+            break;  
+        }
+        request(option).then(function(response){
+          //响应的数据在response.body中
+          let resdata=response.body;
+          if(resdata){
+            //如果响应正常则将promise对象的状态设置为已完成
+            resolve(resdata);
+          }
+        })
+      })
+    })
+  }
+  
+  /*
+   * 获取素材的方法
+   * 参数cate是素材分类：临时素材和永久素材
+   * media_id是素材的id
+   */
+  show(cate,media_id){
+    let getAcc=this.getAccessToken;
+    return new promise(function(resolve,reject){
+      /*
+       * 由于获取素材需要access_token（调用凭据）
+       * 所以这里先调用getAccessToken方法拿到调用凭据
+       * getAccessToken方法是我们自己定义的
+       * 也是返回一个promise
+       * 所以它可以使用then方法来处理后续操作
+       */
+      getAcc().then(function(data){
+        data=JSON.parse(data);
+        //通过switch不同的cate和type来封装不同的上传接口地址和上传数据
+        let [url,option]=['',{}];
+        switch(cate){
+          //获取临时素材  
+          case 'temporary':
+            url=`https://api.weixin.qq.com/cgi-bin/media/get?access_token=${data.access_token}&media_id=${media_id}`;
+            option={url:url,method:'get',json:true};
+            break;
+          //获取永久素材  
+          case 'permanent':
+            url=`https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=${data.access_token}`;
+            option={url:url,method:'post',json:true,body:{"media_id":media_id}};
             break;  
         }
         request(option).then(function(response){

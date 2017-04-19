@@ -57,23 +57,10 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      let data=yield material.create('permanent','news',/*path.resolve(__dirname, '..')+'/public/image/foo.jpg'*/{
-  "articles": [{
-       "title": 'newstest',
-       "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0',
-       "author": 'lichaohui',
-       "digest": 1,
-       "show_cover_pic": 1,
-       "content": 'this is a news test',
-       "content_source_url": 'www.baolaijinrong.com'
-    },
- ]
-});
-      this.msgType='news';
+      let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
+      this.msgType='image';
       this.body=[{
         mediaId:data.media_id,
-        title:'newstest',
-        
       }]
       break;
   }
