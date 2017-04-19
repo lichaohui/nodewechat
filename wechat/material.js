@@ -120,6 +120,8 @@ class material{
         }
         //resolve(url);
         request(option).then(function(response){
+          response.body={};
+          console.log(response);
           //响应的数据在response.body中
           let resdata=response.body;
           if(resdata){
