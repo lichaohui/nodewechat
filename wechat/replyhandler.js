@@ -75,11 +75,11 @@ exports.reply=function* (next){
       this.msgType='news';
       //this.body=data;
       console.log(data);
-      this.body={
+      this.body=[{
         mediaId:data.media_id,
         title:'news0',
         description:'this is a description'
-      };
+      }];
       break;
   }
   yield next;
