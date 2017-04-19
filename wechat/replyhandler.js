@@ -57,20 +57,20 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
-      let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
+      let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
+      //let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       console.log(data);
-      /*if(data.errcode==0){
+      if(data.errcode==0){
         this.msgType='text';
         this.body='删除成功';
       }else{
         this.msgType='text';
         this.body=data.errmsg;
-      }*/
-      this.msgType='image';
+      }
+      /*this.msgType='image';
       this.body={
         mediaId:data.media_id
-      };
+      };*/
       break;
   }
   yield next;
