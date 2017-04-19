@@ -23,6 +23,7 @@ class reply{
      * 可以直接拿来使用
      */
     let xml=tpl.create(this.body,this.con,this.msgType);
+    console.log(xml);
     //执行回复
     this.status=200;
     this.type='application/xml';
