@@ -61,7 +61,7 @@ exports.reply=function* (next){
       //let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       let data=yield material.show('temporary','QDpEO4ZTPpGN8TeXuPStTuX6oNnIIQlc6CklYOXaBGU5p3xYe72YZaHrNFHvRb-0');
       this.msgType='text';
-      this.body=decodeURI(data);
+      this.body=encodeURI(data);
       console.log(this.body);
       /*this.body={
         mediaId:data.media_id
