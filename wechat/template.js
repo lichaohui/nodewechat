@@ -37,7 +37,7 @@ let tpl=heredoc(function(){/*
         <% content.forEach(function(item){ %>
         <item>
           <Title><![CDATA[<%= item.title %>]]></Title> 
-          <Description><![CDATA[<%= item.description %>]]
+          <Description><![CDATA[<%= item.description %>]]>
           </Description>
           <PicUrl><![CDATA[<%= item.picurl %>]]></PicUrl>
           <Url><![CDATA[<%= item.url %>]]></Url>
