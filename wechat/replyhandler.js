@@ -62,7 +62,7 @@ exports.reply=function* (next){
       let data=yield material.show('temporary','DjbZVZKnMyzsDnqkCwaHa_wlfgXppyUjuo14Zjg3KBJtPljtW0qpYQHjZxwQuVHp');
       //console.log(data);
       this.msgType='text';
-      this.body=data;
+      this.body=data.toString();
       /*this.body={
         mediaId:data.media_id
       };*/
