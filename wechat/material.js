@@ -150,7 +150,7 @@ class material{
         //接口请求地址
         let url=`https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=${data.access_token}`;
         //请求参数
-        let option={url:url,body:{"media_id":media_id},method:'post'}
+        let option={url:url,body:{"media_id":media_id},method:'post',json:true};
         //发送请求实现删除素材功能
         request(option).then(function(response){
           //响应的数据在response.body中
