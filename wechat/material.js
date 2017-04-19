@@ -118,15 +118,16 @@ class material{
             option={url:url,method:'post',json:true,body:{"media_id":media_id}};
             break;  
         }
-        resolve(url);
-        /*request(option).then(function(response){
+        //resolve(url);
+        request(option).then(function(response){
+          console.log(response);
           //响应的数据在response.body中
           let resdata=response.body;
           if(resdata){
             //如果响应正常则将promise对象的状态设置为已完成
             resolve(resdata);
           }
-        })*/
+        })
       })
     })
   }
