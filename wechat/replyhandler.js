@@ -64,7 +64,7 @@ exports.reply=function* (next){
         this.body='删除成功';
       }else{
         this.msgType='text';
-        this.body='删除失败';
+        this.body=data.errmsg;
       }
       break;
   }
