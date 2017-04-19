@@ -61,6 +61,11 @@ class material{
                 url=`https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=${data.access_token}`;
                 form.media=material;
                 break;
+              //新增永久图文素材中的图片
+              case 'news_pic':
+                url=`https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=${data.access_token}`;
+                form.media=fs.createReadStream(material);
+                break;
               //新增永久其他素材
               case 'other':
                 url=`https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=${data.access_token}`;
@@ -69,16 +74,6 @@ class material{
             }
             break;  
         }
-        /*
-         * 临时素材上传接口地址
-         * 永久图文素材上传接口地址
-         * 永久其他素材上传接口地址
-         */
-        /*let [temporary,pergraphic,perother]=[
-          `https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${data.access_token}&type=${type}`,
-          `https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=${data.access_token}`,
-          `https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=${data.access_token}`
-        ];*/
         request({url:url,method:'post',formData:form,json:true}).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
