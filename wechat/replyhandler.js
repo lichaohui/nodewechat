@@ -60,7 +60,7 @@ exports.reply=function* (next){
       //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
       //let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       let data=yield material.show('temporary','DjbZVZKnMyzsDnqkCwaHa_wlfgXppyUjuo14Zjg3KBJtPljtW0qpYQHjZxwQuVHp');
-      console.log(data);
+      //console.log(data);
       this.msgType='text';
       this.body=data;
       /*this.body={
