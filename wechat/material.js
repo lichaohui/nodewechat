@@ -38,7 +38,6 @@ class material{
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      
       getAcc().then(function(data){
         data=JSON.parse(data);
         //表单提交的地址
@@ -46,7 +45,6 @@ class material{
         request({url:url,method:'post',formData:form,json:true}).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
-          console.log(resdata);
           if(resdata){
             //如果响应正常则将promise对象的状态设置为已完成
             resolve(resdata);

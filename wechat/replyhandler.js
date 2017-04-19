@@ -55,7 +55,7 @@ exports.reply=function* (next){
       break;  
     case 'text':
       let data=yield material.create('image',__dirname+'/foo.jpg');
-      
+      console.log(data);
       this.body={
         type:'image',
         mediaId:data.media_id
