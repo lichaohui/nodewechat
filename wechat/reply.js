@@ -26,7 +26,7 @@ class reply{
     //执行回复
     this.status=200;
     this.type='application/xml';
-    this.body=xml;
+    this.body=decodeURI(xml);
   }
 }
 //实例化一个reply对象

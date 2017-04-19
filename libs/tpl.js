@@ -16,7 +16,6 @@ exports.create=function(bodier,con,msgType){
   info.msgType=msgType;
   info.toUserName=con.FromUserName;
   info.fromUserName=con.ToUserName;
-  console.log(info.content);
   //通过template模块进行编译后返回
   return template.compiled(info);
 }
