@@ -58,14 +58,14 @@ exports.reply=function* (next){
       break;  
     case 'text':
       //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
-      let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
-      //let data=yield material.show('temporary','DjbZVZKnMyzsDnqkCwaHa_wlfgXppyUjuo14Zjg3KBJtPljtW0qpYQHjZxwQuVHp');
+      //let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
+      let data=yield material.show('temporary','euOCFj_5eNJC6t4I_eJg-3bj_ZfwdYGewudyS6XzEl8');
       console.log(data);
-      this.msgType='image';
-      //this.body=data;
-      this.body={
+      this.msgType='text';
+      this.body=data;
+      /*this.body={
         mediaId:data.media_id
-      };
+      };*/
       break;
   }
   yield next;

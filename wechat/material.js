@@ -110,23 +110,23 @@ class material{
           //获取临时素材  
           case 'temporary':
             url=`https://api.weixin.qq.com/cgi-bin/media/get?access_token=${data.access_token}&media_id=${media_id}`;
-            option={url:url,method:'get',json:true};
+            //option={url:url,method:'get',json:true};
             break;
           //获取永久素材  
           case 'permanent':
             url=`https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=${data.access_token}`;
-            option={url:url,method:'post',json:true,body:{"media_id":media_id}};
+            //option={url:url,method:'post',json:true,body:{"media_id":media_id}};
             break;  
         }
-        //resolve(url);
-        request(option).then(function(response){
+        resolve(url);
+        /*request(option).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
           if(resdata){
             //如果响应正常则将promise对象的状态设置为已完成
             resolve(resdata);
           }
-        })
+        })*/
       })
     })
   }
