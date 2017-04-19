@@ -58,10 +58,8 @@ exports.reply=function* (next){
       break;  
     case 'text':
       let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
-      this.msgType='image';
-      this.body=[{
-        mediaId:data.media_id,
-      }]
+      this.msgType='text';
+      this.body=data;
       break;
   }
   yield next;
