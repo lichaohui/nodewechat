@@ -54,8 +54,7 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      let data=yield material.create('image',__dirname+'/foo.jpg');
-      console.log(data);
+      let data=yield material.create('image',__dirname+'./public/image/foo.jpg');
       this.msgType='image';
       this.body={
         type:'image',
