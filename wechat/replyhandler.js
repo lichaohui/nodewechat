@@ -57,7 +57,7 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      let data=yield material.create('permanent','news_pic',/*path.resolve(__dirname, '..')+'/public/image/foo.jpg'*/[{
+      let data=yield material.create('permanent','news',/*path.resolve(__dirname, '..')+'/public/image/foo.jpg'*/[{
        "title": 'newstest',
        "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0',
        "author": 'lichaohui',
