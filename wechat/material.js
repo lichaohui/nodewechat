@@ -40,7 +40,7 @@ class material{
       getAcc().then(function(data){
         data=JSON.parse(data);
         //通过switch不同的cate和type来封装不同的上传接口地址和上传数据
-        let url;
+        let [url,option]=['',{}];
         switch(cate){
           //新增临时素材  
           case 'temporary':
@@ -58,22 +58,24 @@ class material{
               //新增永久素材之新增图文素材  
               case 'news':
                 url=`https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=${data.access_token}`;
-                //form.media=material;
+                option={url:url,method:'post',json:true,body:material};
                 break;
               //新增永久图文素材中的图片
               case 'news_pic':
                 url=`https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=${data.access_token}`;
                 form.media=fs.createReadStream(material);
+                option={url:url,method:'post',json:true,formData:form};
                 break;
               //新增永久其他素材
               case 'other':
                 url=`https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=${data.access_token}`;
                 form.media=fs.createReadStream(material);
+                option={url:url,method:'post',json:true,formData:form};
                 break;
             }
             break;  
         }
-        request({url:url,method:'post',json:true,body:material}).then(function(response){
+        request(option).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
           console.log(resdata);
