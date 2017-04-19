@@ -63,6 +63,7 @@ exports.reply=function* (next){
       console.log(data);
       this.msgType='text';
       this.body=data;
+      console.log(this.body);
       /*this.body={
         mediaId:data.media_id
       };*/
