@@ -58,13 +58,28 @@ exports.reply=function* (next){
       break;  
     case 'text':
       //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
-      //let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
-      let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA');
-      this.msgType='text';
-      this.body=data;
-      /*this.body={
-        mediaId:data.media_id
-      };*/
+      let data=yield material.create('permanent','news',{
+        "articles": [{
+             "title": 'news0',
+             "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA',
+             "author": 'lichaohui',
+             "digest": '摘要信息',
+             "show_cover_pic": 1,
+             "content": '这里是内容啊',
+             "content_source_url": 'http://www.baolaijinrong.com'
+          },
+          //若新增的是多图文素材，则此处应有几段articles结构，最多8段
+       ]
+      });
+      //let data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA');
+      this.msgType='news';
+      //this.body=data;
+      console.log(data);
+      this.body={
+        mediaId:data.media_id,
+        title:'news0',
+        description:'this is a description'
+      };
       break;
   }
   yield next;
