@@ -61,7 +61,7 @@ exports.reply=function* (next){
        "title": 'newstest',
        "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0',
        "author": 'lichaohui',
-       "digest": 1,
+       "digest": '这里是摘要',
        "show_cover_pic": 1,
        "content": 'this is a news test',
        "content_source_url": 'www.baolaijinrong.com'
