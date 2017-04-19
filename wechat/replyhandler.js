@@ -57,8 +57,7 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      let data=yield
-      material.create('permanent','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
+      let data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       this.msgType='image';
       this.body={
         mediaId:data.media_id
