@@ -57,11 +57,11 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      //let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
-      let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
+      let data=yield material.show('temporary','mAwxmfZc8pnHVieomA6CP7zMGj9DfMFGguf7i5G8i2SqxC0EC_duC6JJcKqFDZ1P');
+      //let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       console.log(data);
       this.msgType='text';
-      this.body='上传成功了';
+      this.body=data;
       break;
   }
   yield next;
