@@ -60,7 +60,6 @@ exports.reply=function* (next){
       let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       this.msgType='image';
       this.body={
-        type:'image',
         mediaId:data.media_id
       }
       break;
