@@ -69,7 +69,8 @@ exports.reply=function* (next){
  ]);
       this.msgType='news';
       this.body={
-        mediaId:data.media_id
+        mediaId:data.media_id,
+        
       }
       break;
   }
