@@ -73,7 +73,7 @@ class material{
             }
             break;  
         }
-        request({url:url,method:'post',json:true,body:form}).then(function(response){
+        request({url:url,method:'post',json:true,body:material}).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
           console.log(resdata);
