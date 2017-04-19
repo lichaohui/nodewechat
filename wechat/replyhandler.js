@@ -70,10 +70,11 @@ exports.reply=function* (next){
  ]
 });
       this.msgType='news';
-      this.body={
+      this.body=[{
         mediaId:data.media_id,
+        title:'newstest',
         
-      }
+      }]
       break;
   }
   yield next;
