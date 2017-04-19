@@ -57,10 +57,10 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
-      console.log(typeof(data));
+      //let data=yield material.show('permanent','euOCFj_5eNJC6t4I_eJg-7XgVzc-9u2BInIkqj6otX0');
+      let data=yield material.create('temporary','image',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
       this.msgType='text';
-      this.body=data;
+      this.body='上传成功了';
       break;
   }
   yield next;
