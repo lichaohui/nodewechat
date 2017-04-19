@@ -118,6 +118,7 @@ class material{
             //option={url:url,method:'post',json:true,body:{"media_id":media_id}};
             break;  
         }
+        console.log(url);
         resolve(url);
         /*request(option).then(function(response){
           //响应的数据在response.body中
