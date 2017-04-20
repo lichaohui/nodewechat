@@ -71,6 +71,7 @@ exports.reply=function* (next){
           break;
         case 'get':
           data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-xYF_GCcXAorQ00aG5_arSE');
+          console.log(data);
           this.msgType='image';
           this.body=data;
           break;
