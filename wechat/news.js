@@ -83,3 +83,6 @@ class news{
     })
   }
 }
+
+let newsobj=new news(config.wechat);
+module.exports=newsobj;
