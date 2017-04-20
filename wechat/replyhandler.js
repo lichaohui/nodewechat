@@ -173,6 +173,7 @@ exports.reply=function* (next){
           break;
         case 'newsgroup':
           data=yield news.grouping('mpnews','euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',102);
+          console.log(data);
           this.msgType='text';
           this.body=data.errmsg;
           break;
