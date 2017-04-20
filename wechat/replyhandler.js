@@ -70,7 +70,7 @@ exports.reply=function* (next){
           }
           break;
         case 'groupshow':
-          data=yield group.show('od8XIjsmk6QdVTETa9jLtGWA6KBc');
+          data=yield group.show(con.FromUserName);
           this.msgType='text';
           console.log(data);
           if(data.errcode){
