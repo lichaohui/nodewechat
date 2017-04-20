@@ -61,6 +61,7 @@ exports.reply=function* (next){
       switch(con.Content){
         case 'creat':
           data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
+          console.log(data);
           this.msgType='image';
           this.body={
             mediaId:data.media_id
@@ -90,6 +91,7 @@ exports.reply=function* (next){
         case 'count':
           data=yield material.count();
           this.msgType='text';
+          console.log(data);
           if(data.errcode){
             this.body='获取失败';
           }else{
