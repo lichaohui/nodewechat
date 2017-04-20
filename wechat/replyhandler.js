@@ -115,6 +115,15 @@ exports.reply=function* (next){
             this.body='批量移动成功';
           }
           break;
+        case 'groupdelete':
+          data=yield group.delete(101);
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body='删除成功';
+          }
+          break;
       }
       break;    
   }
