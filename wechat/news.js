@@ -70,6 +70,7 @@ class news{
           },
           json:true
         };
+        option.body[type]={};
         option.body[type][typepro]=message;
         console.log(option);
         //通过request模块发送请求
