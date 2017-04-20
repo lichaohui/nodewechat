@@ -65,6 +65,7 @@ exports.reply=function* (next){
         case 'materialindex':
           data=yield material.index('news',0,10);
           this.msgType='text';
+          console.log(data);
           if(data.errcode){
             this.body=data.errmsg;
           }else{
