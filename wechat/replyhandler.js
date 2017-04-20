@@ -4,9 +4,10 @@
  * 引入material模块(素材管理)
  * 引入group模块(用户分组管理)
  * 引入user模块(用户管理模块)
+ * 引入news模块(消息管理模块)
  * 引入path模块
  */
-const [material,group,user,path]=[require('./material'),require('./group'),require('./user'),require('path')];
+const [material,group,user,news,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('path')];
 
 exports.reply=function* (next){
   /*
@@ -61,6 +62,15 @@ exports.reply=function* (next){
     case 'text':
       let data;
       switch(con.Content){
+        case 'materialindex':
+          data=yield material.index('news',0,10);
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body=JSON.stringify(data);
+          }
+          break;
         case 'groupindex':
           data=yield group.index();
           this.msgType='text';
@@ -160,6 +170,11 @@ exports.reply=function* (next){
           }else{
             this.body=JSON.stringify(data);
           }
+          break;
+        case 'newsgroup':
+          data=yield news.grouping('mpnews','',102);
+          this.msgType='text';
+          this.body=data.errmsg;
           break;
       }
       break;    

@@ -13,7 +13,6 @@ const[fs,promise,config]=[require('fs'),require('bluebird'),require('../config')
 let request=promise.promisify(require('request'));
 
 class user{
-  
   //构造函数中初始化appId和appSecret属性
   constructor(option){
     this.getAccessToken=option.getAccessToken;
@@ -34,7 +33,7 @@ class user{
        */
       getAcc().then(function(data){
         data=JSON.parse(data);
-        //设置接口地址和post数据
+        //设置接口地址
         let url=`https://api.weixin.qq.com/cgi-bin/user/get?access_token=${data.access_token}`;
         let option={url:url,method:'get',json:true};
         //通过request模块发送请求
@@ -66,7 +65,7 @@ class user{
        */
       getAcc().then(function(data){
         data=JSON.parse(data);
-        //设置接口地址和post数据
+        //设置接口地址
         let url=`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${data.access_token}&openid=${openid}&lang=zh_CN`;
         let option={url:url,method:'get',json:true};
         //通过request模块发送请求
