@@ -63,7 +63,7 @@ exports.reply=function* (next){
       let data;
       switch(con.Content){
         case 'materialindex':
-          data=yield material.index('news',0,2);
+          data=yield material.index('image',0,2);
           this.msgType='text';
           if(data.errcode){
             this.body=data.errmsg;
