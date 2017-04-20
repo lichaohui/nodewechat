@@ -143,6 +143,15 @@ exports.reply=function* (next){
             this.body=JSON.stringify(data);
           }
           break;
+        case 'userbatchshow':
+          data=yield user.batchshow([{"openid": "otvxTs4dckWG7imySrJd6jSi0CWE"},{"openid": "otvxTs_JZ6SEiP0imdhpi50fuSZg"}]);
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body=JSON.stringify(data);
+          }
+          break;
       }
       break;    
   }
