@@ -65,13 +65,11 @@ exports.reply=function* (next){
         case 'materialindex':
           data=yield material.index('news',0,10);
           this.msgType='text';
-          
           if(data.errcode){
-            console.log('有粗糙了');
             this.body=data.errmsg;
           }else{
-            console.log(data);
             this.body=JSON.stringify(data);
+            console.log(this.body);
           }
           break;
         case 'groupindex':
