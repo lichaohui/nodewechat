@@ -36,7 +36,9 @@ class group{
       getAcc().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
-        let [url,option]=[`https://api.weixin.qq.com/cgi-bin/groups/create?access_token=${data.access_token}`,{"group":{"name":"test"}}];
+        let url=`https://api.weixin.qq.com/cgi-bin/groups/create?access_token=${data.access_token}`;
+        let option={url:url,method:'post',body:{"group":{"name":"test"}},json:true};
+        //通过request模块发送请求
         request(option).then(function(response){
           //响应的数据在response.body中
           let resdata=response.body;
