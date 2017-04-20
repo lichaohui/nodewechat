@@ -137,23 +137,29 @@ class material{
       getAcc().then(function(data){
         data=JSON.parse(data);
         //通过switch不同的cate和type来封装不同的上传接口地址和上传数据
-        let [url]=[''];
+        let [url,option]=['',{}];
         switch(cate){
           //获取临时素材  
           case 'temporary':
             url=`https://api.weixin.qq.com/cgi-bin/media/get?access_token=${data.access_token}&media_id=${media_id}`;
+            option={url:url,method:'get',json:true};
             break;
           //获取永久素材  
           case 'permanent':
             url=`https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=${data.access_token}&media_id=${media_id}`;
-            //option={url:url,method:'post',json:true,body:{"media_id":media_id}};
+            option={url:url,method:'post',json:true,body:{"media_id":media_id}};
             break;  
         }
         /*
          * 返回一个下载素材的url链接
          * 点击这个链接就会下载对应的素材
          */
-        resolve(url);
+        //resolve(url);
+        request(option).then(function(response){
+          //响应的数据在response.body中
+          let resdata=response.body;
+          resolve(resdata);
+        })
       })
     })
   }

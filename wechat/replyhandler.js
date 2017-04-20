@@ -69,9 +69,13 @@ exports.reply=function* (next){
             this.body='获取成功';
           }
           break;
+        case 'get':
+          data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-xYF_GCcXAorQ00aG5_arSE');
+          this.msgType='image';
+          this.body=data;
+          break;
         case 'create':
           data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
-          console.log(data);
           this.msgType='image';
           this.body={
             mediaId:data.media_id
