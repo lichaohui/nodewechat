@@ -93,9 +93,9 @@ exports.reply=function* (next){
           });
           this.msgType='text';  
           if(data.errcode==0){
-            this.body='删除成功';
+            this.body='更新成功';
           }else{
-            this.body='删除失败';
+            this.body='更新失败';
           }  
           break;
         case 'count':
