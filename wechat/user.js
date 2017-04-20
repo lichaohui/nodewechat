@@ -37,7 +37,7 @@ class user{
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${data.access_token}&openid=${openid}&lang=zh_CN`;
-        let option={url:url,method:'post',body:{"openid":openid,"remark":remark},json:true};
+        let option={url:url,method:'get',json:true};
         //通过request模块发送请求
         request(option).then(function(response){
           //响应的数据在response.body中
