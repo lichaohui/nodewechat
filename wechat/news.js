@@ -63,13 +63,14 @@ class news{
               "is_to_all":false,
               "group_id":group_id
             },
-            ""+eval(type)+"":{
-               eval(typepro):message
-            },
+            /*type:{
+               typepro:message
+            },*/
             "msgtype":type
           },
           json:true
         };
+        option.body[type][typepro]=message;
         console.log(option);
         //通过request模块发送请求
         request(option).then(function(response){
