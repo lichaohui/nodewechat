@@ -57,25 +57,46 @@ exports.reply=function* (next){
       }
       break;  
     case 'text':
-      //let data=yield material.delete('euOCFj_5eNJC6t4I_eJg-3bGlIniQ5Ry074JZ8-u1WU');
-      let data=yield material.update('euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',{
-          "media_id":'euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',
-          "index":0,
-          "articles": {
-            "title": 'news1',
-            "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA',
-            "author": 'liagnxuefeng',
-            "digest": '摘要',
-            "show_cover_pic": 1,
-            "content": '这里是内容',
-            "content_source_url": 'http://www.baidu.com'
-        }
-      });
-      //let data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA');
-      this.msgType='text';
-      //this.body=data;
-      console.log(data);
-      this.body='修改成功';
+      let data;
+      switch(con.Content){
+        case 'creat':
+          data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
+          this.msgType='image';
+          this.body={
+            mediaId=data.media_id;
+          }
+          break;
+        case 'update':
+          data=yield material.update('euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',{
+            "media_id":'euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',
+            "index":0,
+            "articles": {
+              "title": 'news1',
+              "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA',
+              "author": 'liagnxuefeng',
+              "digest": '摘要',
+              "show_cover_pic": 1,
+              "content": '这里是内容',
+              "content_source_url": 'http://www.baidu.com'
+            }
+          });
+          this.msgType='text';  
+          if(data.errcode==0){
+            this.body='删除成功';
+          }else{
+            this.body='删除失败';
+          }  
+          break;
+        case 'count':
+          data=yield material.count();
+          this.msgType='text';
+          if(data.errcode){
+            this.body='获取失败';
+          }else{
+            this.body=data.toString();
+          }
+          break;
+      }
       break;
   }
   yield next;
