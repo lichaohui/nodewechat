@@ -67,7 +67,7 @@ exports.reply=function* (next){
           if(data.errcode){
             this.body='获取失败';
           }else{
-            this.body='获取成功';
+            this.body=JSON.stringify(data);
           }
           break;
         case 'groupcreate':
