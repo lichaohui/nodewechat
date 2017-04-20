@@ -18,18 +18,12 @@ class group{
     this.getAccessToken=option.getAccessToken;
   };
   
-  
   /*
    * 获取所有用户分组的方法 
    */
   index(){
-    /*
-     * 将当前对象的this引用赋给变量that
-     *
-     */
-    let that=this;
     //设置提交的表单
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于显示分组列表需要access_token（调用凭据）
@@ -38,7 +32,7 @@ class group{
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      that.getAccessToken().then(function(data){
+      getAcc().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/get?access_token=${data.access_token}`;
@@ -61,7 +55,7 @@ class group{
    * 参数openId是用户的openId
    */
   show(openId){
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于查询分组需要access_token（调用凭据）
@@ -93,7 +87,7 @@ class group{
    * 参数name 是组的名称
    */
   create(name){
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于创建分组需要access_token（调用凭据）
@@ -126,7 +120,7 @@ class group{
    * 参数newName是分组的新名字
    */
   update(groupId,newName){
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于创建分组需要access_token（调用凭据）
@@ -159,7 +153,7 @@ class group{
    * 参数to_groupid是要移动到哪个组里（那个组的id）
    */
   move(openid,to_groupid){
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于移动分组需要access_token（调用凭据）
@@ -192,7 +186,7 @@ class group{
    * 参数to_groupid是新分组的id
    */
   batchMove(openids,to_groupid){
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于移动分组需要access_token（调用凭据）
@@ -224,7 +218,7 @@ class group{
    * 参数group_id是要删除的用户分组的id
    */
   delete(group_id){
-    //let getAcc=this.getAccessToken;
+    let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于删除分组需要access_token（调用凭据）
