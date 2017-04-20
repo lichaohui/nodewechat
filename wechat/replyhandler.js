@@ -78,6 +78,7 @@ exports.reply=function* (next){
           }else{
             this.body=JSON.stringify(data);
           }
+          break;
         case 'groupcreate':
           data=yield group.create('同学');
           this.msgType='text';
