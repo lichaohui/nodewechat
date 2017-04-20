@@ -17,16 +17,17 @@ class group{
   constructor(option){
     this.getAccessToken=option.getAccessToken;
   };
-  /*
-   * 将当前对象的this引用赋给变量that
-   *
-   */
-  that=this;
+  
   
   /*
    * 获取所有用户分组的方法 
    */
   index(){
+    /*
+     * 将当前对象的this引用赋给变量that
+     *
+     */
+    let that=this;
     //设置提交的表单
     //let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
@@ -37,7 +38,7 @@ class group{
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/get?access_token=${data.access_token}`;
