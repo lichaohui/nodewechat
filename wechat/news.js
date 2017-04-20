@@ -70,6 +70,7 @@ class news{
         //通过变量来设置对象的属性名
         option.body[type]={};
         option.body[type][typepro]=message;
+        console.log(option);
         //通过request模块发送请求
         request(option).then(function(response){
           //响应的数据在response.body中
