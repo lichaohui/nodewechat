@@ -59,6 +59,16 @@ exports.reply=function* (next){
     case 'text':
       let data;
       switch(con.Content){
+        case 'index':
+          data=yield material.index('image',0,10);
+          console.log(data);
+          this.msgType='text';
+          if(data.errcode){
+            this.body='获取失败';
+          }else{
+            this.body='获取成功';
+          }
+          break;
         case 'create':
           data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
           console.log(data);
