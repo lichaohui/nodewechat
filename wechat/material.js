@@ -159,7 +159,7 @@ class material{
   
   /*
    * 获取永久素材的总数的方法
-   */、
+   */
   count(){
     let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
