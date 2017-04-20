@@ -60,6 +60,16 @@ exports.reply=function* (next){
     case 'text':
       let data;
       switch(con.Content){
+        case 'groupindex':
+          data=yield group.index();
+          console.log(data);
+          this.msgType='text';
+          if(data.errcode){
+            this.body='获取失败';
+          }else{
+            this.body='获取成功';
+          }
+          break;
         case 'groupcreate':
           data=yield group.create('同学');
           console.log(data);
