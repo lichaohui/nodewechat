@@ -63,7 +63,7 @@ exports.reply=function* (next){
           data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
           this.msgType='image';
           this.body={
-            mediaId=data.media_id;
+            mediaId:data.media_id
           }
           break;
         case 'update':
