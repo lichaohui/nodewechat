@@ -3,9 +3,10 @@
 /*
  * 引入material模块(素材管理)
  * 引入group模块(用户分组管理)
+ * 引入user模块(用户管理模块)
  * 引入path模块
  */
-const [material,group,path]=[require('./material'),require('./group'),require('path')];
+const [material,group,user,path]=[require('./material'),require('./group'),require('./user'),require('path')];
 
 exports.reply=function* (next){
   /*
@@ -122,6 +123,15 @@ exports.reply=function* (next){
             this.body=data.errmsg;
           }else{
             this.body='删除成功';
+          }
+          break;
+        case 'useremark':
+          data=yield user.remark(con.FromUserName,'王二麻子');
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body='修改备注成功！';
           }
           break;
       }
