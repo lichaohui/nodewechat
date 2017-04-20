@@ -127,6 +127,7 @@ exports.reply=function* (next){
           break;
         case 'useremark':
           data=yield user.remark(con.FromUserName,'王二麻子');
+          console.log(data);
           this.msgType='text';
           if(data.errcode){
             this.body=data.errmsg;
