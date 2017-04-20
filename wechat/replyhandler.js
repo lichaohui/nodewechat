@@ -125,6 +125,15 @@ exports.reply=function* (next){
             this.body='删除成功';
           }
           break;
+        case 'userindex':
+          data=yield user.index();
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body=JSON.stringify(data);
+          }
+          break;
         case 'useremark':
           data=yield user.remark(con.FromUserName,'王二麻子');
           this.msgType='text';
