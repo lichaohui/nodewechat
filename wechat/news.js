@@ -63,8 +63,8 @@ class news{
               "is_to_all":false,
               "group_id":group_id
             },
-            evel(type):{
-               evel(typepro):message
+            eval(type):{
+               eval(typepro):message
             },
             "msgtype":type
           },
