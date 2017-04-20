@@ -97,6 +97,15 @@ exports.reply=function* (next){
             this.body='修改成功';
           }
           break;
+        case 'groupmove':
+          data=yield group.move('od8XIjsmk6QdVTETa9jLtGWA6KBc',102);
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body='移动成功';
+          }
+          break;
       }
       break;    
   }
