@@ -101,11 +101,10 @@ exports.reply=function* (next){
         case 'count':
           data=yield material.count();
           this.msgType='text';
-          console.log(data);
           if(data.errcode){
             this.body='获取失败';
           }else{
-            this.body=data.toString();
+            this.body=JSON.stringify(data);
           }
           break;
       }
