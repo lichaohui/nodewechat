@@ -22,7 +22,6 @@ class group{
    * 获取所有用户分组的方法 
    */
   index(){
-    //设置提交的表单
     let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
