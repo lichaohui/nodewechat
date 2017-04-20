@@ -172,8 +172,7 @@ exports.reply=function* (next){
           }
           break;
         case 'newsgroup':
-          data=yield news.grouping('image','euOCFj_5eNJC6t4I_eJg-77vIw60GmUqUP-m-z37GAQ',102);
-          console.log(data);
+          data=yield news.grouping('text','hello lucy',102);
           this.msgType='text';
           this.body=data.errmsg;
           break;
