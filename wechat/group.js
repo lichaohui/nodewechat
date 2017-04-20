@@ -26,7 +26,7 @@ class group{
     let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
-       * 由于创建分组需要access_token（调用凭据）
+       * 由于显示分组列表需要access_token（调用凭据）
        * 所以这里先调用getAccessToken方法拿到调用凭据
        * getAccessToken方法是我们自己定义的
        * 也是返回一个promise
@@ -58,7 +58,7 @@ class group{
     let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
-       * 由于创建分组需要access_token（调用凭据）
+       * 由于查询分组需要access_token（调用凭据）
        * 所以这里先调用getAccessToken方法拿到调用凭据
        * getAccessToken方法是我们自己定义的
        * 也是返回一个promise
@@ -101,6 +101,39 @@ class group{
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/create?access_token=${data.access_token}`;
         let option={url:url,method:'post',body:{"group":{"name":name}},json:true};
+        //通过request模块发送请求
+        request(option).then(function(response){
+          //响应的数据在response.body中
+          let resdata=response.body;
+          if(resdata){
+            //如果响应正常则将promise对象的状态设置为已完成
+            resolve(resdata);
+          }
+        })
+      })
+    })
+  }
+  
+  /*
+   * 修改分组名的方法
+   * 参数groupId是要被更新的分组的id
+   * 参数newName是分组的新名字
+   */
+  update(groupId,newName){
+    let getAcc=this.getAccessToken;
+    return new promise(function(resolve,reject){
+      /*
+       * 由于创建分组需要access_token（调用凭据）
+       * 所以这里先调用getAccessToken方法拿到调用凭据
+       * getAccessToken方法是我们自己定义的
+       * 也是返回一个promise
+       * 所以它可以使用then方法来处理后续操作
+       */
+      getAcc().then(function(data){
+        data=JSON.parse(data);
+        //设置接口地址和post数据
+        let url=`https://api.weixin.qq.com/cgi-bin/groups/update?access_token=${data.access_token}`;
+        let option={url:url,method:'post',body:{"group":{"id":groupId,"name":newName}},json:true};
         //通过request模块发送请求
         request(option).then(function(response){
           //响应的数据在response.body中

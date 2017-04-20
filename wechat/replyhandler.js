@@ -64,7 +64,7 @@ exports.reply=function* (next){
           data=yield group.index();
           this.msgType='text';
           if(data.errcode){
-            this.body='获取失败';
+            this.body=data.errmsg;
           }else{
             this.body=JSON.stringify(data);
           }
@@ -74,7 +74,7 @@ exports.reply=function* (next){
           this.msgType='text';
           console.log(data);
           if(data.errcode){
-            this.body='获取失败';
+            this.body=data.errmsg;
           }else{
             this.body=JSON.stringify(data);
           }
@@ -83,9 +83,18 @@ exports.reply=function* (next){
           data=yield group.create('同学');
           this.msgType='text';
           if(data.errcode){
-            this.body='创建分组失败';
+            this.body=data.errmsg;
           }else{
             this.body=`您成功创建了${data.group.name}分组`;
+          }
+          break;
+        case 'groupupdate':
+          data=yield group.update(102,'同事');
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body='修改成功';
           }
           break;
       }
