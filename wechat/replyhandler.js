@@ -98,7 +98,7 @@ exports.reply=function* (next){
           }
           break;
         case 'groupmove':
-          data=yield group.move('od8XIjsmk6QdVTETa9jLtGWA6KBc',102);
+          data=yield group.move(con.FromUserName,102);
           this.msgType='text';
           if(data.errcode){
             this.body=data.errmsg;
