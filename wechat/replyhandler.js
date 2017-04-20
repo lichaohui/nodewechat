@@ -67,7 +67,7 @@ exports.reply=function* (next){
           if(data.errcode){
             this.body='创建分组失败';
           }else{
-            this.body=`您成功创建了${data.name}分组`;
+            this.body=`您成功创建了${data.group.name}分组`;
           }
           break;
       }
