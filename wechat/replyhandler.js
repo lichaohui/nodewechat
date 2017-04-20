@@ -62,7 +62,6 @@ exports.reply=function* (next){
       switch(con.Content){
         case 'groupindex':
           data=yield group.index();
-          console.log(data);
           this.msgType='text';
           if(data.errcode){
             this.body='获取失败';
@@ -70,9 +69,17 @@ exports.reply=function* (next){
             this.body=JSON.stringify(data);
           }
           break;
+        case 'groupshow':
+          data=yield group.show('od8XIjsmk6QdVTETa9jLtGWA6KBc');
+          this.msgType='text';
+          console.log(data);
+          if(data.errcode){
+            this.body='获取失败';
+          }else{
+            this.body=JSON.stringify(data);
+          }
         case 'groupcreate':
           data=yield group.create('同学');
-          console.log(data);
           this.msgType='text';
           if(data.errcode){
             this.body='创建分组失败';
