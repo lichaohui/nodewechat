@@ -63,8 +63,8 @@ class news{
               "is_to_all":false,
               "group_id":group_id
             },
-            'mpnews':{
-              'media_id':message
+            evel(type):{
+               evel(typepro):message
             },
             "msgtype":type
           },
