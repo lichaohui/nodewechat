@@ -69,7 +69,6 @@ exports.reply=function* (next){
             this.body=data.errmsg;
           }else{
             this.body=JSON.stringify(data);
-            console.log(this.body);
           }
           break;
         case 'groupindex':
@@ -173,7 +172,7 @@ exports.reply=function* (next){
           }
           break;
         case 'newsgroup':
-          data=yield news.grouping('mpnews','',102);
+          data=yield news.grouping('mpnews','euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',102);
           this.msgType='text';
           this.body=data.errmsg;
           break;
