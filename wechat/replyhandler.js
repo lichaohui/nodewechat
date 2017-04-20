@@ -1,10 +1,11 @@
 'use strict'
 
 /*
- * 引入material模块
+ * 引入material模块(素材管理)
+ * 引入group模块(用户分组管理)
  * 引入path模块
  */
-const [material,path]=[require('./material'),require('path')];
+const [material,group,path]=[require('./material'),require('./group'),require('path')];
 
 exports.reply=function* (next){
   /*
@@ -59,61 +60,18 @@ exports.reply=function* (next){
     case 'text':
       let data;
       switch(con.Content){
-        case 'index':
-          data=yield material.index('image',0,10);
+        case 'groupcreate':
+          data=yield group.create('同学');
           console.log(data);
           this.msgType='text';
           if(data.errcode){
-            this.body='获取失败';
+            this.body='创建分组失败';
           }else{
-            this.body='获取成功';
-          }
-          break;
-        case 'get':
-          data=yield material.get('permanent','euOCFj_5eNJC6t4I_eJg-xYF_GCcXAorQ00aG5_arSE');
-          console.log(data);
-          this.msgType='image';
-          this.body=data;
-          break;
-        case 'create':
-          data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
-          this.msgType='image';
-          this.body={
-            mediaId:data.media_id
-          }
-          break;
-        case 'update':
-          data=yield material.update('euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',{
-            "media_id":'euOCFj_5eNJC6t4I_eJg-5qvJRK4JajHfq69kskpKNg',
-            "index":0,
-            "articles": {
-              "title": 'news1',
-              "thumb_media_id": 'euOCFj_5eNJC6t4I_eJg-zd5GKsWjHwMFFQn31Yb0sA',
-              "author": 'liagnxuefeng',
-              "digest": '摘要',
-              "show_cover_pic": 1,
-              "content": '这里是内容',
-              "content_source_url": 'http://www.baidu.com'
-            }
-          });
-          this.msgType='text';  
-          if(data.errcode==0){
-            this.body='更新成功';
-          }else{
-            this.body='更新失败';
-          }  
-          break;
-        case 'count':
-          data=yield material.count();
-          this.msgType='text';
-          if(data.errcode){
-            this.body='获取失败';
-          }else{
-            this.body=JSON.stringify(data);
+            this.body=`您成功创建了${data.name}分组`;
           }
           break;
       }
-      break;
+      break;    
   }
   yield next;
 }

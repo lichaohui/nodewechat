@@ -142,24 +142,23 @@ class material{
           //获取临时素材  
           case 'temporary':
             url=`https://api.weixin.qq.com/cgi-bin/media/get?access_token=${data.access_token}&media_id=${media_id}`;
-            option={url:url,method:'get',json:true};
+             /*
+              * 返回一个下载素材的url链接
+              * 点击这个链接就会下载对应的素材
+              */
+              resolve(url);
             break;
           //获取永久素材  
           case 'permanent':
             url=`https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=${data.access_token}&media_id=${media_id}`;
             option={url:url,method:'post',json:true,body:{"media_id":media_id}};
+            request(option).then(function(response){
+              //响应的数据在response.body中
+              let resdata=response.body;
+              resolve(resdata);
+            })
             break;  
         }
-        /*
-         * 返回一个下载素材的url链接
-         * 点击这个链接就会下载对应的素材
-         */
-        //resolve(url);
-        request(option).then(function(response){
-          //响应的数据在response.body中
-          let resdata=response.body;
-          resolve(resdata);
-        })
       })
     })
   }
