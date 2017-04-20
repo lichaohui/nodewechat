@@ -106,6 +106,15 @@ exports.reply=function* (next){
             this.body='移动成功';
           }
           break;
+        case 'groupbatchmove':
+          data=yield group.batchMove(["oDF3iYx0ro3_7jD4HFRDfrjdCM58","oDF3iY9FGSSRHom3B-0w5j4jlEyY"],102);
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body='批量移动成功';
+          }
+          break;
       }
       break;    
   }
