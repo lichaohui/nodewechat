@@ -15,24 +15,29 @@ let request=promise.promisify(require('request'));
 class group{
   //构造函数中初始化appId和appSecret属性
   constructor(option){
-    this.getAccessToken=option.getAccessToken;
+    this.that.getAccessTokenessToken=option.that.getAccessTokenessToken;
   };
+  /*
+   * 将当前对象的this引用赋给变量that
+   *
+   */
+  let that=this;
   
   /*
    * 获取所有用户分组的方法 
    */
   index(){
     //设置提交的表单
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于显示分组列表需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/get?access_token=${data.access_token}`;
@@ -55,16 +60,16 @@ class group{
    * 参数openId是用户的openId
    */
   show(openId){
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于查询分组需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/getid?access_token=${data.access_token}`;
@@ -87,16 +92,16 @@ class group{
    * 参数name 是组的名称
    */
   create(name){
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于创建分组需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/create?access_token=${data.access_token}`;
@@ -120,16 +125,16 @@ class group{
    * 参数newName是分组的新名字
    */
   update(groupId,newName){
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于创建分组需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/update?access_token=${data.access_token}`;
@@ -153,16 +158,16 @@ class group{
    * 参数to_groupid是要移动到哪个组里（那个组的id）
    */
   move(openid,to_groupid){
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于移动分组需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/members/update?access_token=${data.access_token}`;
@@ -186,16 +191,16 @@ class group{
    * 参数to_groupid是新分组的id
    */
   batchMove(openids,to_groupid){
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于移动分组需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/members/batchupdate?access_token=${data.access_token}`;
@@ -218,16 +223,16 @@ class group{
    * 参数group_id是要删除的用户分组的id
    */
   delete(group_id){
-    let getAcc=this.getAccessToken;
+    //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
       /*
        * 由于删除分组需要access_token（调用凭据）
-       * 所以这里先调用getAccessToken方法拿到调用凭据
-       * getAccessToken方法是我们自己定义的
+       * 所以这里先调用that.getAccessTokenessToken方法拿到调用凭据
+       * that.getAccessTokenessToken方法是我们自己定义的
        * 也是返回一个promise
        * 所以它可以使用then方法来处理后续操作
        */
-      getAcc().then(function(data){
+      that.getAccessToken().then(function(data){
         data=JSON.parse(data);
         //设置接口地址和post数据
         let url=`https://api.weixin.qq.com/cgi-bin/groups/delete?access_token=${data.access_token}`;
