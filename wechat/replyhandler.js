@@ -59,7 +59,7 @@ exports.reply=function* (next){
     case 'text':
       let data;
       switch(con.Content){
-        case 'creat':
+        case 'create':
           data=yield material.create('permanent','other',path.resolve(__dirname, '..')+'/public/image/foo.jpg');
           console.log(data);
           this.msgType='image';
