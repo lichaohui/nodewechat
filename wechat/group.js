@@ -17,16 +17,17 @@ class group{
   constructor(option){
     this.that.getAccessTokenessToken=option.that.getAccessTokenessToken;
   };
-  /*
-   * 将当前对象的this引用赋给变量that
-   *
-   */
-  let that=this;
+  
   
   /*
    * 获取所有用户分组的方法 
    */
   index(){
+    /*
+   * 将当前对象的this引用赋给变量that
+   *
+   */
+  let that=this;
     //设置提交的表单
     //let that.getAccessToken=this.that.getAccessTokenessToken;
     return new promise(function(resolve,reject){
