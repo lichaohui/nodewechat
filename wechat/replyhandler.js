@@ -88,6 +88,7 @@ exports.reply=function* (next){
           console.log(JSON.stringify(con.SendPicsInfo.PicList));
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出相册`;
+          console.log(this.body);
           break;    
         case 'pic_photo_or_album':
           console.log('pic_photo_or_album');
