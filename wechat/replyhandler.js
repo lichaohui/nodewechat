@@ -17,11 +17,11 @@ const [material,group,user,news,menu,files,path]=[require('./material'),require(
  * 只有在我们第一次创建菜单或者对菜单进行修改的时候才打开
  * 修改完之后再关闭掉
  */ 
-files.readFileAsync(path.resolve(__dirname, '..')+'/data/menu.json').then(function(data){
+/*files.readFileAsync(path.resolve(__dirname, '..')+'/data/menu.json').then(function(data){
   return menu.save(JSON.parse(data));
 }).then(function(data){
   console.log(data);
-});
+});*/
 
 exports.reply=function* (next){
   /*
@@ -82,12 +82,12 @@ exports.reply=function* (next){
           this.body=`您使用了菜单中${con.EventKey}!这是一个扫码等待消息事件`;
           break;
         case 'pic_sysphoto':
-          console.log(con.SendPicsInfo.PicList);
+          console.log(JSON.stringify(con.SendPicsInfo.PicList));
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出相册`;
           break;    
         case 'pic_photo_or_album':
-          console.log(con.SendPicsInfo.PicList);
+          console.log(JSON.stringify(con.SendPicsInfo.PicList));
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出拍照或者相册的功能`;
           break;  
