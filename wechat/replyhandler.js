@@ -251,11 +251,11 @@ exports.reply=function* (next){
             "query":"最近哪里有速度与激情8上映",
             "type":"movie",
             "appid":"wx2c474296930e81b4",
-            “semantic”:{
-              “details”:{
-                'name': '速度与激情8'
+            "semantic":{
+              "details":{
+                "name": '速度与激情8'
               },
-              “intent”:”SEARCH”
+              "intent":"SEARCH"
             }
           });
           this.msgType='text';
