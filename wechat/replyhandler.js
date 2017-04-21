@@ -87,7 +87,7 @@ exports.reply=function* (next){
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出相册`;
           break;    
         case 'pic_photo_or_album':
-          console.log(con.SendPicsInfo.PicList);
+          console.log(JSON.stringify(con.SendPicsInfo.PicList));
           //this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出拍照或者相册的功能`;
           break;  
