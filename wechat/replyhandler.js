@@ -13,8 +13,10 @@ const [material,group,user,news,menu,files,path]=[require('./material'),require(
 
 //引入菜单数据文件
 files.readFileAsync(path.resolve(__dirname, '..')+'/data/menu.json').then(function(data){
+  return menu.save(data);
+}).then(function(data){
   console.log(data);
-})
+});
 
 exports.reply=function* (next){
   /*
