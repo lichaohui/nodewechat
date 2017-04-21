@@ -223,7 +223,7 @@ exports.reply=function* (next){
           this.body=JSON.stringify(data);
           break; 
         case 'ticket':
-          data=yield account.createticket();
+          data=yield account.createticket({"expire_seconds": 604800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": 123}}});
           this.msgType='text';
           console.log(data);
           if(data.errcode){
