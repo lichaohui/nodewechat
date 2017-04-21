@@ -59,6 +59,16 @@ exports.reply=function* (next){
           this.body=`您SCAN了菜单：${con.EventKey}`;
           this.msgType='text';
           break;
+         case 'scancode_push':
+          console.log('scancode_push');
+          this.msgType='text';
+          this.body='您这是一个扫码事件';
+          break;
+        case 'scancode_waitmsg':
+          console.log('scancode_waitmsg');
+          this.msgType='text';
+          this.body='您这是一个扫码等待消息事件';
+          break;  
         case 'LOCATION':
           this.msgType='text';
           this.body=`您的纬度是：${con.Latitude}，经度是：${con.Longitude}，精确度：${con.Precision}`;
@@ -73,11 +83,6 @@ exports.reply=function* (next){
           break;
       }
       break; 
-    case 'scancode_push':
-      console.log('scancode_push');
-      this.msgType='text';
-      this.body='您这是一个扫码事件';
-      break;
     case 'location':
       this.msgType='text';
       this.body=`您上报的地理位置是：${con.Label}`;
