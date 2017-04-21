@@ -254,6 +254,7 @@ exports.reply=function* (next){
             /*"query":"查一下明天从北京到上海的南航机票",
             "city":"北京",
             "category": "flight,hotel",*/
+            "appid":'wx2c474296930e81b4',
           });
           console.log(data);
           this.msgType='text';
