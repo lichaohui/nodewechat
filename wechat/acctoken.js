@@ -4,9 +4,9 @@
 'use strict'
 
 //引入promise的bluebird库
-let promise=require('bluebird');
+const promise=require('bluebird');
 //将request模块promisify,然后request就拥有的then方法
-let request=promise.promisify(require('request'));
+const request=promise.promisify(require('request'));
 
 //设置一些配置信息
 var apiurl='https://api.weixin.qq.com/cgi-bin/';

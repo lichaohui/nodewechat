@@ -1,11 +1,12 @@
 /*--项目配置文件--*/
 
-//引入path模块
-const path=require('path');
-//引入files模块(自定义的模块)
-const files=require('./libs/files');
+/*
+ * 引入path模块
+ * 引入files模块(自定义的模块)
+ */
+const [path,files]=[require('path'),require('./libs/files')];
 //设置存储凭据的配置文件
-const access_token_file=path.join(__dirname,'./config/access_token.json');
+const access_token_file=path.join(__dirname,'./data/access_token.json');
 
 //设置一个对象用来存储一些配置信息
 const config={
