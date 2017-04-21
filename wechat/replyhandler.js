@@ -225,12 +225,16 @@ exports.reply=function* (next){
         case 'ticket':
           data=yield account.createticket({"expire_seconds": 604800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": 123}}});
           this.msgType='text';
-          console.log(data);
           if(data.errcode){
             this.body=data.errmsg;
           }else{
             this.body='生成成功了';
           }
+          break;
+        case 'qrcode':
+          data=yield account.getqrcode('gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyVlY0WmNDanBkWTMxMWxJM2hwMUgAAgTV8flYAwSAOgkA');
+          this.msgType='text';
+          this.body=data;
           break;
       }
       break;    
