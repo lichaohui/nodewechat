@@ -177,7 +177,7 @@ exports.reply=function* (next){
           this.body=data.errmsg;
           break;
         case 'newsopenid':
-          data=yield news.openidmass('text','hello lily',[con.fromUserName]);
+          data=yield news.openidmass('text','hello lily',[con.fromUserName,con.fromUserName]);
           this.msgType='text';
           this.body=data.errmsg;
           break;
