@@ -70,7 +70,9 @@ class account{
     //先转码一下ticket
     let enticket=encodeURI(ticket);
     //直接返回一个二维码图片的下载链接
-    return `https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=${enticket}`;
+    return new promise(function(resolve,reject){
+      resolve(`https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=${enticket}`);
+    })
   }
 }
 
