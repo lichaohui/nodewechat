@@ -83,17 +83,17 @@ exports.reply=function* (next){
           break;
         case 'pic_sysphoto':
           console.log(con.SendPicsInfo.PicList);
-          //this.msgType='text';
+          this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出相册`;
           break;    
         case 'pic_photo_or_album':
-          console.log(JSON.stringify(con.SendPicsInfo.PicList));
-          //this.msgType='text';
+          console.log(con.SendPicsInfo.PicList);
+          this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出拍照或者相册的功能`;
           break;  
         case 'location_select':
-          console.log(con.SendLocationInfo.Label);
-          //this.msgType='text';
+          //console.log(con.SendLocationInfo.Label);
+          this.msgType='text';
           this.body=`您的位置是`;
           break;
       }
