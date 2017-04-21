@@ -248,10 +248,13 @@ exports.reply=function* (next){
           break;
         case 'intel':
           data=yield intel.understand({
-query:'我想听周杰伦的东风破',
-type:'music',
-city:'济南',            
-});
+            "query":'我想听周杰伦的东风破',
+            "category":'music',
+            "city":'济南',
+            /*"query":"查一下明天从北京到上海的南航机票",
+            "city":"北京",
+            "category": "flight,hotel",*/
+          });
           console.log(data);
           this.msgType='text';
           this.body=JSON.stringify(data);
