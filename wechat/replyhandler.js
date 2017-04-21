@@ -248,11 +248,10 @@ exports.reply=function* (next){
           break;
         case 'intel':
           data=yield intel.understand({
-            "query":"查一下明天从北京到上海的南航机票",
-            "city":"北京",
-            "category": "flight,hotel",
+            "query":"速度与激情8",
+            "city":"济南",
+            "category": "movie",
             "appid":"wx2c474296930e81b4",
-            "uid":"123456"
           });
           this.msgType='text';
           this.body=JSON.stringify(data);
