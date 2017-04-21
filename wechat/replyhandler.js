@@ -74,9 +74,8 @@ exports.reply=function* (next){
       }
       break; 
     case 'image':
-      console.log('我接收到了图片');
       this.msgType='text';
-      this.body='图片我收到了，地址是${con.PicUrl}';
+      this.body=`图片我收到了，地址是${con.PicUrl}`;
       break;
     case 'text':
       let data;
