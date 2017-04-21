@@ -72,27 +72,37 @@ exports.reply=function* (next){
           this.msgType='text';
           break;
         case 'scancode_push':
+          console.log('scancode_push');
           console.log(con.ScanCodeInfo.ScanResult);
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个扫码推送事件`;
           break;
         case 'scancode_waitmsg':
+          console.log('scancode_waitmsg');
           console.log(con.ScanCodeInfo.ScanResult);
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个扫码等待消息事件`;
           break;
         case 'pic_sysphoto':
+          console.log('pic_sysphoto');
           console.log(JSON.stringify(con.SendPicsInfo.PicList));
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出相册`;
           break;    
         case 'pic_photo_or_album':
+          console.log('pic_photo_or_album');
           console.log(JSON.stringify(con.SendPicsInfo.PicList));
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出拍照或者相册的功能`;
           break;  
+        case 'pic_weixin':
+          console.log('pic_weixin');
+          this.msgType='text';
+          this.body='您使用了pic_weixin事件';
+          break;
         case 'location_select':
-          //console.log(con.SendLocationInfo.Label);
+          console.log('location_select');
+          console.log(con.SendLocationInfo.Label);
           this.msgType='text';
           this.body=`您的位置是`;
           break;
