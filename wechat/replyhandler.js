@@ -9,7 +9,7 @@
  * 引入files模块(该模块是自己封装的)读取保存数据的文件中的内容
  * 引入path模块
  */
-const [material,group,user,news,menu,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('../libbs/files'),require('path')];
+const [material,group,user,news,menu,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('../libs/files'),require('path')];
 
 //引入菜单数据文件
 files.readFileAsync('../data/menu.json').then(function(data){
