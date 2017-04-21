@@ -60,7 +60,6 @@ exports.reply=function* (next){
           this.msgType='text';
           break;
         case 'LOCATION':
-          console.log('location');
           this.msgType='text';
           this.body=`您的纬度是：${con.Latitude}，经度是：${con.Longitude}，精确度：${con.Precision}`;
           break;
@@ -74,6 +73,10 @@ exports.reply=function* (next){
           break;
       }
       break; 
+    case 'location':
+      this.msgType='text';
+      this.body=`您上报的地理位置是：${con.Label}`;
+      break;
     case 'image':
       this.msgType='text';
       this.body=`图片我收到了，地址是${con.PicUrl}`;
