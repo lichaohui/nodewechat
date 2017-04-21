@@ -7,10 +7,11 @@
  * 引入news模块(消息管理模块)
  * 引入menu模块(菜单管理)
  * 引入account模块(公众号账号管理)
+ * 引入intel模块(智能接口模块)
  * 引入files模块(该模块是自己封装的)读取保存数据的文件中的内容
  * 引入path模块
  */
-const [material,group,user,news,menu,account,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('./account'),require('../libs/files'),require('path')];
+const [material,group,user,news,menu,account,intel,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('./account'),require('./intel'),require('../libs/files'),require('path')];
 
 /*
  * 引入菜单数据文件并创建菜单
@@ -244,6 +245,17 @@ exports.reply=function* (next){
           }else{
             this.body=data.short_url;
           }
+          break;
+        case 'intel':
+          data=yield intel.understand({
+            "query":"查一下明天从北京到上海的南航机票",
+            "city":"北京",
+            "category": "flight,hotel",
+            "appid":"wx2c474296930e81b4",
+            "uid":"123456"
+          });
+          this.msgType='text';
+          this.body=JSON.stringify(data);
           break;
       }
       break;    
