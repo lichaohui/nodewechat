@@ -72,7 +72,7 @@ exports.reply=function* (next){
           this.msgType='text';
           break;
         case 'scancode_push':
-          console.log(con.ScanResult);
+          console.log(con.ScanCodeInfo.ScanResult);
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个扫码推送事件`;
           break;
