@@ -60,8 +60,9 @@ exports.reply=function* (next){
           this.msgType='text';
           break;
         case 'LOCATION':
-          this.body=`您的纬度是：${con.Latitude}，经度是：${con.Longitude}，精确度：${con.Precision}`;
+          console.log('location');
           this.msgType='text';
+          this.body=`您的纬度是：${con.Latitude}，经度是：${con.Longitude}，精确度：${con.Precision}`;
           break;
         case 'CLICK':
           this.body=`您点击了菜单：${con.EventKey}`;
