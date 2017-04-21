@@ -176,6 +176,11 @@ exports.reply=function* (next){
           this.msgType='text';
           this.body=data.errmsg;
           break;
+        case 'newsopenid':
+          data=yield news.openidmass('text','hello lily',[con.fromUserName]);
+          this.msgType='text';
+          this.body=data.errmsg;
+          break;
       }
       break;    
   }
