@@ -6,10 +6,11 @@
  * 引入user模块(用户管理模块)
  * 引入news模块(消息管理模块)
  * 引入menu模块(菜单管理)
+ * 引入account模块(公众号账号管理)
  * 引入files模块(该模块是自己封装的)读取保存数据的文件中的内容
  * 引入path模块
  */
-const [material,group,user,news,menu,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('../libs/files'),require('path')];
+const [material,group,user,news,menu,account,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('./account'),require('../libs/files'),require('path')];
 
 /*
  * 引入菜单数据文件并创建菜单
@@ -60,12 +61,10 @@ exports.reply=function* (next){
           this.msgType='text';
           break;
          case 'scancode_push':
-          console.log('scancode_push');
           this.msgType='text';
           this.body='您这是一个扫码事件';
           break;
         case 'scancode_waitmsg':
-          console.log('scancode_waitmsg');
           this.msgType='text';
           this.body='您这是一个扫码等待消息事件';
           break;  
@@ -212,7 +211,6 @@ exports.reply=function* (next){
           data=yield news.openidmass('text','hello lily',['o0xl8w_tdQEl7yWBtrcAepB3rfjg','o0xl8w2Hxj1m9bc_QM8Wnn_k_OEI']);
           this.msgType='text';
           this.body=data.errmsg;
-          console.log(data);
           break;
         case 'newspreview':
           data=yield news.preview('text','hello jack','o0xl8w_tdQEl7yWBtrcAepB3rfjg');
@@ -224,6 +222,16 @@ exports.reply=function* (next){
           this.msgType='text';
           this.body=JSON.stringify(data);
           break; 
+        case 'ticket':
+          data=yield account.createticket();
+          this.msgType='text';
+          console.log(data);
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body='生成成功了';
+          }
+          break;
       }
       break;    
   }
