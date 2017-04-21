@@ -236,6 +236,15 @@ exports.reply=function* (next){
           this.msgType='text';
           this.body=data;
           break;
+        case 'shorturl':
+          data=yield account.shorturl('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyVlY0WmNDanBkWTMxMWxJM2hwMUgAAgTV8flYAwSAOgkA');
+          this.msgType='text';
+          if(data.errcode){
+            this.body=data.errmsg;
+          }else{
+            this.body=data.short_url;
+          }
+          break;
       }
       break;    
   }
