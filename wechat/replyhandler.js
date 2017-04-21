@@ -12,7 +12,7 @@
 const [material,group,user,news,menu,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('../libs/files'),require('path')];
 
 //引入菜单数据文件
-files.readFileAsync('../data/menu.json').then(function(data){
+files.readFileAsync(path.resolve(__dirname, '..')+'/data/menu.json').then(function(data){
   console.log(data);
 })
 
