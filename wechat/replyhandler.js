@@ -73,6 +73,11 @@ exports.reply=function* (next){
           break;
       }
       break; 
+    case 'scancode_push':
+      console.log('scancode_push');
+      this.msgType='text';
+      this.body='您这是一个扫码事件';
+      break;
     case 'location':
       this.msgType='text';
       this.body=`您上报的地理位置是：${con.Label}`;
