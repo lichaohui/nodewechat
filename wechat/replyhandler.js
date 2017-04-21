@@ -11,7 +11,12 @@
  */
 const [material,group,user,news,menu,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('../libs/files'),require('path')];
 
-//引入菜单数据文件
+/*
+ * 引入菜单数据文件并创建菜单
+ * 这个地方平时是注释掉的
+ * 只有在我们第一次创建菜单或者对菜单进行修改的时候才打开
+ * 修改完之后再关闭掉
+ */ 
 /*files.readFileAsync(path.resolve(__dirname, '..')+'/data/menu.json').then(function(data){
   return menu.save(JSON.parse(data));
 }).then(function(data){
@@ -78,17 +83,17 @@ exports.reply=function* (next){
           break;
         case 'pic_sysphoto':
           console.log(con.SendPicsInfo.PicList);
-          this.msgType='text';
+          //this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出相册`;
           break;    
         case 'pic_photo_or_album':
-          console.log(con.SendPicsInfo.Count);
-          this.msgType='text';
+          console.log(con.SendPicsInfo.PicList);
+          //this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个弹出拍照或者相册的功能`;
           break;  
         case 'location_select':
           console.log(con.SendLocationInfo.Label);
-          this.msgType='text';
+          //this.msgType='text';
           this.body=`您的位置是`;
           break;
       }
