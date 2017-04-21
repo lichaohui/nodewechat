@@ -108,7 +108,12 @@ exports.reply=function* (next){
           this.body=`您的位置是`;
           break;
       }
-      break;  
+      break; 
+    case 'image':
+      console.log('我接收到了图片');
+      this.msgType='text';
+      this.body='你怎么发给我一张图片呢？';
+      break;
     case 'text':
       let data;
       switch(con.Content){
