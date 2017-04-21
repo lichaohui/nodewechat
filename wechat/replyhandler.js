@@ -259,6 +259,7 @@ exports.reply=function* (next){
               "intent":"SEARCH"
             }
           });
+          console.log(data);
           this.msgType='text';
           this.body=JSON.stringify(data);
           break;
