@@ -124,10 +124,7 @@ class news{
           url:url,
           method:'post',
           body:{
-            "filter":{
-              "is_to_all":false,
-              "group_id":group_id
-            },
+            "touser":openids,
             "msgtype":type
           },
           json:true
