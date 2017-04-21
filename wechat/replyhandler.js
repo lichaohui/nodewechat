@@ -5,9 +5,16 @@
  * 引入group模块(用户分组管理)
  * 引入user模块(用户管理模块)
  * 引入news模块(消息管理模块)
+ * 引入menu模块(菜单管理)
+ * 引入files模块(该模块是自己封装的)读取保存数据的文件中的内容
  * 引入path模块
  */
-const [material,group,user,news,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('path')];
+const [material,group,user,news,menu,files,path]=[require('./material'),require('./group'),require('./user'),require('./news'),require('./menu'),require('../libbs/files'),require('path')];
+
+//引入菜单数据文件
+files.readFileAsync('../data/menu.json').then(function(data){
+  console.log(data);
+})
 
 exports.reply=function* (next){
   /*
@@ -191,8 +198,7 @@ exports.reply=function* (next){
           data=yield news.show('3147483656');
           this.msgType='text';
           this.body=JSON.stringify(data);
-          break;
-          
+          break; 
       }
       break;    
   }
