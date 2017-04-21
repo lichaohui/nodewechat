@@ -181,6 +181,11 @@ exports.reply=function* (next){
           this.msgType='text';
           this.body=data.errmsg;
           break;
+        case 'newspreview':
+          data=yield news.preview('text','hello jack','o0xl8w_tdQEl7yWBtrcAepB3rfjg');
+          this.msgType='text';
+          this.body=data.errmsg;
+          break;
       }
       break;    
   }
