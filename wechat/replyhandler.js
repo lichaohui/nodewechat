@@ -180,11 +180,17 @@ exports.reply=function* (next){
           data=yield news.openidmass('text','hello lily',['o0xl8w_tdQEl7yWBtrcAepB3rfjg','o0xl8w2Hxj1m9bc_QM8Wnn_k_OEI']);
           this.msgType='text';
           this.body=data.errmsg;
+          console.log(data);
           break;
         case 'newspreview':
           data=yield news.preview('text','hello jack','o0xl8w_tdQEl7yWBtrcAepB3rfjg');
           this.msgType='text';
           this.body=data.errmsg;
+          break;
+        case 'newsshow':
+          data=yield news.show();
+          this.msgType='text';
+          this.body=JSON.stringify(data);
           break;
       }
       break;    

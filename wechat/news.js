@@ -19,6 +19,50 @@ class news{
   };
   
   /*
+   * 查看某个群发消息的方法
+   * 该方法可以返回被查询的群发消息的状态
+   * 参数msg_id是发送的消息的id
+   */
+  show(msg_id){
+    let getAcc=this.getAccessToken;
+    return new promise(function(resolve,reject){
+      /*
+       * 由于该接口需要access_token（调用凭据）
+       * 所以这里先调用getAccessToken方法拿到调用凭据
+       * getAccessToken方法是我们自己定义的
+       * 也是返回一个promise
+       * 所以它可以使用then方法来处理后续操作
+       */
+      getAcc().then(function(data){
+        data=JSON.parse(data);
+        //设置接口地址和post数据
+        let url=`https://api.weixin.qq.com/cgi-bin/message/mass/get?access_token=${data.access_token}`;
+        //根据switch不同的type类设置发送数据中不同的属性名
+        let typepro;
+        
+        //封装发送数据
+        let option={
+          url:url,
+          method:'post',
+          body:{
+            "msg_id": msg_id
+          },
+          json:true
+        };
+        //通过request模块发送请求
+        request(option).then(function(response){
+          //响应的数据在response.body中
+          let resdata=response.body;
+          if(resdata){
+            //如果响应正常则将promise对象的状态设置为已完成
+            resolve(resdata);
+          }
+        })
+      })
+    })
+  }
+  
+  /*
    * 根据用户分组进行消息群发的方法
    * 参数type为发送的消息的类型
    * 参数message为发送的消息内容
