@@ -77,7 +77,7 @@ exports.reply=function* (next){
           this.body=`您使用了菜单中${con.EventKey}!这是一个扫码推送事件`;
           break;
         case 'scancode_waitmsg':
-          console.log(con.ScanResult);
+          console.log(con.ScanCodeInfo.ScanResult);
           this.msgType='text';
           this.body=`您使用了菜单中${con.EventKey}!这是一个扫码等待消息事件`;
           break;
