@@ -248,10 +248,15 @@ exports.reply=function* (next){
           break;
         case 'intel':
           data=yield intel.understand({
-            "query":"速度与激情8",
-            "city":"济南",
-            "category": "movie",
+            "query":"最近哪里有速度与激情8上映",
+            "type":"movie",
             "appid":"wx2c474296930e81b4",
+            “semantic”:{
+              “details”:{
+                'name': '速度与激情8'
+              },
+              “intent”:”SEARCH”
+            }
           });
           this.msgType='text';
           this.body=JSON.stringify(data);
