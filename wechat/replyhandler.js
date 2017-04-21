@@ -57,7 +57,7 @@ exports.reply=function* (next){
           this.body='';
           break;
         case 'SCAN':
-          this.body=`您SCAN了菜单：${con.EventKey}`;
+          this.body=`您进行了一次扫码，扫码的场景id是：${con.EventKey}`;
           this.msgType='text';
           break;
          case 'scancode_push':
