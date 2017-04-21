@@ -89,7 +89,7 @@ exports.reply=function* (next){
         case 'location_select':
           console.log(con.SendLocationInfo.Label);
           this.msgType='text';
-          this.body=`您的位置是${con.SendLocationInfo.Label}`;
+          this.body=`您的位置是`;
           break;
       }
       break;  
