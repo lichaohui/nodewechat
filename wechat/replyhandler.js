@@ -248,17 +248,9 @@ exports.reply=function* (next){
           break;
         case 'intel':
           data=yield intel.understand({
-res:0,
 query:'我想听周杰伦的东风破',
 type:'music',
-intent:'SEARCH',
-semantic:{
-details:{
-song:'东风破',
-singer: '周杰伦'
-},
-intent:'SEARCH'
-}
+city:'济南',            
 });
           console.log(data);
           this.msgType='text';
