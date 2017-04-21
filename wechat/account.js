@@ -26,9 +26,9 @@ class account{
    * 用户扫描后，
    * 公众号可以接收到事件推送。
    *
-   * 参数option就是生成ticket时候的一些选项
+   * 参数args就是生成ticket时候的一些选项
    */
-  createticket(option){
+  createticket(args){
     let getAcc=this.getAccessToken;
     return new promise(function(resolve,reject){
       /*
@@ -46,7 +46,7 @@ class account{
         let option={
           url:url,
           method:'post',
-          body:option,
+          body:args,
           json:true
         };
         //通过request模块发送请求
