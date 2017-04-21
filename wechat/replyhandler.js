@@ -188,7 +188,7 @@ exports.reply=function* (next){
           this.body=data.errmsg;
           break;
         case 'newsshow':
-          data=yield news.show();
+          data=yield news.show('3147483656');
           this.msgType='text';
           this.body=JSON.stringify(data);
           break;
