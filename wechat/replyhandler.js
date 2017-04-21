@@ -248,17 +248,18 @@ exports.reply=function* (next){
           break;
         case 'intel':
           data=yield intel.understand({
-            "res":0,
-            "query":"刘德华的电影",
-            "type":"movie",
-            "appid":"wx2c474296930e81b4",
-            "semantic":{
-              "details":{
-                "actor": '刘德华'
-              },
-              "intent":"SEARCH"
-            }
-          });
+res:0,
+query:'我想听周杰伦的东风破',
+type:'music',
+intent:'SEARCH',
+semantic:{
+details:{
+song:'东风破',
+singer: '周杰伦'
+},
+intent:'SEARCH'
+}
+});
           console.log(data);
           this.msgType='text';
           this.body=JSON.stringify(data);
