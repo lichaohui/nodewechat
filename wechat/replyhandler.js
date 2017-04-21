@@ -192,6 +192,7 @@ exports.reply=function* (next){
           this.msgType='text';
           this.body=JSON.stringify(data);
           break;
+          
       }
       break;    
   }

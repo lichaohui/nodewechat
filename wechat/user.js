@@ -10,7 +10,7 @@
 const[fs,promise,config]=[require('fs'),require('bluebird'),require('../config')];
 
 //将request模块promisify,然后request就拥有的then方法
-let request=promise.promisify(require('request'));
+const request=promise.promisify(require('request'));
 
 class user{
   //构造函数中初始化appId和appSecret属性
