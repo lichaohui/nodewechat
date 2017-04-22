@@ -5,15 +5,22 @@
 
 /*
  * 引入koa模块
+ * 引入koa路由模块
  * 引入reqverify中间件
  * 引入acctoken中间件
  * 引入config项目配置文件
  * 引入replyhandler模块
  */
-const[koa,reqverify,acctoken,config,reply]=[require('koa'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
+const[koa,router,reqverify,acctoken,config,reply]=[require('koa'),require('koa-router'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
 
 //实例化一个koa对象
 const app=new koa();
+
+app.get('/movie',function* (next){
+  this.body='hello movie';
+  return next;
+})
+
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
 //使用reqverify中间件验证请求
