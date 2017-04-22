@@ -21,6 +21,9 @@ const app=new koa();
   this.body='hello movie';
   return next;
 })*/
+app.use(route.get('/movie', function*(next) {
+    this.body = 'Hello lucy';
+}));
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
