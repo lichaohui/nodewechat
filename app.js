@@ -16,14 +16,16 @@ const[koa,router,reqverify,acctoken,config,reply]=[require('koa'),require('koa-r
 //实例化一个koa对象
 const app=new koa();
 //app.use(router(app));
+const route=new router();
+route.get('/movie',function(ctx,next){
+  this.body='hello movie';
+})
 
+app.use(route.routes());
 /*app.get('/movie',function *(next){
   this.body='hello movie';
   return next;
 })*/
-app.use(router.get('/movie', function*(next) {
-    this.body = 'Hello lucy';
-}));
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
