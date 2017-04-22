@@ -21,7 +21,7 @@ const app=new koa();
   this.body='hello movie';
   return next;
 })*/
-app.use(route.get('/movie', function*(next) {
+app.use(router.get('/movie', function*(next) {
     this.body = 'Hello lucy';
 }));
 
