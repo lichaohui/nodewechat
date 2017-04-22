@@ -19,7 +19,8 @@ const app=new koa();
 const route=new router();
 route.get('/movie',function(ctx,next){
   console.log(ctx.url);
-  return 'hello movie';
+  ctx.body='hello movie';
+  
   //this.body='hello movie';
 })
 
