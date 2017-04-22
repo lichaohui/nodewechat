@@ -17,10 +17,10 @@ const[koa,router,reqverify,acctoken,config,reply]=[require('koa'),require('koa-r
 const app=new koa();
 app.use(router(app));
 
-app.get('/movie',function* (next){
+/*app.get('/movie',function *(next){
   this.body='hello movie';
   return next;
-})
+})*/
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
