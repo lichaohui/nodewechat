@@ -25,7 +25,7 @@ route.get('/movie',function(ctx,next){
   ctx.body='hello movie';
   return next();
 },function(ctx){
-  console.log('到这里来了')；
+  console.log('到这里来了');
   ctx.body='hello movie next';
 })
 
