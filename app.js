@@ -20,7 +20,7 @@ const[koa,route,reqverify,acctoken,config,reply]=[require('koa'),require('koa-ro
 const[app,router]=[new koa(),new route()];
 
 //制定路由规则
-route.get('/movie',function(ctx,next){
+router.get('/movie',function(ctx,next){
   console.log(ctx.url);
   ctx.body='hello movie';
   return next();
@@ -30,7 +30,7 @@ route.get('/movie',function(ctx,next){
 })
 
 //在中间件里使用路由
-app.use(route.routes());
+app.use(router.routes());
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
