@@ -11,7 +11,7 @@
  * 引入config项目配置文件
  * 引入replyhandler模块
  */
-const[koa,route,reqverify,acctoken,config,reply]=[require('koa'),require('koa-route'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
+const[koa,route,reqverify,acctoken,config,reply]=[require('koa'),require('koa-router'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
 
 /*
  * 实例化一个koa对象
