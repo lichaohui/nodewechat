@@ -20,15 +20,9 @@ const route=new router();
 route.get('/movie',function(ctx,next){
   console.log(ctx.url);
   ctx.body='hello movie';
-  
-  //this.body='hello movie';
 })
 
-app.use(route.routes());
-/*app.get('/movie',function *(next){
-  this.body='hello movie';
-  return next;
-})*/
+//app.use(route.routes());
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
