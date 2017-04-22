@@ -15,6 +15,7 @@ const[koa,router,reqverify,acctoken,config,reply]=[require('koa'),require('koa-r
 
 //实例化一个koa对象
 const app=new koa();
+app.use(router(app));
 
 app.get('/movie',function* (next){
   this.body='hello movie';
