@@ -32,7 +32,7 @@ router.get('/movie', co.wrap(function* (ctx) { //访问根目录
     } else {
         ctx.session.view += 1   
     }*/
-    console.log('viewNum', ctx.session.view)
+    //console.log('viewNum', ctx.session.view)
     yield ctx.render('index', {title: 'Nunjucks'})  //渲染模板views/index.html, 后面RESTful接口使用要用到该html文件
 }))
 
