@@ -21,6 +21,17 @@ const[koa,route,co,ejs,reqverify,acctoken,config,reply]=[require('koa'),require(
  */
 const[app,router]=[new koa(),new route()];
 
+let render=require('koa-ejs');
+render(app, {
+  root: path.join(__dirname, 'view'),
+  layout: 'template',
+  viewExt: 'html',
+  cache: false,
+  debug: true,
+  locals: locals,
+  filters: filters
+});
+
 //在中间件里使用路由规则
 app.use(router.routes());
 
