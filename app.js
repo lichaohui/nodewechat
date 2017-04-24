@@ -21,22 +21,6 @@ const[koa,route,co,ejs,reqverify,acctoken,config,reply]=[require('koa'),require(
  */
 const[app,router]=[new koa(),new route()];
 
-var staticServer = require('koa-static');
-var path = require('path');
-var render=require('koa-ejs');
-app.use(staticServer(path.join(__dirname,'public')));
-
-render(app, {
-    	root: path.join(__dirname, 'views'),
-    	layout: '__layout',
-    	viewExt: 'html',
-   	 cache: false,
-    	debug: true
-	});
-router.get('/movie', function *(next) {
- 	 yield this.render('index',{layout:false});
-	});
-
 //在中间件里使用路由规则
 app.use(router.routes());
 
