@@ -7,12 +7,13 @@
  * 引入koa模块
  * 引入koa路由模块
  * 引入co模块
+ * 引入ejs模块
  * 引入reqverify中间件
  * 引入acctoken中间件
  * 引入config项目配置文件
  * 引入replyhandler模块
  */
-const[koa,route,co,reqverify,acctoken,config,reply]=[require('koa'),require('koa-router'),require('co'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
+const[koa,route,co,ejs,reqverify,acctoken,config,reply]=[require('koa'),require('koa-router'),require('co'),require('ejs'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
 
 /*
  * 实例化一个koa对象
@@ -20,20 +21,20 @@ const[koa,route,co,reqverify,acctoken,config,reply]=[require('koa'),require('koa
  */
 const[app,router]=[new koa(),new route()];
 
-//制定路由规则
-/*router.get('/movie',function(ctx){
-  ctx.body=ctx.render('index');
-})*/
+var staticServer = require('koa-static');
+var path = require('path');
+app.use(staticServer(path.join(__dirname,'public')));
 
-router.get('/movie', co.wrap(function* (ctx) { //访问根目录
-    if(ctx.session.view === undefined) {
-        ctx.session.view = 0
-    } else {
-        ctx.session.view += 1   
-    }
-    console.log('viewNum', ctx.session.view)
-    yield ctx.render('index', {title: 'Nunjucks'})  //渲染模板views/index.html, 后面RESTful接口使用要用到该html文件
-}))
+ejs(app, {
+    	root: path.join(__dirname, 'views'),
+    	layout: '__layout',
+    	viewExt: 'html',
+   	 cache: false,
+    	debug: true
+	});
+router.get('/movie', function *(next) {
+ 	 yield this.render('index',{layout:false});
+	});
 
 //在中间件里使用路由规则
 app.use(router.routes());
