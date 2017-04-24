@@ -19,8 +19,8 @@ const[koa,route,reqverify,acctoken,config,reply]=[require('koa'),require('koa-ro
  */
 const[app,router]=[new koa(),new route()];
 
-router.get('/movie',function *(){
-  this.body='hello';
+router.get('/movie',function(ctx){
+  ctx.body='hello';
 })
 
 //在中间件里使用路由规则
