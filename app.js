@@ -23,9 +23,10 @@ const[app,router]=[new koa(),new route()];
 
 var staticServer = require('koa-static');
 var path = require('path');
+var render=require('koa-ejs');
 app.use(staticServer(path.join(__dirname,'public')));
 
-ejs(app, {
+render(app, {
     	root: path.join(__dirname, 'views'),
     	layout: '__layout',
     	viewExt: 'html',
