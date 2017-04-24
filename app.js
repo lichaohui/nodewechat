@@ -21,8 +21,7 @@ const[koa,route,co,ejs,reqverify,acctoken,config,reply]=[require('koa'),require(
  */
 const[app,router]=[new koa(),new route()];
 
-let render=require('koa-ejs');
-render(app, {
+ejs(app, {
   root: path.join(__dirname, 'view'),
   layout: 'template',
   viewExt: 'html',
@@ -31,6 +30,10 @@ render(app, {
   locals: locals,
   filters: filters
 });
+
+router.get('/movie',function *(){
+  yield this.render('index',{"title":"xtemplate demo"});
+})
 
 //在中间件里使用路由规则
 app.use(router.routes());
