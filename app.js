@@ -8,12 +8,13 @@
  * 引入koa路由模块
  * 引入co模块
  * 引入ejs模块
+ * 引入path模块
  * 引入reqverify中间件
  * 引入acctoken中间件
  * 引入config项目配置文件
  * 引入replyhandler模块
  */
-const[koa,route,co,ejs,reqverify,acctoken,config,reply]=[require('koa'),require('koa-router'),require('co'),require('ejs'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
+const[koa,route,co,ejs,path,reqverify,acctoken,config,reply]=[require('koa'),require('koa-router'),require('co'),require('ejs'),require('path'),require('./wechat/reqverify'),require('./wechat/acctoken'),require('./config'),require('./wechat/replyhandler')];
 
 /*
  * 实例化一个koa对象
