@@ -29,7 +29,7 @@ router.get('/movie',function(ctx,next){
   ctx.body='hello movie next';
 })
 
-//在中间件里使用路由
+//在中间件里使用路由规则
 app.use(router.routes());
 
 //使用acctoken中检验验证access_token
