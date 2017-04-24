@@ -20,9 +20,20 @@ const[koa,route,reqverify,acctoken,config,reply]=[require('koa'),require('koa-ro
 const[app,router]=[new koa(),new route()];
 
 //制定路由规则
-router.get('/movie',function(ctx){
+/*router.get('/movie',function(ctx){
   ctx.body=ctx.render('index');
-})
+})*/
+
+router.get('/movie', co.wrap(function* (ctx) { //访问根目录
+    /*logger.debug(' this is test log')  
+    if(ctx.session.view === undefined) {
+        ctx.session.view = 0
+    } else {
+        ctx.session.view += 1   
+    }*/
+    console.log('viewNum', ctx.session.view)
+    yield ctx.render('index', {title: 'Nunjucks'})  //渲染模板views/index.html, 后面RESTful接口使用要用到该html文件
+}))
 
 //在中间件里使用路由规则
 app.use(router.routes());
