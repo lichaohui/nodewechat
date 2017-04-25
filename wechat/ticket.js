@@ -21,11 +21,6 @@ class ticket{
     this.setTicket=option.setTicket;
   };
   
-  //获取access_token的方法
-  getAccessToken(){
-    return config.wechat.getAccessToken();
-  }
-  
   //判断ticket是否有效的方法
   isValidTicket(data){
     //先判断参数中的ticket和expires_in是否存在
@@ -82,7 +77,6 @@ class ticket{
   //获取ticket的方法
   fetchTicket(access_token){
     return function* (next){
-      //let acc=new ticket(access_token);
       /*
        * getTicket()方法返回的是一个promise对象
        * 所以可以调用该对象的then方法进行下一步操作

@@ -111,11 +111,11 @@ function sign(ticket,url){
     signature:signature
   }
 }
-console.log(ticket.getAccessToken());
 router.get('/movie',function(ctx){
+  let t=require('./wechat/ticket');
   
   //实例化ticket对象
-  console.log(ticket.getAccessToken());
+  console.log(t.getAccessToken());
   //通过ticket对象的getTicket方法传入access_token参数获取ticket
   let ticket=ticketer.getTicket(access_token);
   //通过sign方法传入ticket和this.href参数获取签名
