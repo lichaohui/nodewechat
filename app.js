@@ -111,7 +111,7 @@ function sign(ticket,url){
     signature:signature
   }
 }
-
+console.log(ticket.getAccessToken());
 router.get('/movie',function(ctx){
   
   //实例化ticket对象
