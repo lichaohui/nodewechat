@@ -114,7 +114,8 @@ function sign(ticket,url){
 
 router.get('/movie',function(ctx){
   //实例化acctoken对象
-  let acc=new acctoken(config.wechat);
+  //let acc=new acctoken(config.wechat);
+  console.log(acctoken);
   //通过acctoken对象获取access_token
   let access_token=acc.getAccessToken().access_token;
   //实例化ticket对象
