@@ -117,7 +117,7 @@ router.get('/movie',function(ctx){
   }).then(function (access_token){
     console.log(access_token);
     return function* (next){
-      console.log(access_token);
+      console.log('hello world');
       //通过ticket对象的getTicket方法传入access_token参数获取ticket
       ticket=yield ticketer.fetchTicket(access_token);
       console.log(ticket);
