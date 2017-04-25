@@ -113,9 +113,7 @@ function sign(ticket,url){
 }
 
 router.get('/movie',function(ctx){
-  //先获取access_token(读取access_token.json文件)
-  let access_token=files.readFileAsync('/data/access_token.json');
-  console.log(access_token);
+  console.log(ticket.getAccessToken());
   //实例化ticket对象
   let ticketer=new ticket(config.wechat);
   //通过ticket对象的getTicket方法传入access_token参数获取ticket

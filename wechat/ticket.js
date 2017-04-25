@@ -16,13 +16,14 @@ class ticket{
   constructor(option){
     this.appId=option.appId;
     this.appSecret=option.appSecret;
+    this.getAccessToken=option.getAccessToken;
     this.getTicket=option.getTicket;
     this.setTicket=option.setTicket;
   };
   
   //获取access_token的方法
-  getAccess(){
-    
+  getAccessToken(){
+    return config.wechat.getAccessToken();
   }
   
   //判断ticket是否有效的方法
@@ -77,46 +78,50 @@ class ticket{
       })
     }) 
   }
-}
-
-module.exports=function(access_token){
-  return function* (next){
-    let acc=new ticket(access_token);
-    /*
-     * getAccessToken()方法返回的是一个promise对象
-     * 所以可以调用该对象的then方法进行下一步操作
-     * promise对象是es6新标准中定义的用来改善异步回调写法的js对象
-     * then方法中包含一个回调函数
-     * 回调函数的data参数是上一步中的返回值
-     */
-    acc.getTicket()
-    .then(function(data){
-      try{
-        //尝试将data进行JSON.parst
-        data=JSON.parse(data);
-      }catch(e){
-        //如果有异常则使用updateTicket()方法更新accesstoken
-        return acc.updateTicket();
-      }
-      //如果拿到了token则验证是否是有效的
-      if(acc.isValidAccessToken(data)){
-        /*
-         * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
-         * 就是已完成的状态
-         */
-        return promise.resolve(data);
-      }else{
-        /*
-         * 如果token已经过期则还是更新token
-         */
-        return acc.updateTicket();
-      }
-    }).then(function(data){
-      //最后调用then方法保存ticket到本地
-      acc.ticket=data.ticket;
-      acc.expires_in=data.expires_in;
-      acc.setTicket(data);
-    })
-    yield next;
+  
+  //获取ticket的方法
+  fetchTicket(access_token){
+    return function* (next){
+      //let acc=new ticket(access_token);
+      /*
+       * getTicket()方法返回的是一个promise对象
+       * 所以可以调用该对象的then方法进行下一步操作
+       * promise对象是es6新标准中定义的用来改善异步回调写法的js对象
+       * then方法中包含一个回调函数
+       * 回调函数的data参数是上一步中的返回值
+       */
+      this.getTicket()
+      .then(function(data){
+        try{
+          //尝试将data进行JSON.parst
+          data=JSON.parse(data);
+        }catch(e){
+          //如果有异常则使用updateTicket()方法更新accesstoken
+          return acc.updateTicket();
+        }
+        //如果拿到了token则验证是否是有效的
+        if(acc.isValidAccessToken(data)){
+          /*
+           * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
+           * 就是已完成的状态
+           */
+          return promise.resolve(data);
+        }else{
+          /*
+           * 如果token已经过期则还是更新token
+           */
+          return acc.updateTicket();
+        }
+      }).then(function(data){
+        //最后调用then方法保存ticket到本地
+        acc.ticket=data.ticket;
+        acc.expires_in=data.expires_in;
+        acc.setTicket(data);
+      })
+      yield next;
+    }
   }
 }
+
+let ticketer=new ticket(config.wechat);
+module.exports=ticketer;
