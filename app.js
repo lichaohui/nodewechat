@@ -11,7 +11,6 @@
  * 引入crypto加密模块
  * 引入reqverify中间件
  * 引入acctoken中间件
- * 引入ticket模块
  * 引入config项目配置文件
  * 引入replyhandler模块
  */
@@ -23,7 +22,6 @@ const[
   crypto,
   reqverify,
   acctoken,
-  ticket,
   config,
   reply
 ]=[
@@ -34,7 +32,6 @@ const[
   require('crypto'),
   require('./wechat/reqverify'),
   require('./wechat/acctoken'),
-  require('./wechat/ticket'),
   require('./config'),
   require('./wechat/replyhandler')
 ];
@@ -112,10 +109,11 @@ function sign(ticket,url){
   }
 }
 router.get('/movie',function(ctx){
-  let t=require('./wechat/ticket');
+  let ticketer=require('./wechat/ticket');
   
   //实例化ticket对象
-  console.log(t.getAccessToken());
+  let acctoken=ticketer.getAccessToken();
+  console.log(acctoken);
   //通过ticket对象的getTicket方法传入access_token参数获取ticket
   let ticket=ticketer.getTicket(access_token);
   //通过sign方法传入ticket和this.href参数获取签名
