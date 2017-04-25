@@ -1,0 +1,27 @@
+{
+  "name": "nodewechat",
+  "description": "nodejs 开发的公众号\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[C\u001b[C\u001b[C\u001b[公众号",
+  "main": "app.js",
+  "authors": [
+    "lichaohui"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "koa",
+    "wechat"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zepto": "^1.2.0"
+  },
+  "devDependencies": {
+  }
+}
