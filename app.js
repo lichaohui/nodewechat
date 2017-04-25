@@ -39,7 +39,7 @@ let movie=heredoc(function(){/*
   </html>
 */})
 router.get('/movie',function(ctx){
-  ctx.body=ejs.render('movie',{});
+  ctx.body=ejs.render(movie,{});
 })
 
 //在中间件里使用路由规则
