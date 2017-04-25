@@ -127,6 +127,7 @@ router.get('/movie',function(ctx){
       ctx.body=ejs.render(movie,signobj);
       return next;
     }
+    yield next;
   });
 })
 
