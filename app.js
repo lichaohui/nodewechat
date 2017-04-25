@@ -112,7 +112,8 @@ router.get('/movie',function(ctx){
   let ticketer=require('./wechat/ticket');
   
   ticketer.getAccessToken().then(function(data){
-    console.log(data);
+    data=JSON.parse(data);
+    console.log(data.access_token);
   });
   //通过ticket对象的getTicket方法传入access_token参数获取ticket
   let ticket=ticketer.getTicket(access_token);
