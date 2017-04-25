@@ -116,7 +116,7 @@ router.get('/movie',function(ctx){
     return data.access_token;
   }).then(function (access_token){
     console.log(access_token);
-    function* (next){
+    return function* (next){
       console.log('hello world');
       //通过ticket对象的getTicket方法传入access_token参数获取ticket
       ticket=yield ticketer.fetchTicket(access_token);
@@ -125,7 +125,7 @@ router.get('/movie',function(ctx){
       let signobj=sign(ticket,ctx.href);
       //渲染模板并传入signobj为模板变量
       ctx.body=ejs.render(movie,signobj);
-      yield next;
+      return next;
     }
   });
 })
