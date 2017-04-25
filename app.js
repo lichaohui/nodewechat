@@ -115,6 +115,7 @@ router.get('/movie',function(ctx){
     //向下一步返回access_token
     return data.access_token;
   }).then(function (access_token){
+    console.log(access_token);
     return function* (next){
       console.log(access_token);
       //通过ticket对象的getTicket方法传入access_token参数获取ticket
