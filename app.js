@@ -110,24 +110,28 @@ function sign(ticket,url){
 }
 router.get('/movie',function(ctx){
   let ticketer=require('./wechat/ticket');
-  
+  //获取accesstoken
   ticketer.getAccessToken().then(function(data){
     data=JSON.parse(data);
-    console.log(data.access_token);
+    //向下一步返回access_token
+    return data.access_token;
+  }).then(function(access_token){
+    //通过ticket对象的getTicket方法传入access_token参数获取ticket
+    let ticket=ticketer.getTicket(access_token);
+    console.log(ticket);
+    //通过sign方法传入ticket和this.href参数获取签名
+    let signobj=sign(ticket,this.href);
+    //渲染模板并传入signobj为模板变量
+    ctx.body=ejs.render(movie,signobj);
   });
-  //通过ticket对象的getTicket方法传入access_token参数获取ticket
-  let ticket=ticketer.getTicket(access_token);
-  //通过sign方法传入ticket和this.href参数获取签名
-  let signobj=sign(ticket,this.href);
-  //渲染模板并传入signobj为模板变量
-  ctx.body=ejs.render(movie,signobj);
 })
+
+//使用acctoken中检验验证access_token
+app.use(acctoken(config.wechat));
 
 //在中间件里使用路由规则
 app.use(router.routes());
 
-//使用acctoken中检验验证access_token
-app.use(acctoken(config.wechat));
 //使用reqverify中间件验证请求
 app.use(reqverify(config.wechat,reply.reply));
 
