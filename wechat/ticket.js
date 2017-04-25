@@ -20,6 +20,11 @@ class ticket{
     this.setTicket=option.setTicket;
   };
   
+  //获取access_token的方法
+  getAccess(){
+    
+  }
+  
   //判断ticket是否有效的方法
   isValidTicket(data){
     //先判断参数中的ticket和expires_in是否存在
