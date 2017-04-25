@@ -117,12 +117,13 @@ router.get('/movie',function(ctx){
     return data.access_token;
   }).then(function(access_token){
     //通过ticket对象的getTicket方法传入access_token参数获取ticket
-    let ticket=ticketer.fetchTicket(access_token);
-    console.log(ticket);
-    //通过sign方法传入ticket和this.href参数获取签名
-    let signobj=sign(ticket,ctx.href);
-    //渲染模板并传入signobj为模板变量
-    ctx.body=ejs.render(movie,signobj);
+    ticketer.fetchTicket(access_token).then(function(data){
+      console.log(ticket);
+      //通过sign方法传入ticket和this.href参数获取签名
+      let signobj=sign(ticket,ctx.href);
+      //渲染模板并传入signobj为模板变量
+      ctx.body=ejs.render(movie,signobj);
+    });
   });
 })
 
