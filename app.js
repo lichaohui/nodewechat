@@ -111,9 +111,9 @@ function sign(ticket,url){
 router.get('/movie',function(ctx){
   let ticketer=require('./wechat/ticket');
   
-  //实例化ticket对象
-  let acctoken=ticketer.getAccessToken();
-  console.log(acctoken);
+  ticketer.getAccessToken().then(function(data){
+    console.log(data);
+  });
   //通过ticket对象的getTicket方法传入access_token参数获取ticket
   let ticket=ticketer.getTicket(access_token);
   //通过sign方法传入ticket和this.href参数获取签名
