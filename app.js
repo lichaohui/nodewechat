@@ -52,10 +52,12 @@ let movie=heredoc(function(){/*
     <body>
       <button>点击标题开始录音翻译</button>
       <h2 id='title'></h2>
+      <time class='time'></time>
       <div id='poster'></div>
       <script src='/bower_components/zepto/zepto.js'></script>
       <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
       <script>
+      //微信接口的配置选项
       wx.config({
         // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         debug: true,
@@ -74,6 +76,30 @@ let movie=heredoc(function(){/*
           'onVoiceRecordEnd',
           'translateVoice'
         ] 
+      });
+      
+      //基础接口检查是否支持指定JS接口
+      wx.checkJsApi({
+        // 需要检测的JS接口列表，所有JS接口列表见附录2,
+        jsApiList: [
+          'startRecord',
+          'stopRecord',
+          'onVoiceRecordEnd',
+          'translateVoice'
+        ], 
+        success: function(res) {
+          /* 
+           * 以键值对的形式返回，
+           * 可用的api值true，
+           * 不可用为false
+           * 如：
+           * {
+           * "checkResult":{"chooseImage":true},
+           * "errMsg":"checkJsApi:ok"
+           * }
+           */
+          console.log(res);
+        }
       });
       </script>
     </body>
