@@ -105,7 +105,7 @@ class ticket{
            * 就是已完成的状态
            */
           console.log('成功第一步');
-          resolve(data);
+          return resolve(data);
         }else{
           /*
            * 如果token已经过期则还是更新token
