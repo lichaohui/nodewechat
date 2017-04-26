@@ -133,6 +133,8 @@ router.get('/movie',function (ctx){
 router.get('/test',function(ctx){
   return function *(next){
     console.log('hello world');
+    ctx.body='hello lucy';
+    yield next;
   }
 });
 
