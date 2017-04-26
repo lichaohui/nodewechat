@@ -109,6 +109,7 @@ function sign(ticket,url){
 }
 router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
+  ctx.body='test';
   ticketer.fetchTicket().then(function(data){
     let ticket=data.ticket;
     return ctx.body='hello lucy';
