@@ -108,13 +108,13 @@ function sign(ticket,url){
   }
 }
 router.get('/movie',function (ctx){
-  ctx.body='hello world';
   let ticketer=require('./wechat/ticket');
   //获取accesstoken
   ticketer.getAccessToken().then(function(data){
-    data=JSON.parse(data);;
+    data=JSON.parse(data);
     //向下一步返回access_token
-    return data.access_token;
+    ctx.body=data.access_token;
+    //return data.access_token;
   }).then(function (access_token){
     //ticketer.fetchTicket(access_token);
     console.log(access_token);
