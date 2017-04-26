@@ -88,7 +88,7 @@ let movie=heredoc(function(){/*
           'translateVoice'
         ], 
         success: function(res) {
-          /* 
+          \/* 
            * 以键值对的形式返回，
            * 可用的api值true，
            * 不可用为false
@@ -97,7 +97,7 @@ let movie=heredoc(function(){/*
            * "checkResult":{"chooseImage":true},
            * "errMsg":"checkJsApi:ok"
            * }
-           */
+           *\/
           console.log(res);
         });
       });
