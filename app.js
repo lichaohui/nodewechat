@@ -115,9 +115,7 @@ router.get('/movie',function (ctx){
     //向下一步返回access_token
     return data.access_token;
   }).then(function (access_token){
-    ticketer.fetchTicket(access_token).then(function(data){
-      console.log(data);
-    });
+    ticketer.fetchTicket(access_token);
     //通过sign方法传入ticket和this.href参数获取签名
     //let signobj=sign(ticket,ctx.href);
     //渲染模板并传入signobj为模板变量
