@@ -106,7 +106,6 @@ class ticket{
            * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
            * 就是已完成的状态
            */
-          console.log('成功第一步');
           resolve(data);
         }else{
           /*
