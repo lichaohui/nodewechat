@@ -113,6 +113,7 @@ class ticket{
           return that.updateTicket();
         }
       }).then(function(data){
+        console.log(data);
         //最后调用then方法保存ticket到本地
         console.log('成功的第二部');
         that.setTicket(data);
