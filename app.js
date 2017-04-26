@@ -116,8 +116,7 @@ router.get('/movie',function (ctx){
   return ticketer.fetchTicket().then(function(data){
     let ticket=data.ticket;
     //通过sign方法传入ticket和ctx.request.url参数获取签名
-    console.log(ctx);
-    let signobj=sign(ticket,ctx.request.url);
+    let signobj=sign(ticket,'http://180.76.148.172'+ctx.request.url);
     console.log(signobj);
     //渲染模板并传入signobj为模板变量
     ctx.body=ejs.render(movie,signobj);
