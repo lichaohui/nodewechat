@@ -112,6 +112,7 @@ router.get('/movie',function (ctx){
   ticketer.fetchTicket().then(function(data){
     data=JSON.parse(data);
     let ticket=data.ticket;
+    console.log(ticket);
     //通过sign方法传入ticket和this.href参数获取签名
     let signobj=sign(ticket,ctx.href);
     //渲染模板并传入signobj为模板变量
@@ -123,7 +124,7 @@ router.get('/movie',function (ctx){
 app.use(acctoken(config.wechat));
 
 //在中间件里使用路由规则
-app.use(router.routes()).use(router.allowedMethods());;
+app.use(router.routes()).use(router.allowedMethods());
 
 //使用reqverify中间件验证请求
 app.use(reqverify(config.wechat,reply.reply));
