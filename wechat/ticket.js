@@ -78,7 +78,7 @@ class ticket{
   }
   
   //获取ticket的方法
-  fetchTicket(access_token){
+  fetchTicket(){
     let that=this;
     return new promise(function(resolve,reject){
       /*
@@ -118,10 +118,6 @@ class ticket{
         that.setTicket(data);
       })
     })
-    /*return function* (next){
-      
-      yield next;
-    }*/
   }
 }
 
