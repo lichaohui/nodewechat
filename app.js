@@ -98,7 +98,7 @@ function sign(ticket,url){
   let str=arr.sort().join('&');
   //crypto模块创建sha1加密
   let shasum=crypto.createHash('sha1');
-  shasum.update();
+  //shasum.update();
   let signture=shasum.digest('hex');
   //返回票据对象
   return {
@@ -112,8 +112,6 @@ router.get('/movie',function (ctx){
   ticketer.fetchTicket().then(function(data){
     let ticket=data.ticket;
     //通过sign方法传入ticket和ctx.request.url参数获取签名
-    console.log(ctx.request.url);
-    console.log('到这里了');
     let signobj=sign(ticket,ctx.request.url);
     //渲染模板并传入signobj为模板变量
     ctx.body=ejs.render(movie,signobj);
