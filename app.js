@@ -116,7 +116,7 @@ router.get('/movie',function (ctx){
     return data.access_token;
   }).then(function (access_token){
     console.log(access_token);
-    ticket=ticketer.fetchTicket(access_token);
+    let ticket=ticketer.fetchTicket(access_token);
       console.log(ticket);
     //通过sign方法传入ticket和this.href参数获取签名
       let signobj=sign(ticket,ctx.href);
