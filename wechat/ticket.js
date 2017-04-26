@@ -46,6 +46,7 @@ class ticket{
   //更新ticket的方法
   updateTicket(){
     let that=this;
+    console.log('更新的第一步');
     /*
      * 因为我们希望updateTicket方法返回一个promise对象
      * 所以我们需要封装一下
