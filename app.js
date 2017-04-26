@@ -47,7 +47,7 @@ let movie=heredoc(function(){/*
     <head>
       <title>movie</title>
       <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimun-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimun-scale=1.0">
     </head>
     <body>
       <button>点击标题开始录音翻译</button>
@@ -109,6 +109,10 @@ function sign(ticket,url){
 }
 router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
+  /*
+   * 这里不要忘记return啊，
+   * 否则模板渲染就不会成功
+   */
   return ticketer.fetchTicket().then(function(data){
     let ticket=data.ticket;
     //通过sign方法传入ticket和ctx.request.url参数获取签名
