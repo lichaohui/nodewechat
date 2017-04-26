@@ -70,7 +70,10 @@ class ticket{
            * 将过期时间设置为当前时间加上服务器返回的expires_in（毫秒，然后*1000）
            */
           data.expires_in=new Date().getTime()+(data.expires_in-20)*1000;
-          //然后将promise对象的状态设置为已完成
+          //将data传给下一步
+          return data;
+        }).then(function(data){
+          that.setTicket(data);
           resolve(data);
         })
       })
@@ -112,11 +115,6 @@ class ticket{
            */
           return that.updateTicket();
         }
-      }).then(function(data){
-        console.log(data);
-        //最后调用then方法保存ticket到本地
-        console.log('成功的第二部');
-        return that.setTicket(data);
       })
     })
   }
