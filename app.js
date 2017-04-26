@@ -113,6 +113,7 @@ router.get('/movie',function (ctx){
     let ticket=data.ticket;
     //通过sign方法传入ticket和this.href参数获取签名
     console.log(ctx.href);
+    console.log('到这里了');
     let signobj=sign(ticket,ctx.href);
     //渲染模板并传入signobj为模板变量
     ctx.body=ejs.render(movie,signobj);
