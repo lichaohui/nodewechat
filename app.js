@@ -110,13 +110,14 @@ function sign(ticket,url){
 router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
   ticketer.fetchTicket().then(function(data){
-    data=JSON.parse(data);
+    console.log(data);
+   /* data=JSON.parse(data);
     let ticket=data.ticket;
     console.log(ticket);
     //通过sign方法传入ticket和this.href参数获取签名
     let signobj=sign(ticket,ctx.href);
     //渲染模板并传入signobj为模板变量
-    ctx.body=ejs.render(movie,signobj);
+    ctx.body=ejs.render(movie,signobj);*/
   })
 })
 
