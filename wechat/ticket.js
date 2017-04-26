@@ -113,6 +113,7 @@ class ticket{
           /*
            * 如果token已经过期则还是更新token
            */
+          console.log('又出现异常了');
           return that.updateTicket();
         }
       }).then(function(data){
