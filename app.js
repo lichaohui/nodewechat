@@ -113,12 +113,13 @@ router.get('/movie',function (ctx){
   ticketer.fetchTicket().then(function(data){
     let ticket=data.ticket;
     //通过sign方法传入ticket和ctx.request.url参数获取签名
-    signobj=sign(ticket,ctx.request.url);
+    return sign(ticket,ctx.request.url);
     //渲染模板并传入signobj为模板变量
     //ctx.body=ejs.render(movie,signobj);
+  }).then(function(data){
+    console.log(data);
+    ctx.body=ejs.render(movie,data);
   })
-  console.log(signobj);
-  ctx.body=ejs.render(movie,signobj);
 })
 
 //使用acctoken中检验验证access_token
