@@ -93,7 +93,7 @@ function sign(ticket,url){
   let [nonce,timestamp]=[Math.random().toString(36).substr(2,15),parseInt(new Date().getTime()/1000,10)+''];
   
   //将ticket,url,nonce和timestamp四个参数放入到一个数组中
-  let arr=[ticket,url,nonce,timestamp];
+  let arr=[nonce,ticket,timestamp,url];
   //对arr数组进行排序然后拼接成字符串
   let str=arr.sort().join('&');
   //crypto模块创建sha1加密
