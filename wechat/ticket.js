@@ -76,7 +76,7 @@ class ticket{
   
   //获取ticket的方法
   fetchTicket(access_token){
-    let getTicket=this.getTicket();
+    let getTic=this.getTicket;
     return new promise(function(resolve,reject){
       /*
        * getTicket()方法返回的是一个promise对象
@@ -85,7 +85,7 @@ class ticket{
        * then方法中包含一个回调函数
        * 回调函数的data参数是上一步中的返回值
        */
-      getTicket()
+      getTic()
       .then(function(data){
         try{
           //尝试将data进行JSON.parst
