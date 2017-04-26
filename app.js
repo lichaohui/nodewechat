@@ -114,7 +114,7 @@ router.get('/movie',function (ctx){
     //通过sign方法传入ticket和ctx.request.url参数获取签名
     let signobj=sign(ticket,ctx.request.url);
     //渲染模板并传入signobj为模板变量
-    ctx.body=ejs.render(movie,signobj);
+    ctx.response.body=ejs.render(movie,signobj);
   })
 })
 
