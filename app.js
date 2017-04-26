@@ -130,7 +130,7 @@ router.get('/movie',function (ctx){
   });
 })
 
-router.get('/test', function *(next) {
+route.get('/test', function *(next) {
   console.log('hello');
 });
 
