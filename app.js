@@ -110,8 +110,8 @@ function sign(ticket,url){
 router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
   ticketer.fetchTicket().then(function(data){
-    //console.log(data);
-    data=JSON.parse(data);
+    console.log(typeof(data));
+    //data=JSON.parse(data);
     let ticket=data.ticket;
     console.log(ticket);
     //通过sign方法传入ticket和this.href参数获取签名
