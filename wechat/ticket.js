@@ -46,16 +46,13 @@ class ticket{
   //更新ticket的方法
   updateTicket(){
     let that=this;
-    console.log('更新的第一步');
     /*
      * 因为我们希望updateTicket方法返回一个promise对象
      * 所以我们需要封装一下
      * 在这里返回一个promise对象
      */
     return new promise(function(resolve,reject){
-      console.log('更新的第二步');
       that.getAccessToken().then(function(data){
-        console.log('更新的第三步');
         data=JSON.parse(data);
         //ticket的请求地址
         let url=`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${data.access_token}&type=jsapi`;
@@ -96,10 +93,8 @@ class ticket{
         try{
           //尝试将data进行JSON.parst
           data=JSON.parse(data);
-          console.log('成功了');
         }catch(e){
           //如果有异常则使用updateTicket()方法更新accesstoken
-          console.log('出现异常了');
           that.updateTicket();
         }
         //如果拿到了token则验证是否是有效的
@@ -113,14 +108,10 @@ class ticket{
           /*
            * 如果token已经过期则还是更新token
            */
-          console.log('又出现异常了');
           return that.updateTicket();
         }
       }).then(function(data){
-        console.log(data);
         //最后调用then方法保存ticket到本地
-        that.ticket=data.ticket;
-        that.expires_in=data.expires_in;
         that.setTicket(data);
       })
     })
