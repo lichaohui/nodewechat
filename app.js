@@ -50,7 +50,7 @@ let movie=heredoc(function(){/*
       <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=false" name="viewport">
     </head>
     <body>
-      <button>点击标题开始录音翻译</button>
+      <button id='recording'>开始录音</button>
       <h2 id='title'></h2>
       <time class='time'></time>
       <div id='poster'></div>
@@ -93,10 +93,10 @@ let movie=heredoc(function(){/*
         wx.checkJsApi({
           // 需要检测的JS接口列表，所有JS接口列表见附录2,
           jsApiList: [
-            
-         
+            'startRecord',
+            'stopRecord',
             'onVoiceRecordEnd',
-            
+            'translateVoice'
           ], 
           success: function(res) {
             //---------- 
@@ -112,6 +112,54 @@ let movie=heredoc(function(){/*
             console.log(res);
           }
         });
+        
+        //敲击录音按钮开始或结束录音
+        let isRecording=false;
+        $('#recording').tap(function(){
+          if(isRecording){
+            //----
+            //如果isRecording标识符为true
+            //则说明正在录音
+            //那么久停止录音
+            //----
+            wx.stopRecord({
+              success: function (res) {
+                //----
+                //录音成功结束后悔返回一个localId
+                //这是生成的本地音频的一个路径
+                //----
+                let localId = res.localId;
+                //将按钮的文字设置为‘开始录音’
+                $(this).text('开始录音');
+                //将标识符设置为false
+                isRecording=false;
+                //使用translateVoice接口翻译音频
+                wx.translateVoice({
+                  //需要识别的音频的本地Id，由录音相关接口获得
+                  localId: localId, 
+                  //默认为1，显示进度提示
+                  isShowProgressTips: 1, 
+                  success: function (res) {
+                    //语音识别的结果
+                    alert(res.translateResult); 
+                  }
+                });
+              }
+            });
+          }else{
+            wx.startRecord({
+              cancel:function(){
+                alert('您点击了取消！');
+              },
+              success:function(){
+                //将按钮的文字设置为‘开始录音’
+                $(this).text('录音中...点击结束');
+                //将标识符设置为true
+                isRecording=true;
+              }
+            });
+          }
+        })
       });
       </script>
     </body>
