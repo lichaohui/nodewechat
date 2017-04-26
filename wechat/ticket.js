@@ -103,7 +103,7 @@ class ticket{
           that.updateTicket();
         }
         //如果拿到了token则验证是否是有效的
-        if(that.isValidAccessToken(data)){
+        if(that.isValidTicket(data)){
           /*
            * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
            * 就是已完成的状态
