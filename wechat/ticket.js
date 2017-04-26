@@ -54,29 +54,11 @@ class ticket{
      */
     return new promise(function(resolve,reject){
       console.log('更新的第二步');
-      that.getAccessToken(function(data){
+      that.getAccessToken().then(function(data){
+        console.log('更新的第三步');
         console.log(data);
-        data=JSON.parse(data);
-        //ticket的请求地址
-        let url=`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${data.access_token}&type=jsapi`;
-        /*
-         * 通过nodejs的request模块发送一个get请求到微信提供的url上
-         * 可以获取到accesstoken
-         * request请求参数是一个对象
-         * url是请求地址，json:true是设置返回格式为json
-         */
-        request({url:url,json:true}).then(function(response){
-          //响应的数据在response.body中
-          let data=response.body;
-          /*
-           * 重新设置ticket的过期时间
-           * 将过期时间设置为当前时间加上服务器返回的expires_in（毫秒，然后*1000）
-           */
-          data.expires_in=new Date().getTime()+(data.expires_in-20)*1000;
-          //然后将promise对象的状态设置为已完成
-          resolve(data);
-        })
       })
+      
     }) 
   }
   
