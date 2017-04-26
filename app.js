@@ -98,7 +98,7 @@ function sign(ticket,url){
   let str=arr.sort().join('&');
   //crypto模块创建sha1加密
   let shasum=crypto.createHash('sha1');
-  shasum.update();
+  shasum.update(str);
   let signature=shasum.digest('hex');
   //返回票据对象
   return {
