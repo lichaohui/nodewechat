@@ -131,7 +131,7 @@ function sign(ticket,url){
 })*/
 
 router.get('/test',function (ctx){
-  ctc.body='hehe';
+  ctx.body='this is a test';
 });
 
 //使用acctoken中检验验证access_token
