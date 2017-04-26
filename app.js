@@ -111,10 +111,11 @@ router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
   //获取accesstoken
   ticketer.getAccessToken().then(function(data){
+    
+    data=JSON.parse(data);
     console.log('开始打印');
     console.log(data);
     console.log('结束打印');
-    data=JSON.parse(data);
     //向下一步返回access_token
     return data.access_token;
   }).then(function (access_token){
