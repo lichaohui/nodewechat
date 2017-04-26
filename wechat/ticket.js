@@ -115,7 +115,7 @@ class ticket{
       }).then(function(data){
         //最后调用then方法保存ticket到本地
         console.log('成功的第二部');
-        return that.setTicket(data);
+        that.setTicket(data);
       })
     })
   }
