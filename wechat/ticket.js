@@ -95,6 +95,7 @@ class ticket{
           data=JSON.parse(data);
         }catch(e){
           //如果有异常则使用updateTicket()方法更新accesstoken
+          console.log('出现异常了');
           that.updateTicket();
         }
         //如果拿到了token则验证是否是有效的
@@ -103,6 +104,7 @@ class ticket{
            * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
            * 就是已完成的状态
            */
+          console.log('成功第一步');
           resolve(data);
         }else{
           /*
@@ -112,7 +114,8 @@ class ticket{
         }
       }).then(function(data){
         //最后调用then方法保存ticket到本地
-        that.setTicket(data);
+        console.log('成功的第二部');
+        return that.setTicket(data);
       })
     })
   }
