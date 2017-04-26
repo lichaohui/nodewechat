@@ -107,7 +107,7 @@ function sign(ticket,url){
     signature:signature
   }
 }
-router.get('/movie',function* (ctx,next){
+router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
   //获取accesstoken
   ticketer.getAccessToken().then(function(data){
@@ -125,11 +125,16 @@ router.get('/movie',function* (ctx,next){
       let signobj=sign(ticket,ctx.href);
       //渲染模板并传入signobj为模板变量
       ctx.body=ejs.render(movie,signobj);
-      return next;
+      yield next;
     }
-    yield next;
   });
 })
+
+router.get('/test',function(ctx){
+  return function *(next){
+    console.log('hello world');
+  }
+});
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
