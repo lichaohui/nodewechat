@@ -99,7 +99,7 @@ function sign(ticket,url){
   //crypto模块创建sha1加密
   let shasum=crypto.createHash('sha1');
   //shasum.update();
-  let signture=shasum.digest('hex');
+  let signature=shasum.digest('hex');
   //返回票据对象
   return {
     nonce:nonce,
