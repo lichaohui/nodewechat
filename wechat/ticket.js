@@ -53,6 +53,7 @@ class ticket{
      * 在这里返回一个promise对象
      */
     return new promise(function(resolve,reject){
+      console.log('更新的第二步');
       that.getAccessToken(function(data){
         console.log(data);
         data=JSON.parse(data);
