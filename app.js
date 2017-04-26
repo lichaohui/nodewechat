@@ -62,11 +62,11 @@ let movie=heredoc(function(){/*
         // 必填，公众号的唯一标识
         appId: 'wx2c474296930e81b4', 
         // 必填，生成签名的时间戳
-        timestamp: <%- timestamp %>, 
+        timestamp: <%- signobj.timestamp %>, 
         // 必填，生成签名的随机串
-        nonceStr: '<%- nonce %>',
+        nonceStr: '<%- signobj.nonce %>',
         // 必填，签名，见附录1
-        signature: '<%- signature %>',
+        signature: '<%- signobj.signature %>',
         // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         jsApiList: [
           'startRecord',
