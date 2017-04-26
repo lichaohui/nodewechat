@@ -93,8 +93,10 @@ class ticket{
         try{
           //尝试将data进行JSON.parst
           data=JSON.parse(data);
+          console.log('成功了');
         }catch(e){
           //如果有异常则使用updateTicket()方法更新accesstoken
+          console.log('出现异常了');
           return that.updateTicket();
         }
         //如果拿到了token则验证是否是有效的
