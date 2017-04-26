@@ -117,14 +117,15 @@ router.get('/movie',function (ctx){
     console.log(data);
     console.log('结束打印');
     //向下一步返回access_token
-    //return data.access_token;
+    return data.access_token;
   }).then(function (access_token){
-    console.log(access_token);
-    let ticket=ticketer.fetchTicket(access_token);
+    ticketer.fetchTicket(access_token).then(function(data){
+      console.log(data);
+    });
     //通过sign方法传入ticket和this.href参数获取签名
-    let signobj=sign(ticket,ctx.href);
+    //let signobj=sign(ticket,ctx.href);
     //渲染模板并传入signobj为模板变量
-    ctx.body=ejs.render(movie,signobj);
+    //ctx.body=ejs.render(movie,signobj);
   });
 })
 
