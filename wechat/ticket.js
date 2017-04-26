@@ -76,7 +76,7 @@ class ticket{
   
   //获取ticket的方法
   fetchTicket(access_token){
-    return function* (next){
+    return new promise(function(resolve,reject){
       /*
        * getTicket()方法返回的是一个promise对象
        * 所以可以调用该对象的then方法进行下一步操作
@@ -112,8 +112,11 @@ class ticket{
         acc.expires_in=data.expires_in;
         acc.setTicket(data);
       })
+    })
+    /*return function* (next){
+      
       yield next;
-    }
+    }*/
   }
 }
 
