@@ -107,7 +107,7 @@ function sign(ticket,url){
     signature:signature
   }
 }
-router.get('/movie',function (ctx){
+/*router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
   //获取accesstoken
   ticketer.getAccessToken().then(function(data){
@@ -128,7 +128,7 @@ router.get('/movie',function (ctx){
       yield next;
     }
   });
-})
+})*/
 
 router.get('/test',function* (next){
   console.log('hello world');
