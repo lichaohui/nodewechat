@@ -47,7 +47,7 @@ let movie=heredoc(function(){/*
     <head>
       <title>movie</title>
       <meta charset='utf-8'>
-      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+      <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=false" name="viewport">
     </head>
     <body>
       <button>点击标题开始录音翻译</button>
