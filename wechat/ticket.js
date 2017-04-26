@@ -105,7 +105,7 @@ class ticket{
            * 就是已完成的状态
            */
           console.log('成功第一步');
-          return resolve(data);
+          resolve(data);
         }else{
           /*
            * 如果token已经过期则还是更新token
@@ -116,7 +116,7 @@ class ticket{
         console.log(data);
         //最后调用then方法保存ticket到本地
         console.log('成功的第二部');
-        that.setTicket(data);
+        return that.setTicket(data);
       })
     })
   }

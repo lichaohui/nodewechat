@@ -110,7 +110,7 @@ function sign(ticket,url){
 router.get('/movie',function (ctx){
   let ticketer=require('./wechat/ticket');
   ticketer.fetchTicket().then(function(data){
-    console.log(data);
+    //console.log(data);
    /* data=JSON.parse(data);
     let ticket=data.ticket;
     console.log(ticket);
