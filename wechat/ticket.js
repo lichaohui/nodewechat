@@ -111,6 +111,7 @@ class ticket{
           return that.updateTicket();
         }
       }).then(function(data){
+        console.log(data);
         //最后调用then方法保存ticket到本地
         that.ticket=data.ticket;
         that.expires_in=data.expires_in;
