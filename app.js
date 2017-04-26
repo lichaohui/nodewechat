@@ -117,7 +117,7 @@ router.get('/movie',function (ctx){
     //渲染模板并传入signobj为模板变量
     //ctx.body=ejs.render(movie,signobj);
   })
-  ctx.body=ejs.render(movie,signobj);
+  ctx.body=ejs.render(movie,{'signobj':signobj});
 })
 
 //使用acctoken中检验验证access_token
