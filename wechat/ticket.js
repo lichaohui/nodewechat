@@ -103,7 +103,7 @@ class ticket{
            * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
            * 就是已完成的状态
            */
-          return promise.resolve(data);
+          resolve(data);
         }else{
           /*
            * 如果token已经过期则还是更新token
