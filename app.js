@@ -130,12 +130,9 @@ router.get('/movie',function (ctx){
   });
 })
 
-router.get('/test',function(ctx){
-  return function *(next){
-    console.log('hello world');
-    ctx.body='hello lucy';
-    yield next;
-  }
+router.get('/test',function* (next){
+  console.log('hello world');
+  yield next;
 });
 
 //使用acctoken中检验验证access_token
