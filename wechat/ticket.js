@@ -76,7 +76,7 @@ class ticket{
   
   //获取ticket的方法
   fetchTicket(access_token){
-    let getTic=this.getTicket;
+    let that=this;
     return new promise(function(resolve,reject){
       /*
        * getTicket()方法返回的是一个promise对象
@@ -85,17 +85,17 @@ class ticket{
        * then方法中包含一个回调函数
        * 回调函数的data参数是上一步中的返回值
        */
-      getTic()
+      that.getTicket()
       .then(function(data){
         try{
           //尝试将data进行JSON.parst
           data=JSON.parse(data);
         }catch(e){
           //如果有异常则使用updateTicket()方法更新accesstoken
-          return acc.updateTicket();
+          return that.updateTicket();
         }
         //如果拿到了token则验证是否是有效的
-        if(acc.isValidAccessToken(data)){
+        if(that.isValidAccessToken(data)){
           /*
            * 如果token有效则通过promise对象的resolve方法将promise对象的状态设置为resolve
            * 就是已完成的状态
@@ -105,13 +105,13 @@ class ticket{
           /*
            * 如果token已经过期则还是更新token
            */
-          return acc.updateTicket();
+          return that.updateTicket();
         }
       }).then(function(data){
         //最后调用then方法保存ticket到本地
-        acc.ticket=data.ticket;
-        acc.expires_in=data.expires_in;
-        acc.setTicket(data);
+        that.ticket=data.ticket;
+        that.expires_in=data.expires_in;
+        that.setTicket(data);
       })
     })
     /*return function* (next){
