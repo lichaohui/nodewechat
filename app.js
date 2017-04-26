@@ -99,7 +99,7 @@ let movie=heredoc(function(){/*
           // }
           //----------  
           console.log(res);
-        });
+        }
       });
       </script>
     </body>
