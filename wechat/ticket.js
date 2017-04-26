@@ -53,6 +53,7 @@ class ticket{
      */
     return new promise(function(resolve,reject){
       that.getAccessToken(function(data){
+        console.log(data);
         data=JSON.parse(data);
         //ticket的请求地址
         let url=`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${data.access_token}&type=jsapi`;
