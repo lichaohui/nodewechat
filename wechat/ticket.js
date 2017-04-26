@@ -45,31 +45,34 @@ class ticket{
 
   //更新ticket的方法
   updateTicket(){
-    //ticket的请求地址
-    let url=`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${access_token}&type=jsapi`;
-    
+    let that=this;
     /*
      * 因为我们希望updateTicket方法返回一个promise对象
      * 所以我们需要封装一下
      * 在这里返回一个promise对象
      */
     return new promise(function(resolve,reject){
-      /*
-       * 通过nodejs的request模块发送一个get请求到微信提供的url上
-       * 可以获取到accesstoken
-       * request请求参数是一个对象
-       * url是请求地址，json:true是设置返回格式为json
-       */
-      request({url:url,json:true}).then(function(response){
-        //响应的数据在response.body中
-        let data=response.body;
+      that.getAccessToken(function(data){
+        data=JSON.parse(data);
+        //ticket的请求地址
+        let url=`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${data.access_token}&type=jsapi`;
         /*
-         * 重新设置ticket的过期时间
-         * 将过期时间设置为当前时间加上服务器返回的expires_in（毫秒，然后*1000）
+         * 通过nodejs的request模块发送一个get请求到微信提供的url上
+         * 可以获取到accesstoken
+         * request请求参数是一个对象
+         * url是请求地址，json:true是设置返回格式为json
          */
-        data.expires_in=new Date().getTime()+(data.expires_in-20)*1000;
-        //然后将promise对象的状态设置为已完成
-        resolve(data);
+        request({url:url,json:true}).then(function(response){
+          //响应的数据在response.body中
+          let data=response.body;
+          /*
+           * 重新设置ticket的过期时间
+           * 将过期时间设置为当前时间加上服务器返回的expires_in（毫秒，然后*1000）
+           */
+          data.expires_in=new Date().getTime()+(data.expires_in-20)*1000;
+          //然后将promise对象的状态设置为已完成
+          resolve(data);
+        })
       })
     }) 
   }
