@@ -117,7 +117,7 @@ router.get('/movie',function (ctx){
     console.log(data);
     console.log('结束打印');
     //向下一步返回access_token
-    return data.access_token;
+    //return data.access_token;
   }).then(function (access_token){
     console.log(access_token);
     let ticket=ticketer.fetchTicket(access_token);
