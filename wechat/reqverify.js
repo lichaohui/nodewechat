@@ -48,7 +48,7 @@ module.exports=function(option,handler){
         this.body=echostr+'';
       }else{
         //否则请求就不合法，返回无效请求
-        this.body='非法请求!';
+        this.body='不合法的请求!';
       }
     }else if(this.method==='POST'){
       /*
