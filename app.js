@@ -116,6 +116,7 @@ let movie=heredoc(function(){/*
         //敲击录音按钮开始或结束录音
         let isRecording=false;
         $('#recording').tap(function(){
+          alert('hello');
           if(isRecording){
             //----
             //如果isRecording标识符为true
