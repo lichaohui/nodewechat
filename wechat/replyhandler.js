@@ -253,7 +253,6 @@ exports.reply=function* (next){
             "city":'济南',
             "appid":'wx2c474296930e81b4',
           });
-          console.log(data);
           this.msgType='text';
           this.body=JSON.stringify(data);
           break;

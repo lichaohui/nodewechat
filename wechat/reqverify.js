@@ -25,7 +25,7 @@ module.exports=function(option,handler){
     let token=option.token;
     /*
      * 获取请求参数中的signature参数（签名）用来进行
-     * 该参数也是用来紧密的一个元件
+     * 该参数也是用来加密的一个元件
      * 
      * 拿到请求参数中的nonce参数
      * 获取请求参数中的timestamp参数

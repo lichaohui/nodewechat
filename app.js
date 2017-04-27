@@ -54,7 +54,7 @@ let movie=heredoc(function(){/*
       <h2 id='title'></h2>
       <time class='time'></time>
       <div id='poster'></div>
-      <script src='/bower_components/zepto/zepto.js'></script>
+      <script src='http://www.zeptojs.cn/zepto.js'></script>
       <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
       <script>
       //微信接口的配置选项
@@ -213,14 +213,14 @@ router.get('/movie',function (ctx){
   })
 })
 
+//在中间件里使用路由规则
+app.use(router.routes()).use(router.allowedMethods());
+
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
 
 //使用reqverify中间件验证请求
 app.use(reqverify(config.wechat,reply.reply));
-
-//在中间件里使用路由规则
-app.use(router.routes()).use(router.allowedMethods());
 
 //监听80端口
 app.listen(80);
