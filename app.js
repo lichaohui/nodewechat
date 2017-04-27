@@ -216,11 +216,11 @@ router.get('/movie',function (ctx){
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
 
-//在中间件里使用路由规则
-app.use(router.routes()).use(router.allowedMethods());
-
 //使用reqverify中间件验证请求
 app.use(reqverify(config.wechat,reply.reply));
+
+//在中间件里使用路由规则
+app.use(router.routes()).use(router.allowedMethods());
 
 //监听80端口
 app.listen(80);
