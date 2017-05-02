@@ -71,7 +71,7 @@ let movie=heredoc(function(){/*
       //微信接口的配置选项
       wx.config({
         // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        debug: true,
+        debug: false,
         // 必填，公众号的唯一标识
         appId: 'wx2c474296930e81b4', 
         // 必填，生成签名的时间戳
@@ -127,7 +127,6 @@ let movie=heredoc(function(){/*
         //敲击录音按钮开始或结束录音
         let isRecording=false;
         $('#recording').tap(function(){
-          alert('hello');
           if(isRecording){
             //----
             //如果isRecording标识符为true
@@ -160,7 +159,7 @@ let movie=heredoc(function(){/*
                     //----
                     $.ajax({
                       type:'get',
-                      url:`https://api.douban.com/v2/movie/search?q=${result}`,
+                      url:`https://api.douban.com/v2/movie/search?q=黑客帝国`,
                       dataType:'jsonp',
                       jsonp:'callback',
                       success:function(data){
