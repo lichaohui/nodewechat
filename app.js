@@ -51,7 +51,7 @@ let movie=heredoc(function(){/*
   <!doctype html>
   <html>
     <head>
-      <title>movie</title>
+      <title>语音搜电影</title>
       <meta charset='utf-8'>
       <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=false" name="viewport">
       <link href='/bower_components/weui/dist/style/weui.min.css' rel='stylesheet'>
@@ -59,7 +59,10 @@ let movie=heredoc(function(){/*
     <body>
       <button id='recording' class='weui-btn weui-btn_primary'>开始录音</button>
       <div class='weui-panel weui-panel_access'>
-        <div class='weui-panel__hd'>搜索结果</div>
+        <div class='weui-panel__hd'>
+          <span>搜索结果</span> 
+          <button class='weui-btn weui-btn_mini weui-btn_warn'>清除搜索结果</button>
+        </div>
         <div class='weui-panel_bd' id='result'>
           
         </div>
@@ -163,6 +166,7 @@ let movie=heredoc(function(){/*
                       dataType:'jsonp',
                       jsonp:'callback',
                       success:function(data){
+                        $('#result').empty();
                         let movie;
                         for(subject of data.subjects){
                           movie=`<a href=${subject.alt} class="weui-media-box weui-media-box_appmsg"><div class="weui-media-box__hd"><img class="weui-media-box__thumb" src=${subject.images.medium} alt=""></div><div class="weui-media-box__bd"><h4 class="weui-media-box__title">${subject.title}</h4><p class="weui-media-box__info">年份：${subject.year} | 导演：${subject.directors[0].name}</p></div></a>`;
