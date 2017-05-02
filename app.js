@@ -20,7 +20,7 @@ const[
   ejs,
   heredoc,
   crypto,
-  static,
+  serveStatic,
   reqverify,
   acctoken,
   config,
@@ -45,7 +45,7 @@ const[
 const[app,router]=[new koa(),new route()];
 
 //设置静态文件路径
-app.use(serve(__dirname+'/public'));
+app.use(serveStatic(__dirname+'/public'));
 
 let movie=heredoc(function(){/*
   <!doctype html>
