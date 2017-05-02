@@ -8,6 +8,7 @@
  * 引入ejs
  * 引入heredoc
  * 引入crypto加密模块
+ * 引入static静态文件管理模块
  * 引入reqverify中间件
  * 引入acctoken中间件
  * 引入config项目配置文件
@@ -19,6 +20,7 @@ const[
   ejs,
   heredoc,
   crypto,
+  static,
   reqverify,
   acctoken,
   config,
@@ -29,6 +31,7 @@ const[
   require('ejs'),
   require('heredoc'),
   require('crypto'),
+  require('koa-static'),
   require('./wechat/reqverify'),
   require('./wechat/acctoken'),
   require('./config'),
@@ -40,6 +43,9 @@ const[
  * 实例化route对象
  */
 const[app,router]=[new koa(),new route()];
+
+//设置静态文件路径
+app.use(serve(__dirname+'/public'));
 
 let movie=heredoc(function(){/*
   <!doctype html>
@@ -54,7 +60,7 @@ let movie=heredoc(function(){/*
       <h2 id='title'></h2>
       <time class='time'></time>
       <div id='poster'></div>
-      <script src='./bower_components/zepto/zepto.js'></script>
+      <script src='/bower_components/zepto/zepto.js'></script>
       <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
       <script>
       //微信接口的配置选项
