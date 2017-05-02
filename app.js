@@ -58,9 +58,12 @@ let movie=heredoc(function(){/*
     </head>
     <body>
       <button id='recording' class='weui-btn weui-btn_primary'>开始录音</button>
-      <h2 id='title'></h2>
-      <time class='time'></time>
-      <div id='poster'></div>
+      <div class='weui-panel weui-panel_access'>
+        <div class='weui-panel_hd'>搜索结果</div<
+        <div class='weui-panel_bd' id='result'>
+          
+        </div>
+      </div>
       <script src='/bower_components/zepto/zepto.js'></script>
       <script src='/bower_components/zepto/touch.js'></script>
       <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
@@ -161,7 +164,11 @@ let movie=heredoc(function(){/*
                       dataType:'jsonp',
                       jsonp:'callback',
                       success:function(data){
-                        
+                        let movie;
+                        for(subject of data.subjects){
+                          movie=`<a href=${subject.alt} class="weui-media-box weui-media-box_appmsg"><div class="weui-media-box__hd"><img class="weui-media-box__thumb" src=${subject.images.meduim} alt=""></div><div class="weui-media-box__bd"><h4 class="weui-media-box__title">${subject.title}</h4><p class="weui-media-box__info">${subject.year}</p></div></a>`;
+                          $('#result').append(movie);  
+                        }
                       }
                     })
                   }
