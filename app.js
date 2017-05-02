@@ -138,7 +138,7 @@ let movie=heredoc(function(){/*
                 //----
                 let localId = res.localId;
                 //将按钮的文字设置为‘开始录音’
-                $(this).text('开始录音');
+                $('#recording').text('开始录音');
                 //将标识符设置为false
                 isRecording=false;
                 //使用translateVoice接口翻译音频
@@ -161,7 +161,7 @@ let movie=heredoc(function(){/*
               },
               success:function(){
                 //将按钮的文字设置为‘开始录音’
-                $(this).text('录音中...点击结束');
+                $('#recording').text('录音中...点击结束');
                 //将标识符设置为true
                 isRecording=true;
               }
@@ -223,8 +223,6 @@ router.get('/movie',function (ctx){
 
 //使用acctoken中检验验证access_token
 app.use(acctoken(config.wechat));
-
-//router.all('/',reqverify(config.wechat,reply.reply));
 
 //在中间件里使用路由规则
 app.use(router.routes()).use(router.allowedMethods());
