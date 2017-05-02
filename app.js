@@ -64,7 +64,7 @@ let movie=heredoc(function(){/*
         <div class='weui-panel__hd'>
           <span class='result-title f-ib'>搜索结果</span> 
           <div class='reset f-ib f-tar'>
-            <button class='weui-btn weui-btn_mini weui-btn_warn'>清除搜索结果</button>
+            <button class='weui-btn weui-btn_mini weui-btn_warn' id='reset'>清除搜索结果</button>
           </div>
         </div>
         <div class='weui-panel_bd' id='result'>
@@ -194,7 +194,11 @@ let movie=heredoc(function(){/*
                 isRecording=true;
               }
             });
-          }
+          }        
+        })
+        //清除搜索结果
+        $('#reset').tap(function(){
+          $('#result').empty();
         })
       });
       </script>
