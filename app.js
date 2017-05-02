@@ -165,7 +165,6 @@ let movie=heredoc(function(){/*
                 wx.translateVoice({
                   //需要识别的音频的本地Id，由录音相关接口获得
                   localId: localId, 
-                  console.log('本地id'+localId);
                   //默认为1，显示进度提示
                   isShowProgressTips: 1, 
                   success: function (res) {
