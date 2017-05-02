@@ -138,7 +138,7 @@ let movie=heredoc(function(){/*
         //分享到腾讯微博的内容对象
         //分享到qq空间的内容对象
         //----
-        let [timeline,appmessage,qq,weibo,qzone];
+        let [timeline,appmessage,qq,weibo,qzone]={};
         
         //敲击录音按钮开始或结束录音
         let isRecording=false;
