@@ -175,7 +175,7 @@ let movie=heredoc(function(){/*
                     //----
                     $.ajax({
                       type:'get',
-                      url:`https://api.douban.com/v2/movie/search?q=黑客帝国`,
+                      url:`https://api.douban.com/v2/movie/search?q=${result}`,
                       dataType:'jsonp',
                       jsonp:'callback',
                       success:function(data){
