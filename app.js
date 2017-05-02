@@ -151,12 +151,12 @@ let movie=heredoc(function(){/*
             //----
             wx.stopRecord({
               success: function (res) {
-                console.log('录音的结果是'+res.localId);
                 //----
                 //录音成功结束后悔返回一个localId
                 //这是生成的本地音频的一个路径
                 //----
                 let localId = res.localId;
+                console.log('录音结果'+localId);
                 //将按钮的文字设置为‘开始录音’
                 $('#recording').text('开始录音');
                 //将标识符设置为false
@@ -165,11 +165,13 @@ let movie=heredoc(function(){/*
                 wx.translateVoice({
                   //需要识别的音频的本地Id，由录音相关接口获得
                   localId: localId, 
+                  console.log('本地id'+localId);
                   //默认为1，显示进度提示
                   isShowProgressTips: 1, 
                   success: function (res) {
                     //语音识别的结果
                     let result=res.translateResult;
+                    console.log('语音识别的结果'+result);
                     //----
                     //根据语音识别的结果发送一个跨域的jsonp异步请求
                     //向豆瓣电影api发起搜索请求
