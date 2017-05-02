@@ -54,9 +54,10 @@ let movie=heredoc(function(){/*
       <title>movie</title>
       <meta charset='utf-8'>
       <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=false" name="viewport">
+      <link href='/bower_components/weui/dist/style/weui.min.css' rel='stylesheet'>
     </head>
     <body>
-      <button id='recording'>开始录音</button>
+      <button id='recording' class='weui_btn_primary'>开始录音</button>
       <h2 id='title'></h2>
       <time class='time'></time>
       <div id='poster'></div>
@@ -149,7 +150,20 @@ let movie=heredoc(function(){/*
                   isShowProgressTips: 1, 
                   success: function (res) {
                     //语音识别的结果
-                    alert(res.translateResult); 
+                    let result=res.translateResult;
+                    //----
+                    //根据语音识别的结果发送一个跨域的jsonp异步请求
+                    //向豆瓣电影api发起搜索请求
+                    //----
+                    $.ajax({
+                      type:'get',
+                      url:`https://api.douban.com/v2/movie/search?q=${result}`,
+                      dataType:'jsonp',
+                      jsonp:'callback',
+                      success:function(data){
+                        
+                      }
+                    })
                   }
                 });
               }
