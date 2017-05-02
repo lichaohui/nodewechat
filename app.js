@@ -56,13 +56,14 @@ let movie=heredoc(function(){/*
       <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=false" name="viewport">
       <link href='/bower_components/weui/dist/style/weui.min.css' rel='stylesheet'>
       <link href='/css/function.css' rel='stylesheet'>
+      <link href='/css/movie.css' rel='stylesheet'>
     </head>
     <body>
       <button id='recording' class='weui-btn weui-btn_primary'>开始录音</button>
       <div class='weui-panel weui-panel_access'>
         <div class='weui-panel__hd'>
-          <span class='f-fl'>搜索结果</span> 
-          <button class='weui-btn weui-btn_mini weui-btn_warn f-fr'>清除搜索结果</button>
+          <span class='result-title f-ib'>搜索结果</span> 
+          <button class='reset weui-btn weui-btn_mini weui-btn_warn f-ib f-tar'>清除搜索结果</button>
         </div>
         <div class='weui-panel_bd' id='result'>
           
