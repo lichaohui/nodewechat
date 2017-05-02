@@ -151,6 +151,7 @@ let movie=heredoc(function(){/*
             //----
             wx.stopRecord({
               success: function (res) {
+                console.log(res);
                 //----
                 //录音成功结束后悔返回一个localId
                 //这是生成的本地音频的一个路径
