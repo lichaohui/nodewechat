@@ -131,6 +131,15 @@ let movie=heredoc(function(){/*
           }
         });
         
+        //----
+        //分享到朋友圈的内容对象
+        //分享给朋友的内容对象
+        //分享到qq的内容对象
+        //分享到腾讯微博的内容对象
+        //分享到qq空间的内容对象
+        //----
+        let [timeline,appmessage,qq,weibo,qzone];
+        
         //敲击录音按钮开始或结束录音
         let isRecording=false;
         $('#recording').tap(function(){
@@ -175,6 +184,98 @@ let movie=heredoc(function(){/*
                         for(subject of data.subjects){
                           movie=`<a href=${subject.alt} class="weui-media-box weui-media-box_appmsg"><div class="weui-media-box__hd"><img class="weui-media-box__thumb" src=${subject.images.medium} alt=""></div><div class="weui-media-box__bd"><h4 class="weui-media-box__title">${subject.title}</h4><p class="weui-media-box__info">年份：${subject.year} | 导演：${subject.directors[0].name}</p></div></a>`;
                           $('#result').append(movie);  
+                          //分享到朋友圈的内容设置
+                          timeline={
+                            // 分享标题
+                            title: subject.title,
+                            // 分享链接
+                            link: subject.alt, 
+                            // 分享图标
+                            imgUrl: subject.images.medium, 
+                            success: function () { 
+                              // 用户确认分享后执行的回调函数
+                              alert('分享成功！')
+                            },
+                            cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                            }
+                          }
+                          //分享给朋友的内容设置
+                          appmessage={
+                            // 分享标题
+                            title: subject.title,
+                            // 分享描述
+                            desc: `这是我搜索出来的${subject.title}的结果`, 
+                            // 分享链接
+                            link: subject.alt, 
+                            // 分享图标
+                            imgUrl: subject.images.medium,
+                            // 分享类型,music、video或link，不填默认为link
+                            type: 'link', 
+                            // 如果type是music或video，则要提供数据链接，默认为空
+                            dataUrl: '', 
+                            success: function () { 
+                              // 用户确认分享后执行的回调函数
+                              alert('分享成功');
+                            },
+                            cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                            }
+                          }
+                          //分享到qq的内容设置
+                          qq={
+                            // 分享标题
+                            title: subject.title,
+                            // 分享描述
+                            desc: `这是我搜索出来的${subject.title}的结果`, 
+                            // 分享链接
+                            link: subject.alt, 
+                            // 分享图标
+                            imgUrl: subject.images.medium, 
+                            success: function () { 
+                              // 用户确认分享后执行的回调函数
+                              alert('分享成功');
+                            },
+                            cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                            }
+                          }
+                          //分享到腾讯微博
+                          weibo={
+                            // 分享标题
+                            title: subject.title,
+                            // 分享描述
+                            desc: `这是我搜索出来的${subject.title}的结果`, 
+                            // 分享链接
+                            link: subject.alt, 
+                            // 分享图标
+                            imgUrl: subject.images.medium, 
+                            success: function () { 
+                              // 用户确认分享后执行的回调函数
+                              alert('分享成功');
+                            },
+                            cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                            }
+                          }
+                          //分享到qq空间
+                          qzone={
+                            // 分享标题
+                            title: subject.title,
+                            // 分享描述
+                            desc: `这是我搜索出来的${subject.title}的结果`, 
+                            // 分享链接
+                            link: subject.alt, 
+                            // 分享图标
+                            imgUrl: subject.images.medium, 
+                            success: function () { 
+                              // 用户确认分享后执行的回调函数
+                              alert('分享成功');
+                            },
+                            cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                            }
+                          }
                         }
                       }
                     })
@@ -200,6 +301,17 @@ let movie=heredoc(function(){/*
         $('#reset').tap(function(){
           $('#result').empty();
         })
+        
+        //分享到朋友圈
+        wx.onMenuShareTimeline(timeline);
+        //分享给朋友
+        wx.onMenuShareAppMessage(appmessage);
+        //分享到qq
+        wx.onMenuShareQQ(qq);
+        //分享到腾讯微博
+        wx.onMenuShareWeibo(weibo);
+        //分享到qq空间
+        wx.onMenuShareQZone(qzone);
       });
       </script>
     </body>
