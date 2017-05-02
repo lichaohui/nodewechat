@@ -165,8 +165,8 @@ let movie=heredoc(function(){/*
                       success:function(data){
                         let movie;
                         for(subject of data.subjects){
-                          alert(subject.alt);
                           movie=`<a href=${subject.alt} class="weui-media-box weui-media-box_appmsg"><div class="weui-media-box__hd"><img class="weui-media-box__thumb" src=${subject.images.meduim} alt=""></div><div class="weui-media-box__bd"><h4 class="weui-media-box__title">${subject.title}</h4><p class="weui-media-box__info">${subject.year}</p></div></a>`;
+                          alert(movie);
                           $('#result').append(movie);  
                         }
                       }
