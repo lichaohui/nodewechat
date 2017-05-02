@@ -57,7 +57,7 @@ let movie=heredoc(function(){/*
       <link href='/bower_components/weui/dist/style/weui.min.css' rel='stylesheet'>
     </head>
     <body>
-      <button id='recording' class='weui-btn_primary'>开始录音</button>
+      <button id='recording' class='weui-btn weui-btn_primary'>开始录音</button>
       <h2 id='title'></h2>
       <time class='time'></time>
       <div id='poster'></div>
