@@ -119,7 +119,12 @@ let movie=heredoc(function(){/*
             'startRecord',
             'stopRecord',
             'onVoiceRecordEnd',
-            'translateVoice'
+            'translateVoice',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'
           ], 
           success: function(res) {
             //---------- 
@@ -143,7 +148,35 @@ let movie=heredoc(function(){/*
         //分享到腾讯微博的内容对象
         //分享到qq空间的内容对象
         //----
-        let [timeline,appmessage,qq,weibo,qzone]=[{},{},{},{},{}];
+        let [timeline,appmessage,qq,weibo,qzone]=[
+          {
+            // 分享标题
+            title: '',
+            // 分享链接
+            link: '', 
+            // 分享图标
+            imgUrl: '', 
+            success: function () { 
+              // 用户确认分享后执行的回调函数
+              alert('分享成功！')
+            },
+            cancel: function () { 
+              // 用户取消分享后执行的回调函数
+            }
+          },
+          {
+          
+          },
+          {
+          
+          },
+          {
+          
+          },
+          {
+          
+          }
+        ];
         
         //敲击录音按钮开始或结束录音
         let isRecording=false;
