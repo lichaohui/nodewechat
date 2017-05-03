@@ -92,7 +92,12 @@ let movie=heredoc(function(){/*
           'startRecord',
           'stopRecord',
           'onVoiceRecordEnd',
-          'translateVoice'
+          'translateVoice',
+          'onMenuShareTimeline',
+          'onMenuShareAppMessage',
+          'onMenuShareQQ',
+          'onMenuShareWeibo',
+          'onMenuShareQZone'
         ] 
       });
       
@@ -156,7 +161,6 @@ let movie=heredoc(function(){/*
                 //这是生成的本地音频的一个路径
                 //----
                 let localId = res.localId;
-                console.log('录音结果'+localId);
                 //将按钮的文字设置为‘开始录音’
                 $('#recording').text('开始录音');
                 //将标识符设置为false
@@ -170,7 +174,6 @@ let movie=heredoc(function(){/*
                   success: function (res) {
                     //语音识别的结果
                     let result=res.translateResult;
-                    console.log('语音识别的结果'+result);
                     //----
                     //根据语音识别的结果发送一个跨域的jsonp异步请求
                     //向豆瓣电影api发起搜索请求
