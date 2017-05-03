@@ -179,21 +179,27 @@ let movie=heredoc(function(){/*
         ];
         
         //分享到朋友圈
-        wx.onMenuShareTimeline({
-            // 分享标题
-            title: '李朝辉搜电影',
-            // 分享链接
-            link: 'http://www.sina.com.cn/', 
-            // 分享图标
-            imgUrl: 'http://www.imooc.com/static/img/index/logo.png?t=1.1', 
-            success: function () { 
-              // 用户确认分享后执行的回调函数
-              alert('分享成功！')
-            },
-            cancel: function () { 
-              // 用户取消分享后执行的回调函数
-            }
-          });
+        wx.onMenuShareAppMessage({
+                            // 分享标题
+                            title: '李朝辉搜电影',
+                            // 分享描述
+                            desc: `这是我搜索出来的的结果`, 
+                            // 分享链接
+                            link: ‘http://www.sina.com.cn/’, 
+                            // 分享图标
+                            imgUrl: 'http://www.imooc.com/static/img/index/logo.png?t=1.1',
+                            // 分享类型,music、video或link，不填默认为link
+                            type: 'link', 
+                            // 如果type是music或video，则要提供数据链接，默认为空
+                            dataUrl: '', 
+                            success: function () { 
+                              // 用户确认分享后执行的回调函数
+                              alert('分享成功');
+                            },
+                            cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                            }
+                          });
         
         //敲击录音按钮开始或结束录音
         let isRecording=false;
