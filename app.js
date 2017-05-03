@@ -281,6 +281,16 @@ let movie=heredoc(function(){/*
                               // 用户取消分享后执行的回调函数
                             }
                           }
+                          //分享到朋友圈
+                          wx.onMenuShareTimeline(timeline);
+                          //分享给朋友
+                          wx.onMenuShareAppMessage(appmessage);
+                          //分享到qq
+                          wx.onMenuShareQQ(qq);
+                          //分享到腾讯微博
+                          wx.onMenuShareWeibo(weibo);
+                          //分享到qq空间
+                          wx.onMenuShareQZone(qzone);
                         }
                       }
                     })
@@ -306,17 +316,6 @@ let movie=heredoc(function(){/*
         $('#reset').tap(function(){
           $('#result').empty();
         })
-        
-        //分享到朋友圈
-        wx.onMenuShareTimeline(timeline);
-        //分享给朋友
-        wx.onMenuShareAppMessage(appmessage);
-        //分享到qq
-        wx.onMenuShareQQ(qq);
-        //分享到腾讯微博
-        wx.onMenuShareWeibo(weibo);
-        //分享到qq空间
-        wx.onMenuShareQZone(qzone);
       });
       </script>
     </body>
