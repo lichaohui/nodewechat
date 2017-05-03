@@ -64,6 +64,7 @@ let movie=heredoc(function(){/*
         <div class='weui-panel__hd'>
           <span class='result-title f-ib'>搜索结果</span> 
           <div class='reset f-ib f-tar'>
+            <button class='weui-btn weui-btn_mini weui-btn_primary' id='preview'>海报预览</button>
             <button class='weui-btn weui-btn_mini weui-btn_warn' id='reset'>清除搜索结果</button>
           </div>
         </div>
@@ -97,7 +98,8 @@ let movie=heredoc(function(){/*
           'onMenuShareAppMessage',
           'onMenuShareQQ',
           'onMenuShareWeibo',
-          'onMenuShareQZone'
+          'onMenuShareQZone',
+          'previewImage'
         ] 
       });
       
@@ -124,7 +126,8 @@ let movie=heredoc(function(){/*
             'onMenuShareAppMessage',
             'onMenuShareQQ',
             'onMenuShareWeibo',
-            'onMenuShareQZone'
+            'onMenuShareQZone',
+            'previewImage'
           ], 
           success: function(res) {
             //---------- 
@@ -140,6 +143,14 @@ let movie=heredoc(function(){/*
             console.log(res);
           }
         });
+        
+        //定义图片预览数据
+        let images={
+          // 当前显示图片的http链接
+          current: '',
+          // 需要预览的图片http链接列表
+          urls: [] 
+        }
         
         //敲击录音按钮开始或结束录音
         let isRecording=false;
@@ -182,9 +193,13 @@ let movie=heredoc(function(){/*
                       success:function(data){
                         $('#result').empty();
                         let movie;
+                        //设置预览图的默认选中图
+                        images.current=data.subjects[0].images.large;
                         for(subject of data.subjects){
                           movie=`<a href=${subject.alt} class="weui-media-box weui-media-box_appmsg"><div class="weui-media-box__hd"><img class="weui-media-box__thumb" src=${subject.images.medium} alt=""></div><div class="weui-media-box__bd"><h4 class="weui-media-box__title">${subject.title}</h4><p class="weui-media-box__info">年份：${subject.year} | 导演：${subject.directors[0].name}</p></div></a>`;
-                          $('#result').append(movie);  
+                          $('#result').append(movie); 
+                          //将海报图片添加到预览图列表中
+                          images.urls.push(subject.images.large);
                         }
                       }
                     })
@@ -205,6 +220,10 @@ let movie=heredoc(function(){/*
               }
             });
           }        
+        })
+        //图片预览
+        $('#preview').tap(function(){
+          wx.previewImage(images);
         })
         //清除搜索结果
         $('#reset').tap(function(){
