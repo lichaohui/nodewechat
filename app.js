@@ -65,7 +65,7 @@ let movie=heredoc(function(){/*
           <span class='result-title f-ib'>搜索结果</span> 
           <div class='reset f-ib f-tar'>
             <button class='weui-btn weui-btn_mini weui-btn_primary' id='preview'>海报预览</button>
-            <button class='weui-btn weui-btn_mini weui-btn_warn' id='reset'>清除搜索结果</button>
+            <button class='weui-btn weui-btn_mini weui-btn_warn' id='reset'>清除</button>
           </div>
         </div>
         <div class='weui-panel_bd' id='result'>
