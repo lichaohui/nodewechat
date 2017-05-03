@@ -178,6 +178,9 @@ let movie=heredoc(function(){/*
           }
         ];
         
+        //分享到朋友圈
+        wx.onMenuShareTimeline(timeline);
+        
         //敲击录音按钮开始或结束录音
         let isRecording=false;
         $('#recording').tap(function(){
